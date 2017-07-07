@@ -1,2 +1,7 @@
 ENV
 effcalculator/node_modules
+/.idea/*
+.gitignore
+*.pyc
+db.sqlite3
+/effcalculator/frontend/assets/bundles/
