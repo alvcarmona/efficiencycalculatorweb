@@ -33,6 +33,31 @@ module.exports = {
     ],
 
     module: {
+          rules: [
+            {
+                test: [/\.jsx$/, /\.js$/],
+                exclude: /node_modules/,
+                use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: ['react'],
+                 // plugins: [require('babel-plugin-transform-object-rest-spread')]
+                }
+              }
+            },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
+            }, {
+                  test: /\.(jpe?g|png|gif|svg)$/,
+                  use: [ {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 8192
+                    }
+                  }]
+              }
+          ]/*
         loaders: [
             //a regexp that tells webpack use the following loaders on all
             //.js and .jsx files
@@ -47,7 +72,7 @@ module.exports = {
                     presets: ['react']
                 }
             }
-        ]
+        ]*/
     },
 
     resolve: {
