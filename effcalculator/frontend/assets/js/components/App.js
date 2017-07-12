@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import UserList from '../components/UserList';
-import UserForm from '../components/UserForm';
+import DetectorList from '../components/DetectorList';
+import DetectorForm from '../components/DetectorForm';
 import logo from '../../img/logo.svg';
 import '../../styles/App.css';
 
@@ -8,21 +8,24 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      users: [
-        {id: 1, name: "miguel", email: "miguelghz@miguelgomez.io"},
-        {id: 2, name: "test", email: "test@test.es"}
-      ]
+        detectors: [
+            {id:1, name: 'detector1' ,single: true, threshold: 100,angle: 90},
+            {id:2, name: 'detector1' ,single: false, threshold: 200,angle: 90},
+            {id:3, name: 'detector1' ,single: true, threshold: 300,angle: 90},
+            {id:4, name: 'detector1' ,single: false, threshold: 50,angle: 90},
+            ]
     };
   }
 
-  handleOnAddUser (event) {
+    handleOnAddDetector (event) {
     event.preventDefault();
-    let user = {
-      name: event.target.name.value,
-      email: event.target.email.value
+    let detector = {
+        name: event.target.name.value,
+        threshold: event.target.threshold.value,
+        angle: event.target.angle.value,
     };
     this.setState({
-      users: this.state.users.concat([user])
+      detectors: this.state.detectors.concat([detector])
     });
   }
 
@@ -32,12 +35,12 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Bienvenido a React</h2>
+          <h2>Welcome to the Neutron detector efficiency calculator</h2>
         </div>
         <div>
-          <p><strong>Añade usuarios</strong></p>
-          <UserList users={this.state.users}  />
-          <UserForm onAddUser={this.handleOnAddUser.bind(this)} />
+          <p><strong>Add some detectors</strong></p>
+          <DetectorList detectors={this.state.detectors}/>
+            <DetectorForm onAddDetector={this.handleOnAddDetector.bind(this)} />
         </div>
       </div>
     );
