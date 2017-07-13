@@ -3,13 +3,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import Routes from './routes';
-
-
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
     <div id="root">
-        <App />
+        <BrowserRouter>
+                    <App />
+        </BrowserRouter>
     </div>,
    document.querySelector('body')
 );

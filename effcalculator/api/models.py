@@ -13,7 +13,7 @@ class Bucketlist(models.Model):
         return "{}".format(self.name)
 
 class Detector(models.Model):
-    name = models.CharField(max_length=255, blank=False, unique=True)
+    name = models.CharField(max_length=255, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
     single = models.BooleanField(default=False)
