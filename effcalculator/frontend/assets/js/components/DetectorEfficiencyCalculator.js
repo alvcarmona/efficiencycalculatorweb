@@ -45,7 +45,10 @@ class DetectorEfficiencyCalculator extends Component {
     return (
       <div className="DetectorEfficiencyCalculator">
           <RoutesHandler detectors={this.state.detectors} onAddDetector={this.handleOnAddDetector.bind(this)}/>
+
+          {/*
           <DetectorForm onAddDetector={this.handleOnAddDetector.bind(this)} />
+          */}
       </div>
     );
   }
@@ -55,29 +58,46 @@ class RoutesHandler extends Component{
     constructor(props) {
         super(props);
         this.state        = { detectors: props.detectors  } ;
+        this.RenderDetectorList = (props) => {
+            return (
+                <DetectorList detectors={this.props.detectors}/>
+                );
+            };
+        this.RenderDetectorDetail = (props) => {
+            return (
+                <DetectorDetail detectors={this.props.detectors}/>
+            );
+    };
     }
     componentWillReceiveProps(nextProps) {
         this.setState({detectors:nextProps.detectors})
         this.forceUpdate()
     }
+
+
       render() {
     return (
       <div className="RoutesHandler">
-          {/* <Switch>
-              <Route exact path='/frontend/Detectors' component={DetectorList} detectors={this.props.detectors}/>
-              <Route  path='/frontend/Detectors/:number' component={DetectorDetail} detectors={this.props.detectors}/>
-          </Switch>
-          <p><strong>Add some detectors</strong></p>*/}
           <Switch>
-            <Route path='/frontend/Detectors' component={DetectorList} detectors={this.state.detectors}/>
-              <Route  path='/frontend/Detectors/:number' component={DetectorDetail} detectors={this.state.detectors}/>
-          </Switch>
-          <DetectorList detectors={this.state.detectors}/>
+          <Route  exact path='/frontend/Detectors' render={this.RenderDetectorList} />
+          <Route  path='/frontend/Detectors/:number'
+                  render={ routeProps => {
+                             let i = 0;
+                             let current = {};
+              for (;i < this.props.detectors.length; i++) {
+            if (this.props.detectors[i].id === routeProps.match.params.number) {
+                current = this.props.detectors[i]
+            }
+        }
+                      return (
+                <DetectorDetail detectors={this.props.detectors} routeProps={routeProps} currentDetector={current}/>)}}/>
+              </Switch>
       </div>
     );
   }
 
 }
+
 
 
 
