@@ -1,15 +1,8 @@
 from rest_framework import serializers
-from .models import Bucketlist, Detector
+from .models import Detector
+from rest_framework_mongoengine import serializers as mongoserializers
 
-class BucketlistSerializer(serializers.ModelSerializer):
-    """Serializer to map the Model instance into JSON format."""
-
-    class Meta:
-        """Meta class to map serializer's fields with the model fields."""
-        model = Bucketlist
-        fields = ('id', 'name', 'date_created', 'date_modified')
-        read_only_fields = ('date_created', 'date_modified')
-
+'''
 class DetectorSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(required=False, allow_blank=True, max_length=100)
@@ -32,4 +25,16 @@ class DetectorSerializer(serializers.Serializer):
         instance.threshold = validated_data.get('threshold', instance.threshold)
         instance.angle = validated_data.get('angle', instance.angle)
         instance.save()
-        return instance
+        return instance '''
+
+class DetectorSerializer(mongoserializers.DocumentSerializer):
+#    id = serializers.CharField(read_only=False)
+    class Meta:
+        model = Detector
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """
+        Create and return a new `Snippet` instance, given the validated data.
+        """
+        return Detector.objects.create(**validated_data)

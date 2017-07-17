@@ -5,14 +5,15 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from .models import Detector
-from .serializers import DetectorSerializer
-from rest_framework import status, generics, mixins
+from .serializers import  DetectorSerializer
+from rest_framework import status, generics, mixins, response
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
 from django.shortcuts import render
+from rest_framework_mongoengine import viewsets
 
-
+'''
 class DetectorList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     """
     List all detectors, or create a new detector.
@@ -45,3 +46,23 @@ class DetectorDetail(mixins.RetrieveModelMixin,
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+'''
+
+class DetectorViewSet(viewsets.ModelViewSet):
+    '''
+    Contains information about inputs/outputs of a single program
+    that may be used in Universe workflows.
+    '''
+    lookup_field = 'id'
+    serializer_class = DetectorSerializer
+
+    def get_queryset(self):
+        return Detector.objects.all()
+
+    def create(self, request):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+       # self.perform_create(s)
