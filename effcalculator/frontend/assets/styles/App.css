@@ -27,3 +27,6 @@ li {
   to { transform: rotate(360deg); }
 }
 
+.masonryElement{
+  margin:20px;
+}

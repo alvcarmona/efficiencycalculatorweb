@@ -3,7 +3,8 @@ import Homepage from  './homepage'
 import DetectorEfficiencyCalculator from '../components/DetectorEfficiencyCalculator';
 import logo from '../../img/logo.svg';
 import '../../styles/App.css';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
+import { Navbar, NavItem, NavDropdown, Nav, MenuItem } from 'react-bootstrap'
 
 class App extends Component {
 
@@ -11,11 +12,21 @@ class App extends Component {
     return (
 
       <div className="App">
-        <div className="App-header">
-         <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to the Neutron detector efficiency calculator</h2>
-        </div>
+
         <div>
+             <Navbar inverse collapseOnSelect>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <Link to={`/frontend/homepage/`}>Eff calculator</Link>
+                        </Navbar.Brand>
+                        <Navbar.Toggle />
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <NavItem eventKey={1} href="/detectors"><Link to={`/frontend/detectors/`}>Detectors</Link></NavItem>
+                      </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
              <Switch>
                  <Route path='/frontend/homepage' component={Homepage}/>
                 <Route path='/frontend/detectors' component={DetectorEfficiencyCalculator}/>
@@ -25,5 +36,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;

@@ -10,6 +10,7 @@ class Homepage extends Component {
     return (
 
       <div className="Homepage">
+          <navbarInstance/>
         <div className="App-header">
           <h2>Welcome to the Neutron detector efficiency calculator</h2>
         </div>
@@ -17,5 +18,6 @@ class Homepage extends Component {
     );
   }
 }
+
 
 export default Homepage;

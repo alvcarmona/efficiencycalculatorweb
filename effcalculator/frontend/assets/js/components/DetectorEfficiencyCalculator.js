@@ -2,9 +2,9 @@
  * Created by alvarocbasanez on 12/07/17.
  */
 import React, { Component } from 'react';
-import DetectorList from '../components/DetectorList';
+import DetectorList from '../components/detectorList/DetectorList';
 import DetectorForm from '../components/DetectorForm';
-import DetectorDetail from './DetectorDetail'
+import DetectorDetail from './detectorDetail/DetectorDetail'
 import axios from 'axios';
 import { Route, Switch } from 'react-router-dom'
 
