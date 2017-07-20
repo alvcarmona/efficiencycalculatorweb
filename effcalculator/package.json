@@ -1,8 +1,9 @@
 {
   "name": "effdetectorcalculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "NEutron detector efficiency calculator",
   "main": "index.js",
+  "repository": "https://github.com/alvcarmona/efficiencycalculatorweb",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-watch": "./node_modules/.bin/webpack --config webpack.config.js --watch",
@@ -34,7 +35,14 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "chart.js": "^2.4.1",
+    "d3-array": "^1.2.0",
+    "d3-scale": "1.0.6",
+    "d3-selection": "1.1.0",
+    "d3-shape": "^0.7.1",
     "react-bootstrap": "^0.31.0",
-    "react-masonry-component": "^5.0.7"
+    "react-chartjs-2": "^2.5.1",
+    "react-masonry-component": "^5.0.7",
+    "webpack": "^3.3.0"
   }
 }

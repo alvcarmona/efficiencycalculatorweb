@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import Detector from './Detector'
 import Gallery from './Gallery'
 import axios from 'axios';
-import { ListGroup } from 'react-bootstrap'
+import { ListGroup, Grid, Row } from 'react-bootstrap'
 class DetectorList extends Component {
 
   render () {
@@ -16,7 +16,11 @@ class DetectorList extends Component {
       }
     return (
         <div className="DetectorList">
-            <Gallery detectors ={this.props.detectors}/>
+            <Grid>
+                <Row>
+                    <Gallery detectors ={this.props.detectors}/>
+                </Row>
+            </Grid>
         </div>
     );
   }

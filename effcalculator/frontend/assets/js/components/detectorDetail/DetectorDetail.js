@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Blades from './Blades'
 import Wavelength from './Wavelength'
+import { Grid } from 'react-bootstrap'
 class DetectorDetail extends Component {
 
     constructor(props){
@@ -17,7 +18,7 @@ class DetectorDetail extends Component {
   "single": false,
   "wavelength": [{
     "angstrom": 1.8,
-    "%": 100
+    "weight": 100
   }
   ],
   "blades": [
@@ -77,13 +78,19 @@ class DetectorDetail extends Component {
             </div>)
         }
         return (
+
             <div className="DetectorDetail">
-                <Link to={`/frontend/detectors/`}>atras</Link>
-                <p><b>Detector name: </b>{this.state.dummieDetector.name}</p>
-                <p><b>Angle: </b>{this.state.dummieDetector.angle}° </p>
-                <p><b>Threshold: </b>{this.state.dummieDetector.threshold} Kev</p>
-                <Blades blades={this.state.dummieDetector.blades}/>
-                <Wavelength/>
+                    <Link to={`/frontend/detectors/`}> To detector list </Link>
+                <Grid>
+                    <h2>Detector Information</h2>
+                    <p><b>Detector name: </b>{this.state.dummieDetector.name}</p>
+                    <p><b>Angle: </b>{this.state.dummieDetector.angle}° </p>
+                    <p> The Detector has <b>{this.state.dummieDetector.single ? 'single coated' : 'double coated'}</b> blades</p>
+                    <p>The converter material is <b>{this.state.dummieDetector.converter}</b></p>
+                    <p><b>Threshold: </b>{this.state.dummieDetector.threshold} Kev</p>
+                    <Blades blades={this.state.dummieDetector.blades}/>
+                    <Wavelength wave={this.state.dummieDetector.wavelength}/>
+                </Grid>
             </div>
     );
   }

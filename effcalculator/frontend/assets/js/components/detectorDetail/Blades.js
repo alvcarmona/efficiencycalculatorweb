@@ -2,55 +2,119 @@
  * Created by alvarocbasanez on 18/07/17.
  */
 import React, { Component } from 'react';
-import { Table} from 'react-bootstrap'
+import { Table, Row, Col} from 'react-bootstrap'
+import {Scatter} from 'react-chartjs-2'
 
+class BladeThicknessDepthPlot extends Component{
+    constructor(props){
+        super(props);
+        let dataList=[];
+        let labels=[];
+        let ymax=0;
+        this.props.blades.map(function(data, index){
+         dataList.push({x:index+1, y: data.backscatter});
+         if(data.backscatter >ymax){
+             ymax=data.backscatter+1;
+         }
+         labels.push(String(index+1))
+        });
 
-
-class TableRow extends React.Component {
+        this.state = { data: {
+        labels: labels,
+        datasets: [{
+            label: 'Blade converter thickness in depth',
+            data: dataList,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        showLines: false,
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom',
+                ticks: {
+                    beginAtZero:true,
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                }
+            }]
+        },
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    max: ymax
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                }
+            }]
+    }}
+    }
   render() {
-    /* the ES6 version of const data = this.props.data */
-    const {data} = this.props;
-    /*
-    use map to perform the same function on
-    each element in the obj array
-    */
-    const row = data.map((data) =>
-    <tr>
-       <td>1</td>
-        <td>{data.backscatter}</td>
-        <td>{data.substrate}</td>
-    </tr>
-    );
-    return (
-      <div>{row}</div>
-    );
+    return <Scatter data={this.state.data} options={this.state.options}  width="500" height="250"/>
   }
 }
 
 class Blades extends Component {
   render () {
-      const row = this.props.blades.map((data) =>
+      const row = this.props.blades.map((data, index) =>
             <tr>
-               <td>1</td>
-                <td>{data.backscatter}</td>
-                <td>{data.substrate}</td>
+               <td>{index+1}</td>
+                <td>{data.backscatter} µm</td>
+                <td>{data.substrate} µm</td>
             </tr>
     );
+
         return (
-            <Table striped bordered condensed hover responsive>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Backscattering</th>
-        <th>Substrate</th>
-      </tr>
-    </thead>
-    <tbody>
-    {row}
-    </tbody>
-  </Table>
+            <Row>
+                <Col md={12} >
+                    <Col md={7}>
+                        <BladeThicknessDepthPlot blades={this.props.blades}/>
+                    </Col>
+                    <Col md={4} >
+                       <Table striped bordered condensed hover responsive>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Converter Thickness</th>
+                        <th>Substrate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {row}
+                    </tbody>
+                  </Table>
+                    </Col>
+                </Col>
+            </Row>
     );
   }
 }
+
+var LineCharts = require("react-chartjs").Line;
+
+
 
 export default Blades;

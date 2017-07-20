@@ -3,7 +3,7 @@
  */
 var React = require('react');
 var Masonry = require('react-masonry-component');
-import {Jumbotron} from 'react-bootstrap'
+import {Jumbotron, Col} from 'react-bootstrap'
 import Detector from './Detector'
 var masonryOptions = {
     transitionDuration: '0.5s',
@@ -14,16 +14,18 @@ var Gallery = React.createClass({
     render: function () {
         var childElements = this.props.detectors.map(u => {
                   return (
-                      <div key={u.id}>
+                      <Col xs={4} md={3}>
+                          <div key={u.id}>
 
-                          <Detector
-                              id={u.id}
-                              name={u.name}
-                              single={u.single}
-                              threshold={u.threshold}
-                              angle={u.angle}
-                          />
-                      </div>
+                              <Detector
+                                  id={u.id}
+                                  name={u.name}
+                                  single={u.single}
+                                  threshold={u.threshold}
+                                  angle={u.angle}
+                              />
+                          </div>
+                      </Col>
                   );
               });
         childElements.push(<Jumbotron>
