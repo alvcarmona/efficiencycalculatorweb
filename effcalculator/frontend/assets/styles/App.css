@@ -78,3 +78,7 @@ a.navbar-brand{
 a.navbar-brand:hover{
   color:lightgrey!important;
 }
+
+.detectordetail.row{
+  margin-top:30px;
+}

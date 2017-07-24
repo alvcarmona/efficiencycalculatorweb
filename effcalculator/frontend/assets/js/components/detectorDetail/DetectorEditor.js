@@ -1,15 +1,21 @@
 /**
+ * Created by alvarocbasanez on 21/07/17.
+ */
+
+
+
+/**
  * Created by alvarocbasanez on 13/07/17.
  */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Blades from './Blades'
 import Wavelength from './Wavelength'
-import {Grid, DropdownButton, MenuItem, Row, Col} from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
+import {Grid, DropdownButton, MenuItem, Row, Col, FormGroup} from 'react-bootstrap'
+import {withRouter} from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
 
-class DetectorDetail extends Component {
+class DetectorEditor extends Component {
 
     constructor(props) {
         super(props);
@@ -83,21 +89,16 @@ class DetectorDetail extends Component {
                 </div>)
         }
         return (
+
             <div className="DetectorDetail">
                 <Link to={`/frontend/detectors/`}> To detector list </Link>
                 <Grid>
                     <Row className="show-grid">
                         <Col xs={6} xsOffset={8}>
-                            <DropdownButton bsStyle='warning' title='Options' className="optionbutton">
-                                <LinkContainer to={"/frontend/Detectors/"+this.props.routeProps.match.params.number+"/edit"}>
-                                    <MenuItem eventKey="1">Edit detector</MenuItem>
-                                </LinkContainer>
-                                <MenuItem eventKey="2">Delete detector</MenuItem>
-                            </DropdownButton>
                         </Col>
                     </Row>
                     <Row>
-                        <h2>Detector Information</h2>
+                        <h2>Detector Edit</h2>
                     </Row>
                     <Row>
                         <p><b>Detector name: </b>{this.state.dummieDetector.name}</p>
@@ -108,10 +109,19 @@ class DetectorDetail extends Component {
                         <p><b>Threshold: </b>{this.state.dummieDetector.threshold} Kev</p>
                     </Row>
                     <Row>
-                        <Blades blades={this.state.dummieDetector.blades}/>
-                    </Row>
-                    <Row>
-                        <Wavelength wave={this.state.dummieDetector.wavelength}/>
+                        <FieldGroup
+                            id="formControlsText"
+                            type="text"
+                            label="Text"
+                            placeholder="Enter text"
+                        />
+                        <FormGroup controlId="formControlsSelect">
+                            <ControlLabel>Select</ControlLabel>
+                            <FormControl componentClass="select" placeholder="select">
+                                <option value="select">select</option>
+                                <option value="other">...</option>
+                            </FormControl>
+                        </FormGroup>
                     </Row>
                 </Grid>
             </div>
@@ -120,5 +130,4 @@ class DetectorDetail extends Component {
 }
 
 
-export default DetectorDetail;
-
+export default DetectorEditor;

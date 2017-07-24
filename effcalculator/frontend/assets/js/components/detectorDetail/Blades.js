@@ -113,7 +113,6 @@ class Blades extends Component {
   }
 }
 
-var LineCharts = require("react-chartjs").Line;
 
 
 
