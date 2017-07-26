@@ -1,0 +1,7 @@
+
+export const SELECT_DETECTOR = 'SELECT_DETECTOR'
+export const REQUEST_DETECTORS = 'REQUEST_DETECTORS'
+export const RECEIVE_DETECTORS = 'RECEIVE_DETECTORS'
+export const RECV_ERROR = 'RECV_ERROR';
+export const REQ_DATA = 'REQ_DATA';
+export const RECV_DATA = 'RECV_DATA';

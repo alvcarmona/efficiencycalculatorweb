@@ -9,6 +9,7 @@ var masonryOptions = {
     transitionDuration: '0.5s',
     gutter: 10
 };
+//TODO change createclass
 
 var Gallery = React.createClass({
     render: function () {
