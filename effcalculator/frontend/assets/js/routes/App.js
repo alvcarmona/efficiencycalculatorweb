@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Homepage from  './homepage'
-import DetectorEfficiencyCalculator from '../components/DetectorEfficiencyCalculator';
+import detectors from './detectors/index'
 import logo from '../../img/logo.svg';
 import '../../styles/App.css';
 import {Route, Switch, Link} from 'react-router-dom'
@@ -33,7 +33,7 @@ class App extends Component {
                     </Navbar>
                     <Switch>
                         <Route path='/frontend/homepage' component={Homepage}/>
-                        <Route path='/frontend/detectors' component={DetectorEfficiencyCalculator} />
+                        <Route path='/frontend/detectors' component={detectors} />
                     </Switch>
                 </div>
             </div>

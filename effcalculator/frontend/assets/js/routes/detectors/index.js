@@ -1,46 +1,46 @@
 /**
+ contains a Route. Again, this goes down the path of breaking things down into as many small components as possible.
+ I would recommend this (as oppoesd to having a route hierarchy written in XML) as it allows you to instantiate
+ routes only as you need them. This also means that your route file will only including other files in relative
+ sub-directories, which feels nice and de-coupled.
+ Your route file can then also be the guardian of the data in your store when you go to the route, by making use of the
+ onEnter and onLeave methods. In here you can dispatch fetch actions that ensure that your components have the data
+ they need. This is really useful when you have deep nested routes.
+ */
+
+/**
  * Created by alvarocbasanez on 12/07/17.
  */
 import React, {Component} from 'react';
-import DetectorList from '../components/detectorList/DetectorList';
-import DetectorForm from '../components/DetectorForm';
-import DetectorDetail from './detectorDetail/DetectorDetail'
-import DetectorEditor from './detectorDetail/DetectorEditor'
-import axios from 'axios';
+import DetectorListContainer from './containers/DetectorListContainer';
+import DetectorDetailContainer from './containers/DetectorDetailContainer';
 import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux';
+import {fetchData} from '../../modules/actions/index';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types'
 
-import {fetchData} from '../modules/actions/index';
-import configureStore from '../modules/store';
-const store = configureStore();
-function loadData() {
-    console.log('loaddata')
-	store.dispatch(fetchData('/api/detectors/'));
-};
+function mapStateToProps(state) {
+  return { data: state.data }
+}
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchData }, dispatch)
+}
 
-@connect(state => ({data: state.example.data}))
 class DetectorEfficiencyCalculator extends Component {
     constructor(props) {
         super(props);
-        loadData();
-        this.state = {
-            detectors: []
-        };
-
     }
 
     componentDidMount() {
-        const self = this;
-        axios.get(`/api/detectors`)
-            .then(res => {
-                self.setState({detectors: res.data});
-            });
+     this.props.fetchData('/api/detectors/')
     }
 
 
     handleOnAddDetector(event) {
         event.preventDefault();
+        /*
         axios.post(`/api/detectors/`, {
             name: event.target.name.value,
             threshold: event.target.threshold.value,
@@ -51,14 +51,30 @@ class DetectorEfficiencyCalculator extends Component {
                 this.setState({
                     detectors: this.state.detectors.concat(detector)
                 });
-            });
+            });*/
     }
 
     render() {
         return (
             <div className="DetectorEfficiencyCalculator">
-                <RoutesHandler detectors={this.state.detectors} onAddDetector={this.handleOnAddDetector.bind(this)}/>
-
+              <Switch>
+                    <Route exact path='/frontend/Detectors' component={DetectorListContainer}/>
+                   <Route exact path='/frontend/Detectors/:number' component={DetectorDetailContainer}/>
+                  {/*<Route path='/frontend/Detectors/:number/edit' render={this.RenderDetectorEditor}/>
+                    <Route path='/frontend/Detectors/:number'
+                           render={ routeProps => {
+                               let i = 0;
+                               let current = {};
+                               for (; i < this.props.detectors.length; i++) {
+                                   if (this.props.detectors[i].id === routeProps.match.params.number) {
+                                       current = this.props.detectors[i]
+                                   }
+                               }
+                               return (
+                                   <DetectorDetail detectors={this.props.detectors} routeProps={routeProps}
+                                                   currentDetector={current}/>)
+                           }}/>*/}
+                </Switch>
                 {/*
                  <DetectorForm onAddDetector={this.handleOnAddDetector.bind(this)} />
                  */}
@@ -120,6 +136,4 @@ class RoutesHandler extends Component {
 
 }
 
-
-export default DetectorEfficiencyCalculator;
-
+export default connect(mapStateToProps,mapDispatchToProps)(DetectorEfficiencyCalculator)

@@ -11,7 +11,8 @@ import { combineReducers } from 'redux'; //might need to remove
 function exampleReducer(
     state = {
         isLoading: false,
-        detectors:[
+        data:[],
+        data2:[
             {"id":1,
                     "name": "Detector1",
                     "converter": "10B4C 2.24g/cm3",
@@ -237,7 +238,6 @@ function exampleReducer(
                     ]
                 }],
         currentDetector: undefined,
-        data: [],
         error: false
     },
     action = null) {

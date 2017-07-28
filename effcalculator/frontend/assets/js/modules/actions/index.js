@@ -5,25 +5,26 @@
 
 import * as types from './actionTypes';
 import axios from 'axios';
-import { pushState } from 'redux-react-router';
 
 function requestData() {
-	return {type: types.REQ_DATA}
+    return {type: types.REQ_DATA}
 };
 
 function receiveData(json) {
-	return{
-		type: types.RECV_DATA,
-		data: json
-	}
+    return {
+        type: types.RECV_DATA,
+        data: json
+    }
 };
 
 function receiveError(json) {
-	return {
-		type: types.RECV_ERROR,
-		data: json
-	}
+    return {
+        type: types.RECV_ERROR,
+        data: json
+    }
 };
+
+
 
 export function fetchData(url) {
 	return function(dispatch) {
