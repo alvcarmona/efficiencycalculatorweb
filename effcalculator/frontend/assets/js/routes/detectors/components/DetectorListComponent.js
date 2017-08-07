@@ -18,7 +18,7 @@ class DetectorlistComponent extends Component {
         <div className="DetectorListComponent">
             <Grid>
                 <Row>
-                    <GalleryComponent detectors ={this.props.detectors}/>
+                    <GalleryComponent detectors ={this.props.detectors} createDetector={this.props.createDetector}/>
                 </Row>
             </Grid>
         </div>

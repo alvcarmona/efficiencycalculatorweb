@@ -3,8 +3,9 @@
  */
 var React = require('react');
 var Masonry = require('react-masonry-component');
-import {Jumbotron, Col} from 'react-bootstrap'
+import {Jumbotron, Col, Button} from 'react-bootstrap'
 import Detector from './DetectorComponent'
+
 var masonryOptions = {
     transitionDuration: '0.5s',
     gutter: 10
@@ -14,26 +15,30 @@ var masonryOptions = {
 var GalleryComponent = React.createClass({
     render: function () {
         var childElements = this.props.detectors.map(u => {
-                  return (
-                      <Col xs={4} md={3}>
-                          <div key={u.id}>
+            return (
+                <Col xs={4} md={3}>
+                    <div key={u.id}>
 
-                              <Detector
-                                  id={u.id}
-                                  name={u.name}
-                                  single={u.single}
-                                  threshold={u.threshold}
-                                  angle={u.angle}
-                              />
-                          </div>
-                      </Col>
-                  );
-              });
+                        <Detector
+                            id={u.id}
+                            name={u.name}
+                            single={u.single}
+                            threshold={u.threshold}
+                            angle={u.angle}
+                        />
+                    </div>
+                </Col>
+            );
+        });
         childElements.push(<Jumbotron>
-                          <div className="masonryElement">
-                              <p>create new detector</p>
-                          </div>
-            </Jumbotron>);
+            <div className="masonryElement">
+                <Button
+                    bsStyle="primary"
+                    onClick={this.props.createDetector}>
+                    create new detector
+                </Button>
+            </div>
+        </Jumbotron>);
 
         return (
             <Masonry

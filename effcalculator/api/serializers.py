@@ -38,3 +38,14 @@ class DetectorSerializer(mongoserializers.DocumentSerializer):
         Create and return a new `Snippet` instance, given the validated data.
         """
         return Detector.objects.create(**validated_data)
+
+    def save(self, commit=True):
+        detector = self.instance if self.instance else Detector()
+        detector.name = self.cleaned_data['name']
+        detector.threshold = self.cleaned_data['threshold']
+        detector.angle = self.cleaned_data['angle']
+        if commit:
+            detector.save()
+
+        return detector
+

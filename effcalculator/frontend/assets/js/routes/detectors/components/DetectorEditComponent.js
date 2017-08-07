@@ -1,40 +1,46 @@
-/**
- * Created by alvarocbasanez on 13/07/17.
- */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Blades from './BladesComponent'
 import Wavelength from './WavelengthComponent'
-import {Grid, DropdownButton, MenuItem, Row, Col} from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
+import {Grid, DropdownButton, MenuItem, Row, Col, FormGroup} from 'react-bootstrap'
+import {withRouter} from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
+import SingleInput from './SingleInput';
 
-class DetectorDetail extends Component {
+class DetectorEditComponent extends Component {
 
     constructor(props) {
         super(props);
     };
 
+    getValidationState() {
+        const length = this.state.value.length;
+        if (length > 10) return 'success';
+        else if (length > 5) return 'warning';
+        else if (length > 0) return 'error';
+    }
+
 
     render() {
         if (!this.props.detector) {
             return (
-                <div className="DetectorDetail">
+                <div className="DetectorEdit">
                     <Link to={`/frontend/detectors/`}>atras</Link>
                 </div>)
         }
         return (
-            <div className="DetectorDetail">
+            <div className="DetectorEdit">
                 <Link to={`/frontend/detectors/`}> To detector list </Link>
                 <Grid>
                     <Row className="show-grid">
                         <Col xs={6} xsOffset={8}>
+                            {/*
                              <DropdownButton bsStyle='warning' title='Options' className="optionbutton">
-                                <LinkContainer to={"/frontend/Detectors/"+this.props.detector.id+"/edit"}>
-                                    <MenuItem eventKey="1">Edit detector</MenuItem>
-                                </LinkContainer>
-                                <MenuItem eventKey="2">Delete detector</MenuItem>
-                            </DropdownButton>
+                             <LinkContainer to={"/frontend/Detectors/"+this.props.detector.id+"/edit"}>
+                             <MenuItem eventKey="1">Edit detector</MenuItem>
+                             </LinkContainer>
+                             <MenuItem eventKey="2">Delete detector</MenuItem>
+                             </DropdownButton> */}
                         </Col>
                     </Row>
                     <Row>
@@ -49,17 +55,23 @@ class DetectorDetail extends Component {
                         <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
                     </Row>
                     <Row>
-                       {!this.props.detector.blades ? <p>There are no blades</p> :<Blades blades={this.props.detector.blades}/>}
+                        {!this.props.detector.blades ? <p>There are no blades</p> :
+                            <Blades blades={this.props.detector.blades}/>}
                     </Row>
                     <Row>
-                           {!this.props.detector.wavelength ? <p>There is no wavelength </p> : <Wavelength wave={this.props.detector.wavelength}/>}
+                        {!this.props.detector.wavelength ? <p>There is no wavelength </p> :
+                            <Wavelength wave={this.props.detector.wavelength}/>}
                     </Row>
+                    <form className="container">
+                        <SingleInput/>
+                    </form>
                 </Grid>
+
             </div>
         );
     }
 }
 
 
-export default DetectorDetail;
+export default DetectorEditComponent;
 

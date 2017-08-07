@@ -6,7 +6,7 @@
 
 import * as types from './actions/actionTypes';
 import { combineReducers } from 'redux'; //might need to remove
-
+import { reducer as formReducer } from 'redux-form'
 
 function exampleReducer(
     state = {
@@ -248,13 +248,16 @@ function exampleReducer(
 			return Object.assign({}, state, {isLoading: false, data: action.data, error: false });
 		case types.REQ_DATA:
 			return Object.assign({}, state, {isLoading: true, error: false });
+        case types.SET_CURRENT:
+			return Object.assign({}, state, {currentDetector: action.currentDetector});
 		default:
 			return state;
 	}
 };
 
 const rootReducer = combineReducers({
-	example: exampleReducer
+	example: exampleReducer,
+     form: formReducer
 });
 
 export default rootReducer;

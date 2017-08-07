@@ -14,18 +14,19 @@
 import React, {Component} from 'react';
 import DetectorListContainer from './containers/DetectorListContainer';
 import DetectorDetailContainer from './containers/DetectorDetailContainer';
+import DetectorEditContainer from './containers/DetectorEditContainer';
 import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux';
-import {fetchData} from '../../modules/actions/index';
-import { bindActionCreators } from 'redux';
+import {fetchData, setCurrentDetector} from '../../modules/actions/index';
+import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types'
 
 function mapStateToProps(state) {
-  return { data: state.data }
+    return {data: state.data}
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchData }, dispatch)
+    return bindActionCreators({fetchData, setCurrentDetector}, dispatch)
 }
 
 class DetectorEfficiencyCalculator extends Component {
@@ -34,50 +35,47 @@ class DetectorEfficiencyCalculator extends Component {
     }
 
     componentDidMount() {
-     this.props.fetchData('/api/detectors/')
+        this.props.fetchData('/api/detectors/')
+    }
+
+    RenderDetectorDetail() {
+        let i = 0;
+        let current = {};
+        for (; i < this.props.data.length; i++) {
+            if (this.props.data[i].id === this.props.match.params.number) {
+                current = this.props.data[i]
+            }
+        }
+        this.props.setCurrentDetector(current)
+        return <DetectorDetail />
     }
 
 
     handleOnAddDetector(event) {
         event.preventDefault();
         /*
-        axios.post(`/api/detectors/`, {
-            name: event.target.name.value,
-            threshold: event.target.threshold.value,
-            angle: event.target.angle.value,
-        })
-            .then(res => {
-                const detector = res.data;
-                this.setState({
-                    detectors: this.state.detectors.concat(detector)
-                });
-            });*/
+         axios.post(`/api/detectors/`, {
+         name: event.target.name.value,
+         threshold: event.target.threshold.value,
+         angle: event.target.angle.value,
+         })
+         .then(res => {
+         const detector = res.data;
+         this.setState({
+         detectors: this.state.detectors.concat(detector)
+         });
+         });*/
     }
 
     render() {
         return (
             <div className="DetectorEfficiencyCalculator">
-              <Switch>
+                <Switch>
                     <Route exact path='/frontend/Detectors' component={DetectorListContainer}/>
-                   <Route exact path='/frontend/Detectors/:number' component={DetectorDetailContainer}/>
-                  {/*<Route path='/frontend/Detectors/:number/edit' render={this.RenderDetectorEditor}/>
-                    <Route path='/frontend/Detectors/:number'
-                           render={ routeProps => {
-                               let i = 0;
-                               let current = {};
-                               for (; i < this.props.detectors.length; i++) {
-                                   if (this.props.detectors[i].id === routeProps.match.params.number) {
-                                       current = this.props.detectors[i]
-                                   }
-                               }
-                               return (
-                                   <DetectorDetail detectors={this.props.detectors} routeProps={routeProps}
-                                                   currentDetector={current}/>)
-                           }}/>*/}
+                    <Route exact path='/frontend/Detectors/:number' component={DetectorDetailContainer}/>
+                    <Route path='/frontend/Detectors/:number/edit' component={DetectorEditContainer}/>
+                    <Route path='/frontend/Detectors/:number/edit' component={DetectorEditContainer}/>
                 </Switch>
-                {/*
-                 <DetectorForm onAddDetector={this.handleOnAddDetector.bind(this)} />
-                 */}
             </div>
         );
     }
@@ -136,4 +134,4 @@ class RoutesHandler extends Component {
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(DetectorEfficiencyCalculator)
+export default connect(mapStateToProps, mapDispatchToProps)(DetectorEfficiencyCalculator)
