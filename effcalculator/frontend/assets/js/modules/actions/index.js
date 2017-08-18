@@ -11,12 +11,28 @@ function requestData() {
     return {type: types.REQ_DATA}
 };
 
+export function openModal() {
+    return {type: types.OPEN_MODAL}
+};
+
+export function closeModal() {
+    return {type: types.CLOSE_MODAL}
+};
+
 function receiveData(json) {
     return {
         type: types.RECV_DATA,
         data: json
     }
 };
+function receiveNew(data) {
+    return {
+        type: types.RECV_NEW,
+        data: data
+    }
+};
+
+
 
 function receiveError(json) {
     return {
@@ -44,7 +60,7 @@ export function editCurrentDetector(detector) {
             data: detector
         })
             .then(function (response) {
-                dispatch(receiveData(response.data));
+                dispatch(receiveNew(response.detector));
             })
             .catch(function (response) {
                 dispatch(receiveError(response.data));
@@ -53,26 +69,27 @@ export function editCurrentDetector(detector) {
     }
 };
 
-export function createDetector() {
+
+export function createDetector(detector) {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: url,
+            url: '/api/detectors/',
             timeout: 20000,
             method: 'post',
-            responseType: 'json'
+            responseType: 'json',
+            data:detector
         })
             .then(function (response) {
-                dispatch(receiveData(response.data));
+                dispatch(receiveNew(response.data));
             })
             .catch(function (response) {
                 dispatch(receiveError(response.data));
-                dispatch(pushState(null, '/error'));
             })
     }
 };
 
-export function fetchData(url) {
+export function fetchData(url){
     return function (dispatch) {
         dispatch(requestData());
         return axios({
@@ -86,7 +103,40 @@ export function fetchData(url) {
             })
             .catch(function (response) {
                 dispatch(receiveError(response.data));
-                dispatch(pushState(null, '/error'));
             })
+    }
+};
+
+
+
+export function deleteDetector(data) {
+    return function (dispatch) {
+        dispatch(requestData());
+        return axios({
+            url: '/api/detectors/',
+            timeout: 20000,
+            method: 'delete',
+            responseType: 'json',
+            data:data
+        })
+            .then(function() {
+                dispatch(deleteSuccess(data));
+            })
+            .catch(function () {
+                dispatch(deleteError());
+            })
+    }
+};
+
+function deleteSuccess(data) {
+    return {
+        type: types.DELETE_SUCCESS,
+        data: data
+    }
+};
+function deleteError(data) {
+    return {
+        type: types.DELETE_ERROR,
+        data: data
     }
 };

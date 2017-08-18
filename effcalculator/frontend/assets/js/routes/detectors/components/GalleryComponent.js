@@ -16,9 +16,7 @@ var GalleryComponent = React.createClass({
     render: function () {
         var childElements = this.props.detectors.map(u => {
             return (
-                <Col xs={4} md={3}>
-                    <div key={u.id}>
-
+                <Col xs={4} md={3} key={u.id}>
                         <Detector
                             id={u.id}
                             name={u.name}
@@ -26,19 +24,9 @@ var GalleryComponent = React.createClass({
                             threshold={u.threshold}
                             angle={u.angle}
                         />
-                    </div>
                 </Col>
             );
         });
-        childElements.push(<Jumbotron>
-            <div className="masonryElement">
-                <Button
-                    bsStyle="primary"
-                    onClick={this.props.createDetector}>
-                    create new detector
-                </Button>
-            </div>
-        </Jumbotron>);
 
         return (
             <Masonry

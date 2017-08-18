@@ -5,19 +5,21 @@ import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Spinner from '../components/Spinner';
 import DetectorDetailComponent from '../components/DetectordetailComponent'
-import {setCurrentDetector} from '../../../modules/actions/index';
+import {setCurrentDetector, deleteDetector} from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
 function mapStateToProps(state) {
     return {data: state.example.data, isloading: state.example.isloading}
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({setCurrentDetector}, dispatch)
+    return bindActionCreators({setCurrentDetector, deleteDetector}, dispatch)
 }
 
 class DetectorDetailContainer extends Component {
 
-
+    redirect(){
+         this.props.history.push('/frontend/detectors')
+    }
 
     renderDetectorDetail() {
         let i = 0;
@@ -28,7 +30,7 @@ class DetectorDetailContainer extends Component {
             }
         }
         this.props.setCurrentDetector(current)
-       return (<DetectorDetailComponent detector={current}/>)
+       return (<DetectorDetailComponent delete={this.props.deleteDetector} detector={current} redirect={this.redirect.bind(this)}/>)
     }
 
     render() {

@@ -51,29 +51,12 @@ class DetectorEfficiencyCalculator extends Component {
     }
 
 
-    handleOnAddDetector(event) {
-        event.preventDefault();
-        /*
-         axios.post(`/api/detectors/`, {
-         name: event.target.name.value,
-         threshold: event.target.threshold.value,
-         angle: event.target.angle.value,
-         })
-         .then(res => {
-         const detector = res.data;
-         this.setState({
-         detectors: this.state.detectors.concat(detector)
-         });
-         });*/
-    }
-
     render() {
         return (
             <div className="DetectorEfficiencyCalculator">
                 <Switch>
                     <Route exact path='/frontend/Detectors' component={DetectorListContainer}/>
                     <Route exact path='/frontend/Detectors/:number' component={DetectorDetailContainer}/>
-                    <Route path='/frontend/Detectors/:number/edit' component={DetectorEditContainer}/>
                     <Route path='/frontend/Detectors/:number/edit' component={DetectorEditContainer}/>
                 </Switch>
             </div>

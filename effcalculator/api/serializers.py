@@ -41,11 +41,17 @@ class DetectorSerializer(mongoserializers.DocumentSerializer):
 
     def save(self, commit=True):
         detector = self.instance if self.instance else Detector()
-        detector.name = self.cleaned_data['name']
-        detector.threshold = self.cleaned_data['threshold']
-        detector.angle = self.cleaned_data['angle']
+        if self.data['name']!=None:
+            detector.name = self.data['name']
+        if self.data['threshold']!=None:
+            detector.threshold = self.data['threshold']
+        if self.data['angle']:
+            detector.angle = self.data['angle']
         if commit:
             detector.save()
+        return detector.to_json()
 
-        return detector
+    def delete(self,data):
+        Detector.objects(id=data._data['id']).delete()
+        return self
 

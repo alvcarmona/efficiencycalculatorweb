@@ -6,21 +6,37 @@ import {Field, reduxForm} from 'redux-form'
 const  { DOM: { input, select, textarea } } = React
 import {connect} from 'react-redux';
 
+const required = value => value ? undefined : 'Required'
+const maxLength = max => value =>
+  value && value.length > max ? `Must be ${max} characters or less` : undefined
+const maxLength15 = maxLength(15)
+
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+)
+
+
 let DetectorForm = props => {
     const {handleSubmit} = props
     return (
         <form onSubmit={ handleSubmit }>
             <div>
                 <label htmlFor="Detector name">Detector Name</label>
-                <Field name="name" component="input" type="text"/>
+                <Field name="name"  component={renderField}  type="text" validate={[ required, maxLength15 ]}/>
             </div>
             <div>
                 <label htmlFor="Angle">Angle</label>
-                <Field name="angle" component="input" type="number"/>
+                <Field name="angle" component={renderField} type="number" validate={[ required]}/>
             </div>
             <div>
                 <label htmlFor="Threshold">Threshold</label>
-                <Field name="threshold" component="input" type="number"/>
+                <Field name="threshold" component={renderField} type="number" validate={[ required ]}/>
             </div>
             <button type="submit">Submit</button>
         </form>

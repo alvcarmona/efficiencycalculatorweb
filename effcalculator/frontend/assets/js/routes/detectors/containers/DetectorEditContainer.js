@@ -53,8 +53,9 @@ class DetectorEditContainer extends Component {
     renderDetectorEdit() {
         return (
             <div>
+                /Users/alvarocbasanez/PycharmProjects/effDetectorWeb
                 <DetectorForm onSubmit={this.submit} initialValues={this.props.current}/>
-                <BladesForm onSubmit={this.addBlades()}/>
+                {/*<BladesForm onSubmit={this.addBlades()}/>*/}
             </div>
         )
     }

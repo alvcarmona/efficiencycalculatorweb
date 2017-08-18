@@ -238,6 +238,7 @@ function exampleReducer(
                     ]
                 }],
         currentDetector: undefined,
+        showModal: false,
         error: false
     },
     action = null) {
@@ -246,10 +247,33 @@ function exampleReducer(
 			return Object.assign({}, state, {isLoading: false, data: action.data, error: true});
 		case types.RECV_DATA:
 			return Object.assign({}, state, {isLoading: false, data: action.data, error: false });
+		case types.RECV_NEW:
+		    console.log('renew')
+            let newdetector= {angle: action.data.angle, threshold:action.data.threshold, name:action.data.name, id:action.data._id.$oid}
+		    let newdata1=[]
+            for( let i =0;i<state.data.length;i++){
+                    newdata1.push(state.data[i])
+            }
+            newdata1.push(newdetector);
+			return Object.assign({}, state, {isLoading: false, data: newdata1, error: false });
 		case types.REQ_DATA:
 			return Object.assign({}, state, {isLoading: true, error: false });
         case types.SET_CURRENT:
 			return Object.assign({}, state, {currentDetector: action.currentDetector});
+        case types.OPEN_MODAL:
+			return Object.assign({}, state, {showModal: true});
+        case types.CLOSE_MODAL:
+			return Object.assign({}, state, {showModal: false});
+        case types.DELETE_ERROR:
+			return Object.assign({}, state, { data: action.data, error:true});
+        case types.DELETE_SUCCESS:
+           let newdata=[]
+            for( let i =0;i<state.data.length;i++){
+                if (state.data[i].id != action.data.id){
+                    newdata.push(state.data[i])
+                }
+            }
+			return Object.assign({}, state, {data: newdata, error:false});
 		default:
 			return state;
 	}

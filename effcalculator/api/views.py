@@ -62,7 +62,15 @@ class DetectorViewSet(viewsets.ModelViewSet):
     def create(self, request):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
+          detector =  serializer.save(request)
+          return Response(status=status.HTTP_201_CREATED, data=detector)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+       # self.perform_create(s)
+
+    def delete(self, request):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.delete(request)
+            return Response(status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
        # self.perform_create(s)

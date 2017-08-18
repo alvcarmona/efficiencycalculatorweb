@@ -29,11 +29,13 @@ class DetectorDetail extends Component {
                 <Grid>
                     <Row className="show-grid">
                         <Col xs={6} xsOffset={8}>
-                             <DropdownButton bsStyle='warning' title='Options' className="optionbutton">
+                             <DropdownButton id="1" bsStyle='warning' title='Options' className="optionbutton">
                                 <LinkContainer to={"/frontend/Detectors/"+this.props.detector.id+"/edit"}>
                                     <MenuItem eventKey="1">Edit detector</MenuItem>
                                 </LinkContainer>
-                                <MenuItem eventKey="2">Delete detector</MenuItem>
+                                <MenuItem onSelect={(e) => {this.props.delete(this.props.detector);
+                                    this.props.redirect()}
+                                } eventKey="2">Delete detector</MenuItem>
                             </DropdownButton>
                         </Col>
                     </Row>
