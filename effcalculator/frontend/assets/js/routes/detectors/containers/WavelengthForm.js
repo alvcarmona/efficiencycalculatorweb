@@ -6,34 +6,30 @@ import {Field, reduxForm} from 'redux-form'
 const  { DOM: { input, select, textarea } } = React
 import {connect} from 'react-redux';
 
-let BladesForm = props => {
+let WavelengthForm = props => {
     const {handleSubmit} = props
     return (
         <form onSubmit={ handleSubmit }>
+            {/*
              <div>
                 <label htmlFor="Threshold">Number of blades</label>
                 <Field name="nb" component="input" type="number"/>
             </div>
+            */}
             <div>
-                <label htmlFor="Angle">Converter thickness</label>
-                <Field name="thickness" component="input" type="number"/>
+                <label htmlFor="Wavelength">Wavelength</label>
+                <Field name="Wavelength" component="input" type="number"/>
             </div>
-            <button type="submit">Add blades</button>
+            <button type="submit">Add wavelength</button>
         </form>
     )
 }
 
-BladesForm = reduxForm({
+WavelengthForm = reduxForm({
     // a unique name for the form
-    form: 'blades'
-})(BladesForm)
+    form: 'wavelength'
+})(WavelengthForm)
 
-/*
-BladesForm = connect(
-  state => ({
-    initialValues: state.example.currentDetector.blades // pull initial values from account reducer
-  })// bind account loading action creator
-)(BladesForm)
-/
- */
-export default BladesForm;
+
+
+export default WavelengthForm;

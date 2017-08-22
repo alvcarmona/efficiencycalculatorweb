@@ -19,17 +19,25 @@ class CreateDetectorButtonContainer extends Component {
     }
 
     open() {
-       this.props.openModal();
+        this.props.openModal();
     }
-    submit = function(values){
-        if(!values.threshold)
-            values.append
-        this.props.createDetector(values)
+
+    submit = function (values) {
+        let newDetector = {
+            name: values.name,
+            angle: values.angle,
+            threshold: values.threshold,
+            blades: [],
+            converter: "10B4C 2.24g/cm3",
+            wavelength: []
+        }
+        this.props.createDetector(newDetector)
         this.props.closeModal();
     };
 
     render() {
-        return (<CreateDetectorButtonComponent showModal={this.props.showModal} submit={this.submit.bind(this)} open={this.open.bind(this)} close={this.close.bind(this)} />)
+        return (<CreateDetectorButtonComponent showModal={this.props.showModal} submit={this.submit.bind(this)}
+                                               open={this.open.bind(this)} close={this.close.bind(this)}/>)
     }
 }
 

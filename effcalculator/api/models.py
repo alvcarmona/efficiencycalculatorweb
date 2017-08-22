@@ -4,50 +4,25 @@ from django.db import models
 from mongoengine import Document, EmbeddedDocument, fields
 
 
-class Bucketlist(models.Model):
-    """This class represents the bucketlist model."""
-    name = models.CharField(max_length=255, blank=False, unique=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        """Return a human readable representation of the model instance."""
-        return "{}".format(self.name)
+class Blade(EmbeddedDocument):
+    backscatter = fields.FloatField(null=True)
+    transmission = fields.FloatField(null=True)
+    substrate = fields.FloatField(null=True)
 
-
-class Detectorold(models.Model):
-    name = models.CharField(max_length=255, blank=False)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
-    single = models.BooleanField(default=False)
-    threshold = models.IntegerField(default=0)
-    angle = models.IntegerField(default=0)
-
-
-class Blade(models.Model):
-    name = models.CharField(max_length=255, blank=False)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
-    single = models.BooleanField(default=False)
-    threshold = models.IntegerField(default=0)
-    angle = models.IntegerField(default=0)
-
-
-class wavelength(Document):
-    weight = fields.ListField()
-    wavelength = fields.ListField()
-
+class Wavelength(EmbeddedDocument):
+    weight = fields.FloatField(null=True)
+    angstrom = fields.FloatField(null=True)
 
 class Detector(Document):
-    name = fields.StringField( null=True)
-    angle = fields.IntField( null=True)
+    name = fields.StringField(null=True)
+    angle = fields.IntField(null=True)
     threshold = fields.IntField(null=True)
-    single = fields.BooleanField( null=True)
-   # wavelength = fields.ListField(fields.EmbeddedDocumentField(wavelength))
+    single = fields.BooleanField(null=True, default=False)
+    converter = fields.StringField(null=True, default="10B4C 2.24g/cm3")
+    blades = fields.ListField(fields.EmbeddedDocumentField(Blade))
+    wavelength = fields.ListField(fields.EmbeddedDocumentField(Wavelength))
     #self.metadata = {}
-    #blades = []
     #converterConfiguration = ''
 
-class ToolInput(EmbeddedDocument):
-    name = fields.StringField(required=True)
-    value = fields.DynamicField(required=True)
+

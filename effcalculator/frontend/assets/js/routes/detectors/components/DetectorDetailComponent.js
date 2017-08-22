@@ -44,17 +44,24 @@ class DetectorDetail extends Component {
                     </Row>
                     <Row>
                         <p><b>Detector name: </b>{this.props.detector.name}</p>
-                        <p><b>Angle: </b>{this.props.detector.angle}° </p>
+
                         <p> The Detector has
-                            <b>{this.props.detector.single ? 'single coated' : 'double coated'}</b> blades</p>
+                            <b>{this.props.detector.single ? ' single coated' : ' double coated'}</b> blades</p>
                         <p>The converter material is <b>{this.props.detector.converter}</b></p>
                         <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
                     </Row>
                     <Row>
-                       {!this.props.detector.blades ? <p>There are no blades</p> :<Blades blades={this.props.detector.blades}/>}
+                        <h2>Detector blade setup</h2>
                     </Row>
                     <Row>
-                           {!this.props.detector.wavelength ? <p>There is no wavelength </p> : <Wavelength wave={this.props.detector.wavelength}/>}
+                       {!this.props.detector.blades || this.props.detector.blades.length === 0 ? <p>There are no blades</p> :<Blades blades={this.props.detector.blades}/>}
+                    </Row>
+                    <Row>
+                        <h2>Neutron beam configuration</h2>
+                    </Row>
+                    <Row>
+                         <p><b>Angle: </b>{this.props.detector.angle}° </p>
+                           {!this.props.detector.wavelength || this.props.detector.wavelength.length == 0 ? <p>There is no wavelength 1 </p> : <Wavelength wave={this.props.detector.wavelength}/>}
                     </Row>
                 </Grid>
             </div>

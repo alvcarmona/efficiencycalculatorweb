@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Detector
+from .models import Detector, Blade, Wavelength
 from rest_framework_mongoengine import serializers as mongoserializers
 
 '''
@@ -27,20 +27,36 @@ class DetectorSerializer(serializers.Serializer):
         instance.save()
         return instance '''
 
+class BladeSerializer(mongoserializers.EmbeddedDocumentSerializer):
+#    id = serializers.CharField(read_only=False)
+    class Meta:
+        model = Blade
+        fields = '__all__'
+
+class WavelengthSerializer(mongoserializers.EmbeddedDocumentSerializer):
+#    id = serializers.CharField(read_only=False)
+    class Meta:
+        model = Wavelength
+        fields = '__all__'
+
 class DetectorSerializer(mongoserializers.DocumentSerializer):
 #    id = serializers.CharField(read_only=False)
     class Meta:
         model = Detector
         fields = '__all__'
-
+'''
     def create(self, validated_data):
         """
         Create and return a new `Snippet` instance, given the validated data.
         """
         return Detector.objects.create(**validated_data)
 
-    def save(self, commit=True):
+    def save(self,data, commit=True):
         detector = self.instance if self.instance else Detector()
+        if self.data['id']!=None:
+            detector = data
+        else:
+            detector = Detector()
         if self.data['name']!=None:
             detector.name = self.data['name']
         if self.data['threshold']!=None:
@@ -55,3 +71,4 @@ class DetectorSerializer(mongoserializers.DocumentSerializer):
         Detector.objects(id=data._data['id']).delete()
         return self
 
+'''

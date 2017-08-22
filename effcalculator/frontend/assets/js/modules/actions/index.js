@@ -32,7 +32,12 @@ function receiveNew(data) {
     }
 };
 
-
+function receiveEdit(data) {
+    return {
+        type: types.RECV_EDIT,
+        data: data
+    }
+};
 
 function receiveError(json) {
     return {
@@ -48,29 +53,28 @@ export function setCurrentDetector(currentDetector) {
     }
 };
 
-export function editCurrentDetector(detector) {
+export function editCurrentDetector(data) {
 
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: '/api/detectors/',
+            url: '/api/detectors/'+data.id+'/',
             timeout: 20000,
-            method: 'post',
+            method: 'put',
             responseType: 'json',
-            data: detector
+            data: data
         })
             .then(function (response) {
-                dispatch(receiveNew(response.detector));
+                dispatch(receiveEdit(response.detector));
             })
             .catch(function (response) {
                 dispatch(receiveError(response.data));
-                dispatch(pushState(null, '/error'));
             })
     }
 };
 
 
-export function createDetector(detector) {
+export function createDetector(data) {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
@@ -78,7 +82,7 @@ export function createDetector(detector) {
             timeout: 20000,
             method: 'post',
             responseType: 'json',
-            data:detector
+            data:data
         })
             .then(function (response) {
                 dispatch(receiveNew(response.data));
@@ -113,7 +117,7 @@ export function deleteDetector(data) {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: '/api/detectors/',
+            url: '/api/detectors/'+data.id+'/',
             timeout: 20000,
             method: 'delete',
             responseType: 'json',
