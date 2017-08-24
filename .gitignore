@@ -5,3 +5,4 @@ effcalculator/node_modules
 *.pyc
 db.sqlite3
 /effcalculator/frontend/assets/bundles/
+/effcalculator/dg_efficiencyCalculator

@@ -10,9 +10,10 @@ import {bindActionCreators} from 'redux';
 import DetectorForm from './DetectorForm'
 import BladesForm from './BladesForm'
 import WavelengthForm from './WavelengthForm'
+import {Grid} from 'react-bootstrap'
 
 function mapStateToProps(state) {
-    return {data: state.example.data, isloading: state.example.isloading, current: state.example.currentDetector}
+    return {data: state.example.data, isloading: state.example.isloading}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -66,12 +67,17 @@ class DetectorEditContainer extends Component {
 
 
     renderDetectorEdit() {
+        let i = 0;
+        let current = {};
+        if(this.props.data){
+        for (; i < this.props.data.length; i++) {
+            if (this.props.data[i].id === this.props.match.params.number) {
+                current = this.props.data[i]
+            }
+        }}
+        this.props.setCurrentDetector(current)
         return (
-            <div>
-                <DetectorForm onSubmit={this.submit.bind(this)} initialValues={this.props.current}/>
-                <BladesForm onSubmit={this.addBlades.bind(this)}/>
-                <WavelengthForm onSubmit={this.addWavelength.bind(this)}/>
-            </div>
+            <DetectorEditComponent detector={current} submit={this.submit.bind(this)} addBlades={this.addBlades.bind(this)} addWavelength={this.addWavelength.bind(this)}/>
         )
     }
 

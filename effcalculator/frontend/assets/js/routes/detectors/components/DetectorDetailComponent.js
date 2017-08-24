@@ -36,6 +36,8 @@ class DetectorDetail extends Component {
                                 <MenuItem onSelect={(e) => {this.props.delete(this.props.detector);
                                     this.props.redirect()}
                                 } eventKey="2">Delete detector</MenuItem>
+                                 <MenuItem onSelect={(e) => {this.props.setMetadata(this.props.detector);}
+                                } eventKey="2">get Metadata</MenuItem>
                             </DropdownButton>
                         </Col>
                     </Row>
@@ -43,6 +45,7 @@ class DetectorDetail extends Component {
                         <h2>Detector Information</h2>
                     </Row>
                     <Row>
+
                         <p><b>Detector name: </b>{this.props.detector.name}</p>
 
                         <p> The Detector has

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Detector, Blade, Wavelength
+from .models import Detector, Blade, Wavelength, Metadata, Plot
 from rest_framework_mongoengine import serializers as mongoserializers
 
 '''
@@ -27,23 +27,35 @@ class DetectorSerializer(serializers.Serializer):
         instance.save()
         return instance '''
 
-class BladeSerializer(mongoserializers.EmbeddedDocumentSerializer):
-#    id = serializers.CharField(read_only=False)
+
+class MetadataSerializer(mongoserializers.EmbeddedDocumentSerializer):
+    #    id = serializers.CharField(read_only=False)
     class Meta:
-        model = Blade
+        model = Metadata
         fields = '__all__'
 
-class WavelengthSerializer(mongoserializers.EmbeddedDocumentSerializer):
-#    id = serializers.CharField(read_only=False)
-    class Meta:
-        model = Wavelength
-        fields = '__all__'
 
 class DetectorSerializer(mongoserializers.DocumentSerializer):
-#    id = serializers.CharField(read_only=False)
+    #    id = serializers.CharField(read_only=False)
     class Meta:
         model = Detector
         fields = '__all__'
+
+    def set_metadata(self):
+        self.data.update({"metadata": {
+            "eff_vs_layer_thickness": {
+                "x": [],
+                "y": []
+            },
+            "eff_vs_layer_thickness": {
+                "x": [],
+                "y": []
+            },
+            "total_efficiency": 0
+        }})
+        return self
+
+
 '''
     def create(self, validated_data):
         """
@@ -51,24 +63,24 @@ class DetectorSerializer(mongoserializers.DocumentSerializer):
         """
         return Detector.objects.create(**validated_data)
 
-    def save(self,data, commit=True):
+    def delete(self,data):
+        Detector.objects(id=data._data['id']).delete()
+        return self
+
+        def save(self, data, commit=True):
         detector = self.instance if self.instance else Detector()
-        if self.data['id']!=None:
+        if self.data['id'] != None:
             detector = data
         else:
             detector = Detector()
-        if self.data['name']!=None:
+        if self.data['name'] != None:
             detector.name = self.data['name']
-        if self.data['threshold']!=None:
+        if self.data['threshold'] != None:
             detector.threshold = self.data['threshold']
         if self.data['angle']:
             detector.angle = self.data['angle']
         if commit:
             detector.save()
         return detector.to_json()
-
-    def delete(self,data):
-        Detector.objects(id=data._data['id']).delete()
-        return self
 
 '''

@@ -53,6 +53,20 @@ export function setCurrentDetector(currentDetector) {
     }
 };
 
+function deleteSuccess(data) {
+    return {
+        type: types.DELETE_SUCCESS,
+        data: data
+    }
+};
+
+function deleteError(data) {
+    return {
+        type: types.DELETE_ERROR,
+        data: data
+    }
+};
+
 export function editCurrentDetector(data) {
 
     return function (dispatch) {
@@ -132,15 +146,22 @@ export function deleteDetector(data) {
     }
 };
 
-function deleteSuccess(data) {
-    return {
-        type: types.DELETE_SUCCESS,
-        data: data
-    }
-};
-function deleteError(data) {
-    return {
-        type: types.DELETE_ERROR,
-        data: data
+
+export function setMetadata(data) {
+    return function (dispatch) {
+        dispatch(requestData());
+        return axios({
+            url: '/api/detectors/'+data.id+'/set_metadata/',
+            timeout: 20000,
+            method: 'put',
+            responseType: 'json',
+            data:data
+        })
+            .then(function() {
+               console.log('**************************************************//////******************')
+            })
+            .catch(function () {
+                dispatch(deleteError());
+            })
     }
 };
