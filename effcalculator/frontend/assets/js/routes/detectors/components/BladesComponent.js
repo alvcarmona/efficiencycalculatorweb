@@ -76,7 +76,7 @@ class BladeThicknessDepthPlot extends Component {
     }
 
     render() {
-        return <Scatter data={this.state.data} options={this.state.options} width="500" height="250"/>
+        return <Scatter data={this.state.data} options={this.state.options} width={500} height={250}/>
     }
 }
 

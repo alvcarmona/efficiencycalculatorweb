@@ -6,19 +6,23 @@ import {Field, reduxForm} from 'redux-form'
 const  { DOM: { input, select, textarea } } = React
 import {connect} from 'react-redux';
 
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+)
+
 let WavelengthForm = props => {
     const {handleSubmit} = props
     return (
         <form onSubmit={ handleSubmit }>
-            {/*
-             <div>
-                <label htmlFor="Threshold">Number of blades</label>
-                <Field name="nb" component="input" type="number"/>
-            </div>
-            */}
             <div>
                 <label htmlFor="Wavelength">Wavelength</label>
-                <Field name="Wavelength" component="input" type="number"/>
+                <Field name="Wavelength" component={renderField} type="number"/>
             </div>
             <button type="submit">Add wavelength</button>
         </form>

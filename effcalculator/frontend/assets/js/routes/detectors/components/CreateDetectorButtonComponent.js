@@ -27,7 +27,7 @@ class CreateDetectorButton extends Component {
             "threshold": 100,
         };
         return (
-            <div>
+            <div className="createButton">
                 <Button
                     bsStyle="primary"
                     bsSize="large"

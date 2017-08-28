@@ -21,11 +21,26 @@ class DetectorEditComponent extends Component {
         }
         return (
             <div className="DetectorEditComponent">
-                 <Link to={`/frontend/detectors/`+this.props.detector.id}> To detector detail view </Link>
+                <Link to={`/frontend/detectors/` + this.props.detector.id}> To detector detail view </Link>
                 <Grid>
-                    <DetectorForm onSubmit={this.props.submit} initialValues={this.props.current}/>
-                    <BladesForm onSubmit={this.props.addBlades}/>
-                    <WavelengthForm onSubmit={this.props.addWavelength}/>
+                                        <Row>
+                        <h2>Detector Information</h2>
+                    </Row>
+                    <Row>
+                        <DetectorForm onSubmit={this.props.submit}/>
+                    </Row>
+                    <Row>
+                        <h2>Detector blade setup</h2>
+                    </Row>
+                    <Row>
+                        <BladesForm onSubmit={this.props.addBlades}/>
+                    </Row>
+                                        <Row>
+                        <h2>Neutron beam configuration</h2>
+                    </Row>
+                    <Row>
+                        <WavelengthForm onSubmit={this.props.addWavelength}/>
+                    </Row>
                 </Grid>
             </div>
         );

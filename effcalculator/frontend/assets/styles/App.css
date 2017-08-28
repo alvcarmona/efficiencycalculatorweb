@@ -1,97 +1,130 @@
 li {
-  list-style: none;
+    list-style: none;
 }
 
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.masonryElement{
-  margin:10px;
+.masonryElement {
+    margin: 10px;
 }
+
 .jumbotron:hover {
     background-color: #dafffc !important;
-  -webkit-box-shadow: 0px 2px 123px -17px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 2px 123px -17px rgba(0,0,0,0.75);
-box-shadow: 0px 2px 123px -17px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 2px 123px -17px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 123px -17px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 123px -17px rgba(0, 0, 0, 0.75);
 }
 
 .jumbotron {
-  background-color: #fff !important;
-  -webkit-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  -webkit-transition: background-color 0.5s,-moz-box-shadow 0.5s, box-shadow 0.5s, -webkit-box-shadow 0.5s; /* Safari */
-  transition: background-color 1s,-moz-box-shadow 1s, box-shadow 1s, -webkit-box-shadow 1s;
-
-
+    background-color: #fff !important;
+    -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    -webkit-transition: background-color 0.5s, -moz-box-shadow 0.5s, box-shadow 0.5s, -webkit-box-shadow 0.5s; /* Safari */
+    transition: background-color 1s, -moz-box-shadow 1s, box-shadow 1s, -webkit-box-shadow 1s;
 
 }
 
-.DetectorDetail .Container{
-  margin-top: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background-color: white;
-  -webkit-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
+.DetectorDetail .Container {
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
 }
 
-.DetectorEditComponent .Container{
-  margin-top: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background-color: white;
-  -webkit-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
+.DetectorEditComponent .Container {
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
 }
 
-.body{
-background-color: #f3f7f2;
-}
-.brand-primary{
-  background-color: #60c3ed!important;
+.body {
+    background-color: #f3f7f2;
 }
 
+.brand-primary {
+    background-color: #60c3ed !important;
+}
 
+.brightness {
+    background-color: #9bbe05 !important;
+    /*margin-right: 97px;
+    margin-left: 97px;
+    padding-top: 8px;
+    padding-bottom: 4px;*/
+}
+
+.brightnessImg {
+    display: inline-block !important;;
+}
+
+.homepage .Container {
+    margin-top: 20px;
+}
+
+.homepageHeader {
+    margin-bottom: 30px;
+}
+.spacerHome{
+    margin:30px;
+}
+ul.my-Gallery-class{
+    margin-top: 35px;
+}
+.createButton{
+    margin-top: 20px;
+}
 /************************* Navbar *****************************************/
 nav.brand-primary {
-  -webkit-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  box-shadow: 0px 2px 21px -2px rgba(0,0,0,0.75);
-  border: 0px!important;
-}
-a.navbar-brand{
-  color:white!important;
-}
-a.navbar-brand:hover{
-  color:lightgrey!important;
+    -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    border: 0px !important;
 }
 
-.detectordetail.row{
-  margin-top:30px;
+a.navbar-brand {
+    color: white !important;
+}
+
+a.navbar-brand:hover {
+    color: lightgrey !important;
+}
+
+.detectordetail.row {
+    margin-top: 30px;
 }
 

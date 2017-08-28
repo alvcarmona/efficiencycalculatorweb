@@ -8,12 +8,9 @@ from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
+from rest_framework import generics as drf_generics
 
 class DetectorViewSet(viewsets.ModelViewSet, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
-    '''
-    Contains information about inputs/outputs of a single program
-    that may be used in Universe workflows.
-    '''
     lookup_field = 'id'
     serializer_class = DetectorSerializer
 
@@ -25,6 +22,16 @@ class DetectorViewSet(viewsets.ModelViewSet, mixins.UpdateModelMixin, mixins.Des
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.set_metadata()
+            serializer.save()
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @detail_route(methods=['put'])
+    def calculate_efficiency(self, request, id):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.calculate_efficiency()
             serializer.save()
             return Response(status=status.HTTP_200_OK)
         else:

@@ -29,7 +29,12 @@ class CreateDetectorButtonContainer extends Component {
             threshold: values.threshold,
             blades: [],
             converter: "10B4C 2.24g/cm3",
-            wavelength: []
+            wavelength: [],
+            metadata:{
+                eff_vs_layer_thickness:{},
+            eff_vs_wavelength:{},
+            total_efficiency:0
+            }
         }
         this.props.createDetector(newDetector)
         this.props.closeModal();

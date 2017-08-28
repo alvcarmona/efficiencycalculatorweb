@@ -19,7 +19,6 @@ import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {fetchData, setCurrentDetector} from '../../modules/actions/index';
 import {bindActionCreators} from 'redux';
-import PropTypes from 'prop-types'
 
 function mapStateToProps(state) {
     return {data: state.data}
@@ -38,19 +37,6 @@ class DetectorEfficiencyCalculator extends Component {
         this.props.fetchData('/api/detectors/')
     }
 
-    RenderDetectorDetail() {
-        let i = 0;
-        let current = {};
-        for (; i < this.props.data.length; i++) {
-            if (this.props.data[i].id === this.props.match.params.number) {
-                current = this.props.data[i]
-            }
-        }
-        this.props.setCurrentDetector(current)
-        return <DetectorDetail />
-    }
-
-
     render() {
         return (
             <div className="DetectorEfficiencyCalculator">
@@ -64,57 +50,5 @@ class DetectorEfficiencyCalculator extends Component {
     }
 }
 
-class RoutesHandler extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {detectors: props.detectors};
-        this.RenderDetectorList = (props) => {
-            return (
-                <DetectorList detectors={this.props.detectors}/>
-            );
-        };
-        this.RenderDetectorDetail = (props) => {
-            return (
-                <DetectorDetail detectors={this.props.detectors}/>
-            );
-        };
-        this.RenderDetectorEditor = (props) => {
-            return (
-                <DetectorEditor detectors={this.props.detectors}/>
-            );
-        };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({detectors: nextProps.detectors})
-        this.forceUpdate()
-    }
-
-
-    render() {
-        return (
-            <div className="RoutesHandler">
-                <Switch>
-                    <Route exact path='/frontend/Detectors' render={this.RenderDetectorList}/>
-                    <Route path='/frontend/Detectors/:number/edit' render={this.RenderDetectorEditor}/>
-                    <Route path='/frontend/Detectors/:number'
-                           render={ routeProps => {
-                               let i = 0;
-                               let current = {};
-                               for (; i < this.props.detectors.length; i++) {
-                                   if (this.props.detectors[i].id === routeProps.match.params.number) {
-                                       current = this.props.detectors[i]
-                                   }
-                               }
-                               return (
-                                   <DetectorDetail detectors={this.props.detectors} routeProps={routeProps}
-                                                   currentDetector={current}/>)
-                           }}/>
-                </Switch>
-            </div>
-        );
-    }
-
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetectorEfficiencyCalculator)

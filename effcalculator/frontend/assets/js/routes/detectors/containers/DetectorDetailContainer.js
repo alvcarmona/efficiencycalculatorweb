@@ -8,7 +8,7 @@ import DetectorDetailComponent from '../components/DetectordetailComponent'
 import {setCurrentDetector, deleteDetector, setMetadata} from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
 function mapStateToProps(state) {
-    return {data: state.example.data, isloading: state.example.isloading}
+    return {data: state.example.data, isLoading: state.example.isLoading}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -21,6 +21,21 @@ class DetectorDetailContainer extends Component {
          this.props.history.push('/frontend/detectors')
     }
 
+    componentWillMount(){
+        if (this.props.current === undefined || this.props.current.id!== this.props.match.params.number){
+            console.log("Nuevo current")
+            let i = 0;
+            let current = {};
+            if (this.props.data) {
+                for (; i < this.props.data.length; i++) {
+                    if (this.props.data[i].id === this.props.match.params.number) {
+                        current = this.props.data[i]
+                    }
+                }
+            }
+            this.props.setCurrentDetector(current)
+        }
+    }
     renderDetectorDetail() {
         let i = 0;
         let current = {};
@@ -38,10 +53,6 @@ class DetectorDetailContainer extends Component {
     }
 
     render() {
-        {/* <div className='DetectorListContainer'>
-         {this.props.isLoading ? <Spinner /> :  <DetectorDetailComponent detectors={this.props.data}/>}
-         </div>*/
-        }
         return (
             <div className='DetectorListContainer' >
                  {this.props.isLoading ? <Spinner /> :  this.renderDetectorDetail()}

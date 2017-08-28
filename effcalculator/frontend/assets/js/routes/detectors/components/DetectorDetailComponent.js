@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 import Blades from './BladesComponent'
 import Wavelength from './WavelengthComponent'
 import {Grid, DropdownButton, MenuItem, Row, Col} from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
 
 class DetectorDetail extends Component {

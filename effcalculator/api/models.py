@@ -22,7 +22,7 @@ class Plot(EmbeddedDocument):
 
 class Metadata(EmbeddedDocument):
     eff_vs_layer_thickness = fields.EmbeddedDocumentField(Plot)
-    eff_vs_wavelength = fields.MapField(fields.EmbeddedDocumentField(Plot))
+    eff_vs_wavelength = fields.EmbeddedDocumentField(Plot)
     total_efficiency = fields.DecimalField(null=True, default=0)
     # blade_efficiency = fields.ListField(fields.FloatField)
 
@@ -31,8 +31,7 @@ class Detector(Document):
     name = fields.StringField(null=True)
     angle = fields.IntField(null=True)
     threshold = fields.IntField(null=True)
-    single = fields.BooleanField(null=True, default=False)
     converter = fields.StringField(null=True, default="10B4C 2.24g/cm3")
     blades = fields.ListField(fields.EmbeddedDocumentField(Blade))
     wavelength = fields.ListField(fields.EmbeddedDocumentField(Wavelength))
-    metadata = fields.EmbeddedDocumentField(Metadata, null=False)
+    metadata = fields.EmbeddedDocumentField(Metadata)

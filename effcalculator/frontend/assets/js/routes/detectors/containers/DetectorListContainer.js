@@ -6,14 +6,10 @@ import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Spinner from '../components/Spinner'
 import DetectorlistComponent from '../components/DetectorListComponent'
-import {createDetector} from '../../../modules/actions/index';
 
 function mapStateToProps(state) {
     return {data: state.example.data, isloading: state.example.isloading}
 }
-
-
-
 
 class DetectorlistContainer extends Component {
 

@@ -7,13 +7,9 @@ import Spinner from '../components/Spinner';
 import DetectorEditComponent from '../components/DetectorEditComponent'
 import {setCurrentDetector, editCurrentDetector} from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
-import DetectorForm from './DetectorForm'
-import BladesForm from './BladesForm'
-import WavelengthForm from './WavelengthForm'
-import {Grid} from 'react-bootstrap'
 
 function mapStateToProps(state) {
-    return {data: state.example.data, isloading: state.example.isloading}
+    return {data: state.example.data, isLoading: state.example.isLoading, current:state.example.currentDetector}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -22,8 +18,8 @@ function mapDispatchToProps(dispatch) {
 
 
 class DetectorEditContainer extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
     }
 
     submit = (values) => {
@@ -31,8 +27,6 @@ class DetectorEditContainer extends Component {
         this.props.current.name = values.name
         this.props.current.angle = values.angle
         this.props.current.threshold = values.threshold
-        // this.props.editCurrentDetector(this.props.current)
-        // context.history.push('/new-location')
         this.props.setCurrentDetector(this.props.current)
         this.props.history.push('/frontend/detectors/' + this.props.current.id.toString())
         this.props.editCurrentDetector(this.props.current)
@@ -49,7 +43,7 @@ class DetectorEditContainer extends Component {
         console.log(this.props.current)
         this.props.setCurrentDetector(this.props.current)
         this.props.editCurrentDetector(this.props.current)
-        this.props.history.push('/frontend/detectors/' + this.props.current.id.toString())
+        this.props.history.push('/frontend/detectors/' + this.props.match.params.number.toString())
 
     }
 
@@ -61,23 +55,29 @@ class DetectorEditContainer extends Component {
         console.log(this.props.current)
         this.props.setCurrentDetector(this.props.current)
         this.props.editCurrentDetector(this.props.current)
-        this.props.history.push('/frontend/detectors/' + this.props.current.id.toString())
+        this.props.history.push('/frontend/detectors/' + this.props.match.params.number.toString())
 
     }
 
+    componentWillMount(){
+        if (this.props.current === undefined || this.props.current.id!== this.props.match.params.number){
+            console.log("Nuevo current")
+            let i = 0;
+            let current = {};
+            if (this.props.data) {
+                for (; i < this.props.data.length; i++) {
+                    if (this.props.data[i].id === this.props.match.params.number) {
+                        current = this.props.data[i]
+                    }
+                }
+            }
+            this.props.setCurrentDetector(current)
+        }
+    }
 
     renderDetectorEdit() {
-        let i = 0;
-        let current = {};
-        if(this.props.data){
-        for (; i < this.props.data.length; i++) {
-            if (this.props.data[i].id === this.props.match.params.number) {
-                current = this.props.data[i]
-            }
-        }}
-        this.props.setCurrentDetector(current)
         return (
-            <DetectorEditComponent detector={current} submit={this.submit.bind(this)} addBlades={this.addBlades.bind(this)} addWavelength={this.addWavelength.bind(this)}/>
+            <DetectorEditComponent detector={this.props.current} submit={this.submit.bind(this)} addBlades={this.addBlades.bind(this)} addWavelength={this.addWavelength.bind(this)}/>
         )
     }
 

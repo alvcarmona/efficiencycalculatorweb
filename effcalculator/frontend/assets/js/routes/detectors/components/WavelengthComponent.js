@@ -12,7 +12,7 @@ class Wavelength extends Component {
   render () {
       if (this.props.wave.length !== 0) {
           const row = this.props.wave.map((data, index) =>
-              <tr>
+              <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{data.angstrom} Å</td>
                   <td>100 %</td>
