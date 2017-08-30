@@ -1,3 +1,5 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
 li {
     list-style: none;
 }
@@ -31,6 +33,12 @@ li {
     }
 }
 
+
+p.DetectorLinks a{
+    margin: 5px;
+}
+
+
 .masonryElement {
     margin: 10px;
 }
@@ -51,11 +59,14 @@ li {
     transition: background-color 1s, -moz-box-shadow 1s, box-shadow 1s, -webkit-box-shadow 1s;
 
 }
+.detectorListItem{
+    padding: 10px;
+}
 
 .DetectorDetail .Container {
-    margin-top: 15px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: white;
     -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
@@ -66,6 +77,15 @@ li {
     margin-top: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
+    background-color: white;
+    -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
+}
+
+.DetectorEfficiencyComponent .Container {
+    margin-top: 15px;
+    padding: 50px;
     background-color: white;
     -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);
@@ -108,6 +128,15 @@ ul.my-Gallery-class{
 .createButton{
     margin-top: 20px;
 }
+
+
+div.plotRow.row{
+    margin:5px;
+}
+
+
+
+
 /************************* Navbar *****************************************/
 nav.brand-primary {
     -webkit-box-shadow: 0px 2px 21px -2px rgba(0, 0, 0, 0.75);

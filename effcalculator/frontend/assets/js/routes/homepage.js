@@ -39,7 +39,7 @@ class Homepage extends Component {
                      </div>
                      <div className="spacerHome">
                     <Row><p>View project on github</p>
-                            <a href="https://europeanspallationsource.se/">
+                            <a href="https://github.com/alvcarmona/efficiencycalculatorweb">
                                 <img src={"https://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png"}
                                      width="150"/>
                             </a></Row>

@@ -8,7 +8,7 @@ from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
-from rest_framework import generics as drf_generics
+from rest_framework_mongoengine.generics import GenericAPIView
 
 class DetectorViewSet(viewsets.ModelViewSet, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
     lookup_field = 'id'

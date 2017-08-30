@@ -32,11 +32,12 @@ class DetectorDetail extends Component {
                                 <LinkContainer to={"/frontend/Detectors/"+this.props.detector.id+"/edit"}>
                                     <MenuItem eventKey="1">Edit detector</MenuItem>
                                 </LinkContainer>
+                                 <LinkContainer to={"/frontend/Detectors/"+this.props.detector.id+"/efficiency"}>
+                                    <MenuItem eventKey="2">Efficiency Information</MenuItem>
+                                </LinkContainer>
                                 <MenuItem onSelect={(e) => {this.props.delete(this.props.detector);
                                     this.props.redirect()}
-                                } eventKey="2">Delete detector</MenuItem>
-                                 <MenuItem onSelect={(e) => {this.props.setMetadata(this.props.detector);}
-                                } eventKey="2">get Metadata</MenuItem>
+                                } eventKey="3">Delete detector</MenuItem>
                             </DropdownButton>
                         </Col>
                     </Row>

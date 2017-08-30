@@ -278,7 +278,7 @@ function exampleReducer(state = {
         case types.CLOSE_MODAL:
             return Object.assign({}, state, {showModal: false});
         case types.DELETE_ERROR:
-            return Object.assign({}, state, {data: action.data, error: true});
+            return Object.assign({}, state, {isLoading: false, data: action.data, error: true});
         case types.DELETE_SUCCESS:
             let newdata = []
             for (let i = 0; i < state.data.length; i++) {
@@ -286,7 +286,7 @@ function exampleReducer(state = {
                     newdata.push(state.data[i])
                 }
             }
-            return Object.assign({}, state, {data: newdata, error: false});
+            return Object.assign({}, state, {isLoading: false, data: newdata, error: false});
         default:
             return state;
     }

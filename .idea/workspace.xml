@@ -2,24 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b42eaad-3b22-4a3b-9882-0ca8f879b1ad" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/NavbarContainer.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/npm-debug.log" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/App.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/DetectorEfficiencyCalculator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/DetectorForm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/detectorDetail/Blades.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/detectorDetail/DetectorDetail.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/detectorDetail/DetectorEditor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/detectorDetail/Wavelength.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/detectorList/Detector.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/detectorList/DetectorList.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/detectorList/Gallery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/components/homepage.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/api/models.py" afterPath="$PROJECT_DIR$/effcalculator/api/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/api/serializers.py" afterPath="$PROJECT_DIR$/effcalculator/api/serializers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/api/views.py" afterPath="$PROJECT_DIR$/effcalculator/api/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/App.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/BladesComponent.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/BladesComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/CreateDetectorButtonComponent.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/CreateDetectorButtonComponent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/reducers.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/reducers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorComponent.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorComponent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorDetailComponent.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorDetailComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorEditComponent.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorEditComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/WavelengthComponent.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/WavelengthComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/BladesForm.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/BladesForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/CreateDetectorButtonContainer.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/CreateDetectorButtonContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorDetailContainer.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorDetailContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorEditContainer.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorEditContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorListContainer.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorListContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/WavelengthForm.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/WavelengthForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorListComponent.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorListComponent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/index.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/homepage.js" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/homepage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/effcalculator/frontend/assets/styles/App.css" afterPath="$PROJECT_DIR$/effcalculator/frontend/assets/styles/App.css" />
@@ -33,7 +33,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/effDetectorWeb$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1503928750720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/effcalculator" />
+    <SUITE FILE_PATH="coverage/effDetectorWeb$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1503995971314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/effcalculator" />
     <SUITE FILE_PATH="coverage/effDetectorWeb$scripts.coverage" NAME="scripts Coverage Results" MODIFIED="1503577702185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/effcalculator/dg_efficiencyCalculator" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -70,57 +70,115 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NavbarContainer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/NavbarContainer.js">
+      <file leaf-file-name="DetectorEfficiencyComponent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorEfficiencyComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state relative-caret-position="565">
+              <caret line="177" column="26" lean-forward="false" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="26" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#50#89#0" expanded="true" />
+                <element signature="n#TotalEfficiencyPlot#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/effcalculator/api/views.py">
+      <file leaf-file-name="homepage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/homepage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="612">
+              <caret line="41" column="90" lean-forward="false" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="794">
+              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DetectorListComponent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorListComponent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="26" column="25" lean-forward="false" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
               <folding>
-                <element signature="e#24#63#0" expanded="true" />
+                <element signature="e#50#88#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/effcalculator/api/urls.py">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/rest_framework/routers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/effcalculator/api/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="318">
+              <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
               <folding>
-                <element signature="e#24#63#0" expanded="true" />
+                <element signature="e#755#794#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GalleryComponent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/GalleryComponent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <element signature="e#130#184#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DetectorComponent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorComponent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/styles/App.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="61" column="17" lean-forward="false" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DetectorDetailContainer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorDetailContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="833">
+              <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#50#86#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,6 +210,7 @@
       <find>Container</find>
       <find>history</find>
       <find>hist</find>
+      <find>jum</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors</dir>
@@ -172,27 +231,20 @@
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/detectorCreateModal.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorCreateModal.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/CreateDetectorButton.js" />
-        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorListComponent.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/actions/actionTypes.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/WaveForm.js" />
-        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/reducers.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/effcalculator/dg_efficiencyCalculator/efficiencyCalculator/Models/Detector.py" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/actions/index.js" />
         <option value="$PROJECT_DIR$/effcalculator/dg_efficiencyCalculator/efficiency_calculator.py" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/NavBar.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/NavBarContainer.js" />
-        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/BladesComponent.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/WavelengthComponent.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/App.js" />
-        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorDetailComponent.js" />
-        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/homepage.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/CreateDetectorButtonComponent.js" />
-        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/styles/App.css" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/WavelengthForm.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/BladesForm.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorForm.js" />
-        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/index.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorListContainer.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorDetailContainer.js" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorEditComponent.js" />
@@ -201,7 +253,20 @@
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorEditContainer.js" />
         <option value="$PROJECT_DIR$/effcalculator/api/serializers.py" />
         <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/NavbarContainer.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/efficiencyInformationComponent.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/efficiencyInformationContainer.js" />
         <option value="$PROJECT_DIR$/effcalculator/api/views.py" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/index.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorDetailComponent.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/BladesComponent.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/reducers.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorEfficiencyContainer.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorEfficiencyComponent.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorListComponent.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorComponent.js" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/styles/App.css" />
+        <option value="$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/homepage.js" />
+        <option value="$PROJECT_DIR$/README" />
       </list>
     </option>
   </component>
@@ -267,114 +332,6 @@
             <path>
               <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="detectors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="detectors" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="detectors" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="effDetectorWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="effDetectorWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="effcalculator" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -713,9 +670,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1363" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2366958" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17275615" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3023622" sideWeight="0.5063543" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -754,91 +710,17 @@
           <line>1</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/effcalculator/api/views.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/effcalculator/api/views.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/effcalculator/api/views.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="70" />
+      <option name="time" value="75" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/matplotlib/pylab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="256" column="0" lean-forward="false" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/matplotlib/backends/backend_qt4agg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/dg_efficiencyCalculator/efficiencyCalculator/Models/efftools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/actions/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/mongoengine/base/document.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/mongoengine/fields.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="612" column="0" lean-forward="false" selection-start-line="612" selection-start-column="0" selection-end-line="612" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/mongoengine/base/fields.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/effcalculator/dg_efficiencyCalculator/scripts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -871,6 +753,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2856">
           <caret line="168" column="16" lean-forward="false" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -915,7 +800,7 @@
         <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -946,7 +831,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#60#0" expanded="true" />
+            <element signature="e#0#60#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -959,14 +844,6 @@
     <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/img/ESS.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/styles/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="958">
-          <caret line="90" column="16" lean-forward="true" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/BladesForm.js">
@@ -985,23 +862,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/homepage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1306">
-          <caret line="82" column="25" lean-forward="false" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#51#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorListContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="e#51#87#0" expanded="true" />
+            <element signature="e#51#87#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1011,46 +877,7 @@
         <state relative-caret-position="425">
           <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorDetailContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#50#86#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="e#755#794#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/BladesComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="84" column="44" lean-forward="true" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorDetailComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="35" />
-          <folding>
-            <element signature="e#50#89#0" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1071,35 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorListComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1204">
-          <caret line="153" column="58" lean-forward="true" selection-start-line="153" selection-start-column="58" selection-end-line="153" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/reducers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="259" column="35" lean-forward="false" selection-start-line="259" selection-start-column="35" selection-end-line="259" selection-end-column="35" />
-          <folding>
-            <element signature="e#598#12863#0" expanded="false" />
-            <element signature="e#632#3664#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/CreateDetectorButtonContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1113,7 +911,7 @@
         <state relative-caret-position="442">
           <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
           <folding>
-            <element signature="e#50#86#0" expanded="true" />
+            <element signature="e#50#86#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1131,7 +929,7 @@
         <state relative-caret-position="442">
           <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1154,6 +952,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/rest_framework/routers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/effcalculator/api/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1162,20 +968,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ENV/lib/python2.7/site-packages/rest_framework/routers.py">
+    <entry file="file://$PROJECT_DIR$/effcalculator/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="178">
+          <caret line="12" column="94" lean-forward="false" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="94" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1185,18 +983,180 @@
         <state relative-caret-position="374">
           <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/effcalculator/api/views.py">
+    <entry file="file://$PROJECT_DIR$/effcalculator/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="459">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/BladesComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding>
+            <element signature="e#50#89#0" expanded="false" />
+            <element signature="e#668#1616#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorDetailComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <element signature="e#50#89#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/reducers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="280" column="63" lean-forward="false" selection-start-line="280" selection-start-column="63" selection-end-line="280" selection-end-column="63" />
+          <folding>
+            <element signature="e#598#12863#0" expanded="false" />
+            <element signature="e#632#3664#0" expanded="false" />
+            <element signature="e#13367#14061#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/modules/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorEfficiencyContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#50#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorEfficiencyComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="177" column="26" lean-forward="false" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="26" />
+          <folding>
+            <element signature="e#50#89#0" expanded="true" />
+            <element signature="n#TotalEfficiencyPlot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorListComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="26" column="25" lean-forward="false" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding>
+            <element signature="e#50#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="38" lean-forward="false" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/containers/DetectorDetailContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#50#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+          <folding>
+            <element signature="e#755#794#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/GalleryComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#130#184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/detectors/components/DetectorComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/styles/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="61" column="17" lean-forward="false" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/effcalculator/frontend/assets/js/routes/homepage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="41" column="90" lean-forward="false" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="794">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
