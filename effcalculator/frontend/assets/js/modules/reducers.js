@@ -11,235 +11,6 @@ import {reducer as formReducer} from 'redux-form'
 function exampleReducer(state = {
                             isLoading: false,
                             data: [],
-                            data2: [
-                                {
-                                    "id": 1,
-                                    "name": "Detector1",
-                                    "converter": "10B4C 2.24g/cm3",
-                                    "angle": 90,
-                                    "threshold": 100,
-                                    "single": false,
-                                    "wavelength": [{
-                                        "angstrom": 1.8,
-                                        "weight": 100
-                                    }
-                                    ],
-                                    "blades": [
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "Detector2",
-                                    "converter": "10B4C 2.24g/cm3",
-                                    "angle": 90,
-                                    "threshold": 100,
-                                    "single": false,
-                                    "wavelength": [{
-                                        "angstrom": 1.8,
-                                        "weight": 100
-                                    }
-                                    ],
-                                    "blades": [
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "Detector3",
-                                    "converter": "10B4C 2.24g/cm3",
-                                    "angle": 90,
-                                    "threshold": 100,
-                                    "single": false,
-                                    "wavelength": [{
-                                        "angstrom": 1.8,
-                                        "weight": 100
-                                    }
-                                    ],
-                                    "blades": [
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": 4,
-                                    "name": "Detector4",
-                                    "converter": "10B4C 2.24g/cm3",
-                                    "angle": 90,
-                                    "threshold": 100,
-                                    "single": false,
-                                    "wavelength": [{
-                                        "angstrom": 1.8,
-                                        "weight": 100
-                                    }
-                                    ],
-                                    "blades": [
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        },
-                                        {
-                                            "backscatter": 1.3,
-                                            "transmission": 1.3,
-                                            "substrate": 0,
-                                            "inclination": 0
-                                        }
-                                    ]
-                                }],
                             currentDetector: undefined,
                             showModal: false,
                             error: false
@@ -279,6 +50,18 @@ function exampleReducer(state = {
             return Object.assign({}, state, {showModal: false});
         case types.DELETE_ERROR:
             return Object.assign({}, state, {isLoading: false, data: action.data, error: true});
+        case types.RECV_META:
+            let newdata2 = []
+            for (let i = 0; i < state.data.length; i++) {
+                if (state.data[i].id === action.data._id.$oid) {
+                    action.data.id = action.data._id.$oid
+                    newdata2.push(action.data)
+                }else {
+                    newdata2.push(state.data[i])
+                }
+            }
+            console.log('recvEdit')
+            return Object.assign({}, state, {isLoading: false,data:newdata2 , error: false});
         case types.DELETE_SUCCESS:
             let newdata = []
             for (let i = 0; i < state.data.length; i++) {

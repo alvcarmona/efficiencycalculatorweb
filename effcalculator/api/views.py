@@ -29,13 +29,12 @@ class DetectorViewSet(viewsets.ModelViewSet, mixins.UpdateModelMixin, mixins.Des
 
     @detail_route(methods=['put'])
     def calculate_efficiency(self, request, id):
-        serializer = self.get_serializer(data=request.data)
-        if serializer.is_valid():
-            serializer.calculate_efficiency()
-            serializer.save()
-            return Response(status=status.HTTP_200_OK)
+        detector = self.get_serializer(data=request.data)
+        if detector.is_valid():
+            detector = detector.calculate_efficiency(id)
+            return Response(detector.to_json(), status=status.HTTP_200_OK)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(detector.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 '''

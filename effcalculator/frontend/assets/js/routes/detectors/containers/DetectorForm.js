@@ -38,7 +38,7 @@ let DetectorForm = props => {
                 <label htmlFor="Threshold">Threshold</label>
                 <Field name="threshold" component={renderField} type="number" validate={[ required ]}/>
             </div>
-            <button type="submit">Submit</button>
+            <button className="submitButton" type="submit">Submit</button>
         </form>
     )
 }

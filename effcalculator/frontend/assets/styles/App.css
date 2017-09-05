@@ -44,7 +44,7 @@ p.DetectorLinks a{
 }
 
 .jumbotron:hover {
-    background-color: #dafffc !important;
+    background-color: #b1daff !important;
     -webkit-box-shadow: 0px 2px 123px -17px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 2px 123px -17px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 2px 123px -17px rgba(0, 0, 0, 0.75);
@@ -134,7 +134,9 @@ div.plotRow.row{
     margin:5px;
 }
 
-
+.submitButton{
+    margin: 15px;
+}
 
 
 /************************* Navbar *****************************************/
@@ -153,7 +155,18 @@ a.navbar-brand:hover {
     color: lightgrey !important;
 }
 
+.NavbarItem:hover {
+    background-color: #5fadd7 !important;
+}
+
 .detectordetail.row {
     margin-top: 30px;
 }
 
+a.NavbarLink{
+    color:white !important;
+}
+
+a.NavbarLink:hover{
+    color: #c9c9c9 !important;
+}

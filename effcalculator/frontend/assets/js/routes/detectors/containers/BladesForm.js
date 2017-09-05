@@ -28,7 +28,7 @@ let BladesForm = props => {
                 <label htmlFor="Angle">Converter thickness</label>
                 <Field name="thickness" component={renderField} type="number"/>
             </div>
-            <button type="submit">Add blades</button>
+            <button  className="submitButton" type="submit">Add blades</button>
         </form>
     )
 }

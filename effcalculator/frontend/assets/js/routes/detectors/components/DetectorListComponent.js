@@ -24,6 +24,7 @@ class DetectorlistComponent extends Component {
                     <Row>
                         <CreateDetectorButtonContainer/>
                     </Row>
+
                     <Row>
                         <GalleryComponent detectors={this.props.detectors}/>
                     </Row>

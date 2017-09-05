@@ -32,6 +32,13 @@ function receiveNew(data) {
     }
 };
 
+function receiveMeta(data) {
+    return {
+        type: types.RECV_META,
+        data: data
+    }
+};
+
 function receiveEdit(data) {
     return {
         type: types.RECV_EDIT,
@@ -107,11 +114,11 @@ export function createDetector(data) {
     }
 };
 
-export function fetchData(url){
+export function fetchData(){
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: url,
+            url: '/api/detectors/',
             timeout: 20000,
             method: 'get',
             responseType: 'json'
@@ -151,17 +158,17 @@ export function setMetadata(data) {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: '/api/detectors/'+data.id+'/set_metadata/',
+            url: '/api/detectors/'+data.id+'/calculate_efficiency/',
             timeout: 20000,
             method: 'put',
             responseType: 'json',
             data:data
         })
-            .then(function() {
-               console.log('**************************************************//////******************')
+            .then(function(response) {
+                dispatch(receiveMeta(response.data));
             })
-            .catch(function () {
-                dispatch(deleteError());
+            .catch(function (response) {
+                dispatch(receiveError(response.data));
             })
     }
 };

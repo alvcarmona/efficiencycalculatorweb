@@ -4,6 +4,7 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Spinner from '../components/Spinner';
+import FetchDetectorsButtonContainer from './FetchDetectorsButtonContainer'
 import DetectorEfficiencyComponent from '../components/DetectorEfficiencyComponent'
 import {setCurrentDetector, deleteDetector, setMetadata} from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
@@ -45,11 +46,13 @@ class DetectorEfficiencyContainer extends Component {
                 current = this.props.data[i]
             }
         }}
-        this.props.setCurrentDetector(current)
-       return (
-           <DetectorEfficiencyComponent
-               delete={this.props.deleteDetector} detector={current} redirect={this.redirect.bind(this)} setMetadata={this.props.setMetadata}
-           />)
+        console.log("renderDetector")
+        if (Object.keys(current).length === 0){
+           this.redirect()
+        }else{
+          return (  <DetectorEfficiencyComponent delete={this.props.deleteDetector} detector={current} redirect={this.redirect.bind(this)} setMetadata={this.props.setMetadata}/>)
+        }
+
     }
 
     render() {

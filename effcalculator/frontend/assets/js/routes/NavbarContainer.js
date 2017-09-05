@@ -19,8 +19,8 @@ class NavbarContainer extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem>
-                            <Link to="/frontend/detectors/">Detectors</Link>
+                        <NavItem className="NavbarItem">
+                            <Link className="NavbarLink" to="/frontend/detectors/">Detectors</Link>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>

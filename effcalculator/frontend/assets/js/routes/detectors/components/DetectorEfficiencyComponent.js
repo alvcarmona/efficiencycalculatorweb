@@ -3,10 +3,7 @@
  */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import Blades from './BladesComponent'
-import Wavelength from './WavelengthComponent'
-import {Grid, DropdownButton, MenuItem, Row, Col} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
+import {Grid, Button,Row, Col} from 'react-bootstrap'
 import {Line, Doughnut} from 'react-chartjs-2';
 
 class TotalEfficiencyPlot extends Component {
@@ -149,9 +146,13 @@ class DetectorEfficiencyComponent extends Component {
             <div className="DetectorEfficiencyComponent">
                 <Link to={`/frontend/detectors/`}> To detector list </Link>
                 <Grid>
-
                     <Row>
                         <h2>Detector Efficiency Information</h2>
+                    </Row>
+                    <Row>
+                        <Button onClick={(e) => {this.props.setMetadata(this.props.detector);}}>
+                            Calculate Efficiency
+                        </Button>
                     </Row>
                     <Row>
                         <Col xs={6} xsOffset={3}>
@@ -172,7 +173,7 @@ class DetectorEfficiencyComponent extends Component {
                                 <h2>Efficiency Vs. Blade Wavelength Plot</h2>
                             </Row>
                             <Row className="plotRow">
-                                 <EffVsThicknessPlot data={this.props.detector.metadata.eff_vs_layer_thickness}/>
+                                 <EffVsThicknessPlot data={this.props.detector.metadata.eff_vs_wavelength}/>
                             </Row>
                         </Col>
                     </Row>

@@ -24,7 +24,7 @@ let WavelengthForm = props => {
                 <label htmlFor="Wavelength">Wavelength</label>
                 <Field name="Wavelength" component={renderField} type="number"/>
             </div>
-            <button type="submit">Add wavelength</button>
+            <button  className="submitButton" type="submit">Add wavelength</button>
         </form>
     )
 }
