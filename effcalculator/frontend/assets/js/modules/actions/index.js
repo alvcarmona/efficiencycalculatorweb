@@ -25,6 +25,7 @@ function receiveData(json) {
         data: json
     }
 };
+
 function receiveNew(data) {
     return {
         type: types.RECV_NEW,
@@ -79,7 +80,7 @@ export function editCurrentDetector(data) {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: '/api/detectors/'+data.id+'/',
+            url: '/api/detectors/' + data.id + '/',
             timeout: 20000,
             method: 'put',
             responseType: 'json',
@@ -103,7 +104,7 @@ export function createDetector(data) {
             timeout: 20000,
             method: 'post',
             responseType: 'json',
-            data:data
+            data: data
         })
             .then(function (response) {
                 dispatch(receiveNew(response.data));
@@ -114,7 +115,7 @@ export function createDetector(data) {
     }
 };
 
-export function fetchData(){
+export function fetchData() {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
@@ -133,18 +134,37 @@ export function fetchData(){
 };
 
 
+export function requestConverters() {
+    return function () {
+        return axios({
+            url: '/api/converters/',
+            timeout: 20000,
+            method: 'get',
+            responseType: 'json'
+        })
+            .then(function (response) {
+                console.log('Converters')
+                console.log(response)
+            })
+            .catch(function (response) {
+                console.log('No converters')
+                console.log(response)
+            })
+    }
+};
+
 
 export function deleteDetector(data) {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: '/api/detectors/'+data.id+'/',
+            url: '/api/detectors/' + data.id + '/',
             timeout: 20000,
             method: 'delete',
             responseType: 'json',
-            data:data
+            data: data
         })
-            .then(function() {
+            .then(function () {
                 dispatch(deleteSuccess(data));
             })
             .catch(function () {
@@ -158,13 +178,13 @@ export function setMetadata(data) {
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: '/api/detectors/'+data.id+'/calculate_efficiency/',
+            url: '/api/detectors/' + data.id + '/calculate_efficiency/',
             timeout: 20000,
             method: 'put',
             responseType: 'json',
-            data:data
+            data: data
         })
-            .then(function(response) {
+            .then(function (response) {
                 dispatch(receiveMeta(response.data));
             })
             .catch(function (response) {
