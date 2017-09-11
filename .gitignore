@@ -6,3 +6,5 @@ effcalculator/node_modules
 db.sqlite3
 /effcalculator/frontend/assets/bundles/
 /effcalculator/dg_efficiencyCalculator
+ ../.idea
+ webpack-stats.json

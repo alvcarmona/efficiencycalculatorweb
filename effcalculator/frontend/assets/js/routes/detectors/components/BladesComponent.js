@@ -50,69 +50,95 @@ class BladeThicknessDepthPlot extends Component {
                     xAxes: [{
                         type: 'linear',
                         position: 'bottom',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Blade position'
+                        },
                         ticks: {
                             beginAtZero: true,
+                            stepSize: 1,
+                            max: this.props.blades.length + 1
+
                         }
                     }],
                     yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Blade thickness'
+                        },
+
                         ticks: {
                             beginAtZero: true,
+                            max: ymax
                         }
                     }]
-                },
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: ymax
-                    }
-                }],
-                xAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                    }
-                }]
+                }
             }
         }
     }
 
     render() {
-        return <Scatter data={this.state.data} options={this.state.options} width={500} height={250}/>
+        return <Scatter data={this.state.data} options={this.state.options} width={400} height={250}/>
     }
 }
+
+
+class BladeTable extends Component {
+    render() {
+        let row = <p>There are no blades</p>
+        if (this.props.blades != undefined) {
+            if (this.props.blades.length > 0) {
+                row = this.props.blades.map((data, index) =>
+                    <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{data.backscatter} µm</td>
+                        <td>{data.substrate} µm</td>
+                    </tr>
+                );
+            }
+        }
+        return (
+
+            <Table striped bordered condensed hover responsive>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Converter Thickness</th>
+                    <th>Substrate</th>
+                </tr>
+                </thead>
+                <tbody>
+                {row}
+                </tbody>
+            </Table>
+        );
+    }
+}
+
 
 class Blades extends Component {
     render() {
         let row = <p>There are no blades</p>
-        if(this.props.blades != undefined){
+        if (this.props.blades != undefined) {
             if (this.props.blades.length > 0) {
-            row = this.props.blades.map((data, index) =>
-                <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{data.backscatter} µm</td>
-                    <td>{data.substrate} µm</td>
-                </tr>
-            );
-        }
+                row = this.props.blades.map((data, index) =>
+                    <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{data.backscatter} µm</td>
+                        <td>{data.substrate} µm</td>
+                    </tr>
+                );
+            }
         }
         return (
             <Row>
                 <Col md={12}>
-                    <Col md={7}>
+                    <Col md={7} className="BladeThicknessPlot">
                         <BladeThicknessDepthPlot blades={this.props.blades}/>
                     </Col>
-                    <Col md={4}>
-                        <Table striped bordered condensed hover responsive>
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Converter Thickness</th>
-                                <th>Substrate</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {row}
-                            </tbody>
-                        </Table>
+                    <Col md={4} className="BladeThicknessTable">
+                        <h4>Blade list</h4>
+                        <BladeTable blades={this.props.blades}/>
                     </Col>
                 </Col>
             </Row>
@@ -121,4 +147,4 @@ class Blades extends Component {
 }
 
 
-export default Blades;
+export {Blades, BladeTable};

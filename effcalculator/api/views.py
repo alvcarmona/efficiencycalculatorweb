@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from django.http import HttpResponse, JsonResponse
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
 from .models import Detector
 from .serializers import DetectorSerializer
 from rest_framework_mongoengine import viewsets
@@ -35,6 +42,12 @@ class DetectorViewSet(viewsets.ModelViewSet, mixins.UpdateModelMixin, mixins.Des
             return Response(detector.to_json(), status=status.HTTP_200_OK)
         else:
             return Response(detector.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class converterView(APIView):
+    def get(self, request, *args, **kw):
+        response = Response(['10B4C 2.24g/cm3', '10B4C 2.20g/cm3'], status=status.HTTP_200_OK)
+        return response
 
 
 '''

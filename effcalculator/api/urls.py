@@ -10,6 +10,7 @@ router.register(r'detectors', DetectorViewSet, r"detectors")
 
 urlpatterns = {
     url(r'', include(router.urls)),
+    url(r'^converters/', converterView.as_view()),
   #  url(r'^detectors/$', DetectorList.as_view()),
    # url(r'^detectors/(?P<pk>[0-9]+)/$', DetectorDetail.as_view()),
 }

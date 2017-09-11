@@ -5,7 +5,7 @@
 
 
 import * as types from './actions/actionTypes';
-import {combineReducers} from 'redux'; //might need to remove
+import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form'
 
 function exampleReducer(state = {
@@ -13,7 +13,8 @@ function exampleReducer(state = {
                             data: [],
                             currentDetector: undefined,
                             showModal: false,
-                            error: false
+                            error: false,
+                            converters:[]
                         },
                         action = null) {
     switch (action.type) {

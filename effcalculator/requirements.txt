@@ -1,4 +1,4 @@
-Django==1.11.3
+ Django==1.11.3
 django-rest-framework-mongoengine==3.3.1
 django-webpack-loader==0.5.0
 djangorestframework==3.6.3
