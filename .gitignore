@@ -1,10 +1,11 @@
 ENV
 effcalculator/node_modules
 /.idea/*
-.gitignore
 *.pyc
 db.sqlite3
 /effcalculator/frontend/assets/bundles/
 /effcalculator/dg_efficiencyCalculator
- ../.idea
- webpack-stats.json
+ *webpack-stats.json
+effcalculator/webpack-stats.json
+/effcalculator/node_modules/
+effcalculator/npm-debug.log

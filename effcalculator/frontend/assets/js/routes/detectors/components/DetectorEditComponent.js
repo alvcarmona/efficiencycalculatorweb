@@ -5,13 +5,13 @@ import BladesForm from '../containers/BladesForm'
 import WavelengthForm from '../containers/WavelengthForm'
 import {BladeTable} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
-import {Grid, Row, Col} from 'react-bootstrap'
+import {Grid, Row, Col, Panel, small, PageHeader} from 'react-bootstrap'
 
 
 class DetectorEditComponent extends Component {
 
     render() {
-        if (!this.props.detector) {
+        if (!this.props.detector || Object.keys(this.props.detector).length === 0) {
             return (
                 <div className="DetectorEdit">
                     <Link to={`/frontend/detectors/`}>atras</Link>
@@ -22,32 +22,75 @@ class DetectorEditComponent extends Component {
                 <Link to={`/frontend/detectors/` + this.props.detector.id}> To detector detail view </Link>
                 <Grid>
                     <Row>
-                        <h2>Detector Information</h2>
+                        <PageHeader> Detector configuration Information
+                            <small> edit</small>
+                        </PageHeader>
                     </Row>
                     <Row>
-                        <DetectorForm onSubmit={this.props.submit}/>
+                        <div className={'edit-form'}>
+                            <DetectorForm onSubmit={this.props.submit}/>
+                        </div>
                     </Row>
                     <Row>
                         <h3>Detector blade setup</h3>
                     </Row>
                     <Row>
-                        <Col md={2} mdOffset={3}>
-                            <BladesForm onSubmit={this.props.addBlades}/>
-                        </Col>
-                        <Col md={4} mdOffset={2}>
-                            <h4>Blade list</h4>
-                            <BladeTable blades={this.props.detector.blades}/>
+                        <div className={'edit-form'}>
+                            <Col sm={4} md={4} mdOffset={3} smOffset={4}>
+                                <Row>
+                                <Panel header='Blade information' bsStyle="info">
+                                    <p>This detector configuration contains {this.props.detector.blades.length > 0 ?
+                                        <span> {this.props.detector.blades.length} B10 double coated blades whithout substrate</span> :
+                                        <span>no blades</span>}
+                                    </p>
+                                </Panel>
+                                    </Row>
+                                <Row>
+                                <BladesForm onSubmit={this.props.addBlades}/>
+                                </Row>
+                            </Col>
+                        </div>
+                        <Col sm={4} md={4} mdOffset={1} smOffset={4}>
+                            {this.props.detector.blades.length > 0 ?
+                                <div>
+                                    <h4>Blade list</h4>
+                                    <BladeTable blades={this.props.detector.blades}/>
+                                </div> :
+                                <Panel header={'Warning'} bsStyle="warning">
+                                    Blades needed to calculate detector efficiency
+                                </Panel>
+                            }
+
                         </Col>
                     </Row>
                     <Row>
                         <h3>Neutron beam configuration</h3>
                     </Row>
-                    <Row><Col md={2} mdOffset={3}>
-                        <WavelengthForm onSubmit={this.props.addWavelength}/>
-                    </Col>
-                        <Col md={3} mdOffset={2} >
-                             <h4>Wavelength list</h4>
-                            {this.props.detector.wavelength ?   <Wavelength wave={this.props.detector.wavelength}/> : 'No wavelength added'}
+                    <Row>
+                        <div className={'edit-form'}>
+                            <Col sm={5} md={3} mdOffset={3}>
+                                <Row>
+                                <Panel header='Wavelength information' bsStyle="info">
+                                    <p>This neutron beam configuration contains {this.props.detector.wavelength.length > 1 ?
+                                        <span> Polichromatic wavelength</span> :
+                                        <span>Monochromatic wavelength</span>}
+                                    </p>
+                                </Panel>
+                                    </Row>
+                                <Row sm={4}>
+                                     <WavelengthForm onSubmit={this.props.addWavelength}/>
+                                </Row>
+                            </Col>
+                        </div>
+                        <Col sm={5} md={3} mdOffset={2} smOffset={1}>
+                            {this.props.detector.wavelength.length > 0 ?
+                                <div><h4>Wavelength list</h4>
+                                    <Wavelength wave={this.props.detector.wavelength}/>
+                                </div> :
+                                <Panel header={'Warning'} bsStyle="warning">
+                                    Wavelength needed to calculate detector efficiency
+                                </Panel>
+                            }
                         </Col>
                     </Row>
                 </Grid>

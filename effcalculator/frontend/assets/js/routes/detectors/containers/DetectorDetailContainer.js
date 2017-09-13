@@ -5,14 +5,14 @@ import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Spinner from '../components/Spinner';
 import DetectorDetailComponent from '../components/DetectordetailComponent'
-import {setCurrentDetector, deleteDetector, setMetadata} from '../../../modules/actions/index';
+import {setCurrentDetector, deleteDetector,openModal, setMetadata} from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
 function mapStateToProps(state) {
     return {data: state.example.data, isLoading: state.example.isLoading}
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({setCurrentDetector, deleteDetector, setMetadata}, dispatch)
+    return bindActionCreators({setCurrentDetector, deleteDetector, setMetadata,openModal}, dispatch)
 }
 
 class DetectorDetailContainer extends Component {
@@ -48,7 +48,7 @@ class DetectorDetailContainer extends Component {
         this.props.setCurrentDetector(current)
        return (
            <DetectorDetailComponent
-               delete={this.props.deleteDetector} detector={current} redirect={this.redirect.bind(this)} setMetadata={this.props.setMetadata}
+               delete={this.props.deleteDetector} detector={current} openModal={this.props.openModal} redirect={this.redirect.bind(this)} setMetadata={this.props.setMetadata}
            />)
     }
 

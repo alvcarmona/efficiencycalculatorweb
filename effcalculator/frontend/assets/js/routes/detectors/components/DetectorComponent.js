@@ -1,28 +1,37 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 
-import { Glyphicon, Jumbotron, Button } from 'react-bootstrap'
+import {Glyphicon, Jumbotron, Col, OverlayTrigger, Tooltip} from 'react-bootstrap'
 
 class DetectorComponent extends Component {
 
-  render () {
-    return (
-      <Jumbotron className="detectorListItem">
-          <div className="masonryElement">
-              <p><b>Detector: {this.props.name}</b></p>
-              <p>{this.props.single}</p>
-              {/* <p><b>Angle:</b> {this.props.angle}°</p>*/}
-              {/* <p><b>Threshold:</b> {this.props.threshold}</p>*/}
-             <p></p>
-              <p className="DetectorLinks">
-                  <Link to={`/frontend/detectors/${this.props.id}`}><Glyphicon glyph="eye-open" /></Link>
-                  <Link to={`/frontend/detectors/${this.props.id}/edit`}><Glyphicon glyph="edit" /></Link>
-                  <Link to={`/frontend/detectors/${this.props.id}/efficiency`}><Glyphicon glyph="list-alt"/></Link>
-              </p>
-          </div>
-      </Jumbotron>
-    );
-  }
+    render() {
+        const vtooltip = (<Tooltip id="tooltip">Go to <strong> detail </strong> page </Tooltip>);
+        const edtooltip = (<Tooltip id="tooltip">Go to <strong> edit </strong> page </Tooltip>);
+        const eftooltip = (<Tooltip id="tooltip">Go to <strong> efficiency </strong> page </Tooltip>);
+        return (
+                <Jumbotron className="detectorListItem">
+
+                    <div className="masonryElement">
+                        <p><b>Detector: {this.props.name}</b></p>
+                        <p>{this.props.single}</p>
+                        <p></p>
+                        <p className="DetectorLinks">
+                            <OverlayTrigger placement="bottom" overlay={vtooltip}>
+                                <Link to={`/frontend/detectors/${this.props.id}`}><Glyphicon glyph="eye-open"/></Link>
+                            </OverlayTrigger>
+                            <OverlayTrigger placement="bottom" overlay={edtooltip}>
+                                <Link to={`/frontend/detectors/${this.props.id}/edit`}><Glyphicon glyph="edit"/></Link>
+                            </OverlayTrigger>
+                            <OverlayTrigger placement="bottom" overlay={eftooltip}>
+                                <Link to={`/frontend/detectors/${this.props.id}/efficiency`}><Glyphicon
+                                    glyph="list-alt"/></Link>
+                            </OverlayTrigger>
+                        </p>
+                    </div>
+                </Jumbotron>
+        );
+    }
 }
 
 export default DetectorComponent;

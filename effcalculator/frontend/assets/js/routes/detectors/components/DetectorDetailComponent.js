@@ -5,7 +5,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import {Blades} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
-import {Grid, DropdownButton, MenuItem, Row, Col} from 'react-bootstrap'
+import ConfirmModalContainer from './../containers/confirmModalContainer'
+import {Grid, DropdownButton, MenuItem, Row, Col, PageHeader, small, Panel, Modal} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
 class DetectorDetail extends Component {
@@ -14,6 +15,10 @@ class DetectorDetail extends Component {
         super(props);
     };
 
+    deleteDetector(){
+        this.props.delete(this.props.detector)
+        this.props.redirect()
+    }
 
     render() {
         if (!this.props.detector) {
@@ -36,18 +41,19 @@ class DetectorDetail extends Component {
                                     <MenuItem eventKey="2">Efficiency Information</MenuItem>
                                 </LinkContainer>
                                 <MenuItem onSelect={(e) => {
-                                    this.props.delete(this.props.detector);
-                                    this.props.redirect()
+                                    this.props.openModal()
+
                                 }
                                 } eventKey="3">Delete detector</MenuItem>
                             </DropdownButton>
                         </Col>
                     </Row>
                     <Row>
-                        <h2>Detector configuration Information</h2>
+                        <PageHeader> Detector configuration Information
+                            <small> details</small>
+                        </PageHeader>
                     </Row>
                     <Row>
-
                         <p><b>Detector name: </b>{this.props.detector.name}</p>
                         <p>The converter material is <b>{this.props.detector.converter}</b></p>
                         <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
@@ -74,15 +80,25 @@ class DetectorDetail extends Component {
                         <Row>
                             <h4>Neutron Wavelength</h4>
                             <Row>
-                            {!this.props.detector.wavelength || this.props.detector.wavelength.length == 0 ?
-                                <p>There is no wavelength 1 </p> :
-                                <div><Col md={2} mdOffset={3}> {this.props.detector.wavelength.length > 1 ? ' Polychromatic wavelength' : ' Monochromatic wavelength'} </Col>
-                                    <Col md={4} mdOffset={1}> <h4>Wavelength list</h4> <Wavelength wave={this.props.detector.wavelength}/> </Col> </div>}
-                                    </Row>
+                                {!this.props.detector.wavelength || this.props.detector.wavelength.length == 0 ?
+                                    <p>There is no wavelength 1 </p> :
+                                    <div><Col sm={5} md={3} smOffset={1} mdOffset={3}>
+                                        <Panel header='Wavelength information' bsStyle="info">
+                                            <p>This neutron beam configuration
+                                                contains {this.props.detector.wavelength.length > 1 ?
+                                                    <span> Polichromatic wavelength</span> :
+                                                    <span>Monochromatic wavelength</span>}
+                                            </p>
+                                        </Panel> </Col>
+                                        <Col sm={3} md={4} smOffset={1} ><h4>Wavelength list</h4> <Wavelength
+                                            wave={this.props.detector.wavelength}/> </Col></div>}
+                            </Row>
                         </Row>
                     </Row>
                 </Grid>
+                <ConfirmModalContainer submit={this.deleteDetector.bind(this)}/>
             </div>
+
         );
     }
 }

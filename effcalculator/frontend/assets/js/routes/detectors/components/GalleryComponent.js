@@ -16,7 +16,7 @@ var GalleryComponent = React.createClass({
     render: function () {
         var childElements = this.props.detectors.map(u => {
             return (
-                <Col xs={4} md={3} key={u.id}>
+                <Col key={u.id}>
                         <Detector
                             id={u.id}
                             name={u.name}

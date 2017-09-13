@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import {Grid, Button,Row, Col} from 'react-bootstrap'
+import {Grid, Button, Row, Col, Panel, PageHeader, small} from 'react-bootstrap'
 import {Line, Doughnut} from 'react-chartjs-2';
 
 class TotalEfficiencyPlot extends Component {
@@ -13,10 +13,10 @@ class TotalEfficiencyPlot extends Component {
         this.state = {
             data: {
                 labels: [
-                    'Total Efficiency: '+this.props.data.toString()+' %'
+                    'Total Efficiency: ' + this.props.data.toString() + ' %'
                 ],
                 datasets: [{
-                    data: [this.props.data, 100-this.props.data],
+                    data: [this.props.data, 100 - this.props.data],
                     backgroundColor: [
                         '#8cbbff',
                         '#d3d7d2',
@@ -108,23 +108,13 @@ class EffVsThicknessPlot extends Component {
                             beginAtZero: true,
                         }
                     }]
-                },
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                    }
-                }],
-                xAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                    }
-                }]
+                }
             }
         }
     }
 
     render() {
-        return <Line data={this.state.data}  width={400} height={300}/>
+        return <Line data={this.state.data} width={400} height={300}/>
     }
 }
 
@@ -139,7 +129,7 @@ class EffVsWavelengthPlot extends Component {
                     {
                         label: 'EffVsWavelengthPlot',
                         fill: false,
-                        lineTension: 0.1,
+                        borderWidth: 1,
                         backgroundColor: 'rgba(75,192,192,0.4)',
                         borderColor: 'rgba(75,192,192,1)',
                         borderCapStyle: 'butt',
@@ -153,8 +143,8 @@ class EffVsWavelengthPlot extends Component {
                         pointHoverBackgroundColor: 'rgba(75,192,192,1)',
                         pointHoverBorderColor: 'rgba(220,220,220,1)',
                         pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
+                        pointRadius: 0,
+                        pointHitRadius: 1,
                         data: this.props.data.y
                     }
                 ]
@@ -164,25 +154,25 @@ class EffVsWavelengthPlot extends Component {
                 scales: {
                     xAxes: [{
                         type: 'linear',
-                         scaleLabel: {
-                                display: true,
-                                labelString: 'Wavelength (KeV)'
-                            },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Wavelength (KeV)'
+                        },
                         position: 'bottom',
                         ticks: {
                             beginAtZero: true,
                             stepSize: 1,
-                            max: 20
+                            max: 10
                         }
                     }],
                     yAxes: [{
                         scaleLabel: {
-                                display: true,
-                                labelString: 'Total efficiency %'
-                            },
+                            display: true,
+                            labelString: 'Total efficiency %'
+                        },
                         ticks: {
                             beginAtZero: true,
-                            max:1
+                            max: 1
                         }
                     }]
                 }
@@ -191,7 +181,7 @@ class EffVsWavelengthPlot extends Component {
     }
 
     render() {
-        return <Line data={this.state.data}  width={400} height={300}/>
+        return <Line data={this.state.data} width={400} height={300}/>
     }
 }
 
@@ -210,18 +200,37 @@ class DetectorEfficiencyComponent extends Component {
                     <Link to={`/frontend/detectors/`}>atras</Link>
                 </div>)
         }
+        if (this.props.detector.wavelength.length === 0 || this.props.detector.blades.length === 0) {
+            return (
+                <div className="DetectorEfficiencyComponent">
+                    <Link to={`/frontend/detectors/`}> To detector list </Link>
+
+                    <Panel header={'Incomplete configuration'} bsStyle="danger" className={'danger-config'}> Configure
+                        wavelenght and blades to
+                        calculate efficiency.
+                    <Link to={`/frontend/detectors/`+this.props.detector.id+'/edit'}>Go to edit page</Link>
+                    </Panel>
+
+                </div>)
+
+        }
         return (
             <div className="DetectorEfficiencyComponent">
                 <Link to={`/frontend/detectors/`}> To detector list </Link>
                 <Grid>
                     <Row>
-                        <h2>Detector Efficiency Information</h2>
+                         <PageHeader> Detector configuration Information <small> efficiency </small></PageHeader>
                     </Row>
-                    <Row>
-                        <Button onClick={(e) => {this.props.setMetadata(this.props.detector);}}>
+                    {this.props.detector.metadata.total_efficiency == 0 &&
+                        <Row>
+                        <Button onClick={(e) => {
+                            this.props.setMetadata(this.props.detector);
+                        }}>
                             Calculate Efficiency
                         </Button>
                     </Row>
+                    }
+
                     <Row>
                         <Col xs={6} xsOffset={3}>
                             <TotalEfficiencyPlot data={this.props.detector.metadata.total_efficiency}/>
@@ -241,7 +250,7 @@ class DetectorEfficiencyComponent extends Component {
                                 <h3>Efficiency Vs. Blade Wavelength Plot</h3>
                             </Row>
                             <Row className="plotRow">
-                                 <EffVsWavelengthPlot data={this.props.detector.metadata.eff_vs_wavelength}/>
+                                <EffVsWavelengthPlot data={this.props.detector.metadata.eff_vs_wavelength}/>
                             </Row>
                         </Col>
                     </Row>
