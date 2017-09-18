@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import mongoengine
+'''
+import dj_database_url
+db_from_env = dj_database_url.config()
+'''
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -87,13 +91,6 @@ WSGI_APPLICATION = 'effcalculator.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -152,6 +149,6 @@ if not DEBUG:
     })
 
 mongoengine.connect(
-    db="Detectordb",
-    host="localhost"
+    db="decal",
+    host="mongodb://decal-prod:d3c4lpr0d@ds141284.mlab.com:41284/decal"
 )
