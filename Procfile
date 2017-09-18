@@ -1,1 +1,1 @@
-web: gunicorn effcalculator.wsgi:effcalculator --log-file -
+web: gunicorn effcalculator.wsgi --log-file -
