@@ -11,18 +11,18 @@ module.exports = {
     //the entry point we created earlier. Note that './' means
     //your current directory. You don't have to specify the extension  now,
     //because you will specify extensions later in the `resolve` section
-    entry: './frontend/assets/js/index',
+    entry: './effcalculator/frontend/assets/js/index',
 
     output: {
         //where you want your compiled bundle to be stored
-        path: path.resolve('./frontend/assets/bundles/'),
+        path: path.resolve('./effcalculator//frontend/assets/bundles/'),
         //naming convention webpack should use for your files
         filename: '[name]-[hash].js',
     },
 
     plugins: [
         //tells webpack where to store data about your bundles.
-        new BundleTracker({filename: './webpack-stats.json'}),
+        new BundleTracker({filename: './effcalculator/webpack-stats.json'}),
         //makes jQuery available in every module
         new webpack.ProvidePlugin({
             $: 'jquery',

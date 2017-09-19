@@ -5,7 +5,6 @@
   "main": "index.js",
   "repository": "https://github.com/alvcarmona/efficiencycalculatorweb",
   "scripts": {
-    "postinstall":"npm i && ./node_modules/.bin/webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-watch": "./node_modules/.bin/webpack --config webpack.config.js --watch",
     "build": "webpack --config webpack.config.js --progress --colors",

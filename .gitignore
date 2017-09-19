@@ -4,8 +4,7 @@ effcalculator/node_modules
 *.pyc
 db.sqlite3
 /effcalculator/frontend/assets/bundles/
-/effcalculator/dg_efficiencyCalculator
  *webpack-stats.json
 effcalculator/webpack-stats.json
-/effcalculator/node_modules/
+/node_modules/
 effcalculator/npm-debug.log

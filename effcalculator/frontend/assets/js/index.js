@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import App from './routes/App';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'react-router-redux';
 import configureStore from './modules/store';
 import { createLogger } from 'redux-logger'
