@@ -9,7 +9,7 @@ gunicorn==19.7.1
 
 mercurial==4.3.1
 mongoengine==0.13.0
-numpy== 1.9.1
+numpy== 1.9.0
 Pygments==2.2.0
 pymongo==3.4.0
 pyparsing==2.2.0
