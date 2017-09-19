@@ -2,7 +2,7 @@ import os
 import sys
 import math
 import numpy as np
-import pylab as pl
+from pylab import exp
 
 from bisect import bisect_left
 
@@ -300,7 +300,7 @@ class Detector:
         for i in range(len(self.blades)-1, -1, -1):
             tempeff = []
             for j, t in enumerate(thickrange):
-                tempeff.append(eff1[j] + (pl.exp(((-1)*(2*thickrange[j]*sigma))))*alpha)
+                tempeff.append(eff1[j] + (exp(((-1)*(2*thickrange[j]*sigma))))*alpha)
             effopt[i] = max(tempeff)
             alpha = effopt[i]
             dopt[i] = thickrange[np.array(tempeff).argmax()]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import pylab as pl
+from pylab import exp, zeros
 import numpy as np
 
 
@@ -22,28 +22,28 @@ def efficiency2particles(d,R1,R2,sigma):
 
 	assert R2<=R1
 
-	eff=pl.zeros((2,1))
+	eff=zeros((2,1))
 
 	if d!=0:
 		if d<R2:
 			# d<R2<R1 (3.11)
 			# Back scattering
-			eff[0,0]=(1.-1./(2.*sigma*R1)-1./(2.*sigma*R2))*(1.-pl.exp(-sigma*d))+(1./(2.*R1)+1./(2.*R2))*d*pl.exp(-sigma*d)
+			eff[0,0]=(1.-1./(2.*sigma*R1)-1./(2.*sigma*R2))*(1.-exp(-sigma*d))+(1./(2.*R1)+1./(2.*R2))*d*exp(-sigma*d)
 			# Transmission
-			eff[1,0]=(1.+1./(2.*sigma*R1)+1./(2.*sigma*R2))*(1.-pl.exp(-sigma*d))-(1./(2.*R1)+1./(2.*R2))*d
+			eff[1,0]=(1.+1./(2.*sigma*R1)+1./(2.*sigma*R2))*(1.-exp(-sigma*d))-(1./(2.*R1)+1./(2.*R2))*d
 		elif d>=R2 and d<R1:
 			# R2<d<R1
 			# Back scattering
-			eff[0,0] = (1.-1./(2.*R1*sigma)-1./(2.*R2*sigma))+((pl.exp(-sigma*R2))/(2.*sigma*R2))-(1.-1./(sigma*R1)-d/R1)*((pl.exp(-sigma*d))/2.)
+			eff[0,0] = (1.-1./(2.*R1*sigma)-1./(2.*R2*sigma))+((exp(-sigma*R2))/(2.*sigma*R2))-(1.-1./(sigma*R1)-d/R1)*((exp(-sigma*d))/2.)
 			# Transmission
-			eff[1,0] = ((pl.exp((R2-d)*sigma))/(2.*R2*sigma))-(1.+1./(2.*R1*sigma)+1/(2.*R2*sigma))*(pl.exp(-sigma*d))+ (1./2.)*(1.+1./(sigma*R1)-d/R1)
+			eff[1,0] = ((exp((R2-d)*sigma))/(2.*R2*sigma))-(1.+1./(2.*R1*sigma)+1/(2.*R2*sigma))*(exp(-sigma*d))+ (1./2.)*(1.+1./(sigma*R1)-d/R1)
 
 		else:
 			# R2<R1<d
 			# Back scattering
-			eff[0,0] = (1.-1./(2.*R1*sigma)-1./(2.*R2*sigma))+ ((pl.exp(-sigma*R2))/(2.*sigma*R2))+((pl.exp(-sigma*R1))/(2.*sigma*R1))
+			eff[0,0] = (1.-1./(2.*R1*sigma)-1./(2.*R2*sigma))+ ((exp(-sigma*R2))/(2.*sigma*R2))+((exp(-sigma*R1))/(2.*sigma*R1))
 			# Transmission
-			eff[1,0] = (pl.exp(-sigma*d))*(-1.-1./(2.*R1*sigma)-1./(2.*R2*sigma)+((pl.exp(sigma*R2))/(2.*sigma*R2))+((pl.exp(sigma*R1))/(2.*sigma*R1)))
+			eff[1,0] = (exp(-sigma*d))*(-1.-1./(2.*R1*sigma)-1./(2.*R2*sigma)+((exp(sigma*R2))/(2.*sigma*R2))+((exp(sigma*R1))/(2.*sigma*R1)))
 	return eff
 
 
@@ -63,11 +63,11 @@ def efficiency4boron(d, Ralpha94, RLi94, Ralpha06, RLi06, sigma):
 	temp1=efficiency2particles(d,Ralpha94,RLi94,sigma)
 	temp2=efficiency2particles(d,Ralpha06,RLi06,sigma)
 
-	eff=pl.zeros((3,1))
+	eff=zeros((3,1))
 
 	eff[1,0]= 0.94*temp1[0,0]+0.06*temp2[0,0]          #backscatt
 	eff[2,0]= 0.94*temp1[1,0]+0.06*temp2[1,0]          #transmission
-	eff[0,0]= eff[1,0] + (pl.exp(-d*sigma))*eff[2,0]      #total eff blade
+	eff[0,0]= eff[1,0] + (exp(-d*sigma))*eff[2,0]      #total eff blade
 
 	return eff
 
@@ -91,7 +91,7 @@ def mg_same_thick(sigma_eq, ranges, thickness, nb):
 	"""
 	eff = []
 	temp = efficiency4boron(thickness, ranges[0],  ranges[1], ranges[2], ranges[3], sigma_eq)
-	expi = pl.exp(-2*sigma_eq*thickness)
+	expi = exp(-2*sigma_eq*thickness)
 	eff.append((temp[0][0]*(1-expi**nb)/(1-expi)))
 	#TODO add aluminium consideration
 	return eff
@@ -179,7 +179,7 @@ def data_samethick_vs_thickandnb_depth(sigma_eq, ranges, blades):
 	c = 0
 	#TOFIX
 	for b in blades:
-		expi = pl.exp(-2*sigma_eq*cumthick)
+		expi = exp(-2*sigma_eq*cumthick)
 		# no substrate ,  with substrate
 		efftotal.append([eff1blade[c][3]*expi, eff1blade[c][4]*expi*(delta**c)])
 		cumthick = cumthick+b.backscatter
@@ -315,7 +315,7 @@ def mgeff_depth_profile(thickness, ranges, sigma, varargin):
 	eff =[]
 	efftotal = 0
 	for i, t in enumerate(thickness):
-		expi = pl.exp(-2*sigma*cumthick)
+		expi = exp(-2*sigma*cumthick)
 		eff.append([eff1blade[i][0]*expi, eff1blade[i][1]*(delta**i)])
 		efftotal = efftotal + eff[i][0]
 		cumthick = cumthick+t
@@ -353,7 +353,7 @@ def efficparam(thickness,sigma_eq,ranges,varargin):
 	efficiency.append((0.94 * c1[1] + 0.06 * d1[1])[0])
 	#TODO
 	# eff trasmission after crossing back-scattering
-	efficiency.append((pl.exp(-thickness * sigma_eq)) * efficiency[1])
+	efficiency.append((exp(-thickness * sigma_eq)) * efficiency[1])
 	# BS + T
 	efficiency.append(efficiency[0] + efficiency[2])
 	# BS + T + substrate
