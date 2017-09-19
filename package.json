@@ -54,7 +54,6 @@
     "d3-scale": "1.0.6",
     "d3-selection": "1.1.0",
     "d3-shape": "^0.7.1",
-    "fsevents": "^1.1.2",
     "react-bootstrap": "^0.31.0",
     "react-chartjs-2": "^2.5.1",
     "react-masonry-component": "^5.0.7",
