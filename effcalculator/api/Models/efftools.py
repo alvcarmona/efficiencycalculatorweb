@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 
-#from pylab import *
-#from scipy import * 
 import pylab as pl
-#import scipy as sp
-import matplotlib.pyplot as plt
 import numpy as np
 
 
