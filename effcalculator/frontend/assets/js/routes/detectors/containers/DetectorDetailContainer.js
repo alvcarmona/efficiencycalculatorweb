@@ -4,7 +4,7 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Spinner from '../components/Spinner';
-import DetectorDetailComponent from '../components/DetectordetailComponent'
+import DetectorDetailComponent from '../components/DetectorDetailComponent'
 import {setCurrentDetector, deleteDetector,openModal, setMetadata} from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
 function mapStateToProps(state) {

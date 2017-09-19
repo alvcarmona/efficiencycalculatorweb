@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Homepage from  './homepage'
 import detectors from './detectors/index'
-import NavBarContainer from './NavBarContainer'
+import NavBarContainer from './NavbarContainer'
 import '../../styles/App.css';
 import {Route, Switch, Link} from 'react-router-dom'
 
