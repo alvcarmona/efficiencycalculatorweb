@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Detector, Blade, Wavelength, Metadata, Plot
 from rest_framework_mongoengine import serializers as mongoserializers
-from Models.Detector import Detector as oldDetectorModel
+from Models.Detector_meta import Detector as oldDetectorModel
 
 class DetectorSerializer(mongoserializers.DocumentSerializer):
     #    id = serializers.CharField(read_only=False)
