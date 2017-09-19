@@ -10,7 +10,8 @@
     "webpack-watch": "./node_modules/.bin/webpack --config webpack.config.js --watch",
     "build": "webpack --config webpack.config.js --progress --colors",
     "build-production": "webpack --config webpack.prod.config.js --progress --colors",
-    "watch": "node server.js"
+    "watch": "node server.js",
+    "heroku-postbuild": "./node_modules/.bin/webpack --config webpack.config.js"
   },
     "engines": {
     "node": "6.11.0"
