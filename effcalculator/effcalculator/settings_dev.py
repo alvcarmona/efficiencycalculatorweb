@@ -1,3 +1,4 @@
+
 """
 Django settings for effcalculator project.
 
@@ -149,3 +150,10 @@ if not DEBUG:
         'BUNDLE_DIR_NAME': 'dist/',
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
     })
+
+
+mongoengine.connect(
+    db="Detectordb",
+    host="localhost"
+)
+

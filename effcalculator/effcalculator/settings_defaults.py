@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import mongoengine
 '''
 import dj_database_url
 db_from_env = dj_database_url.config()
@@ -24,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ng#memm1zb#n&7uj#g5(w-o8h-@tq(p_iumhy@2r8%@1^w$xtf'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -149,3 +148,4 @@ if not DEBUG:
         'BUNDLE_DIR_NAME': 'dist/',
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
     })
+

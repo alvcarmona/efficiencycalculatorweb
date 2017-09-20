@@ -8,3 +8,4 @@ db.sqlite3
 effcalculator/webpack-stats.json
 /node_modules/
 effcalculator/npm-debug.log
+effcalculator/effcalculator/settings_production.py
