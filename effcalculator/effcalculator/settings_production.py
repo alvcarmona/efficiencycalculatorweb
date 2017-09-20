@@ -158,6 +158,6 @@ if not DEBUG:
 
 mongoengine.connect(
     db="decal",
-    host=os.getenv('DB_HOST')
+    host=os.environ['DB_HOST']
 )
 
