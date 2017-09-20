@@ -9,7 +9,7 @@ if __name__ == "__main__":
     elif os.getenv('SERVER_ENV') == 'dev':
         settings = "effcalculator.settings_dev"
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "effcalculator.settings_dev")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings)
     try:
         from django.core.management import execute_from_command_line
     except ImportError:

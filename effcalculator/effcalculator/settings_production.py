@@ -154,7 +154,7 @@ if not DEBUG:
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
     })
 
-
+print os.environ['DB_HOST']
 
 mongoengine.connect(
     db="decal",

@@ -6,7 +6,7 @@ django-webpack-loader==0.5.0
 djangorestframework==3.6.3
 functools32==3.2.3.post2
 gunicorn==19.7.1
-
+boto3==1.0.0
 mercurial==4.3.1
 mongoengine==0.13.0
 Pygments==2.2.0
