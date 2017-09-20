@@ -11,6 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+print os.environ['DB_HOST']
 settings = "effcalculator.settings.production"
 if os.getenv('SERVER_ENV') == 'prod':
     settings = "effcalculator.settings_production"
