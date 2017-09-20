@@ -153,7 +153,7 @@ if not DEBUG:
 
 
 mongoengine.connect(
-    db="Detectordb",
-    host="localhost"
+    db="decal",
+    host=os.environ['DB_HOST']
 )
 
