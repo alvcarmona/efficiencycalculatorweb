@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch) {
 class DetectorEfficiencyContainer extends Component {
 
     redirect(){
-         this.props.history.push('/frontend/detectors')
+         this.props.history.push('/detectors')
     }
 
     componentWillMount(){

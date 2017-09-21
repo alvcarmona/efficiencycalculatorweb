@@ -24,5 +24,5 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
-    url(r'^frontend/', include('frontend.urls'))
+    url(r'^', include('frontend.urls'))
 ]

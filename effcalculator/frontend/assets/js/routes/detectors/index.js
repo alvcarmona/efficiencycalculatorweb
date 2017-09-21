@@ -42,10 +42,10 @@ class DetectorEfficiencyCalculator extends Component {
         return (
             <div className="DetectorEfficiencyCalculator">
                 <Switch>
-                    <Route exact path='/frontend/Detectors' component={DetectorListContainer}/>
-                    <Route exact path='/frontend/Detectors/:number' component={DetectorDetailContainer}/>
-                    <Route path='/frontend/Detectors/:number/edit' component={DetectorEditContainer}/>
-                    <Route path='/frontend/Detectors/:number/efficiency' component={DetectorEfficiencyContainer}/>
+                    <Route exact path='/Detectors' component={DetectorListContainer}/>
+                    <Route exact path='/Detectors/:number' component={DetectorDetailContainer}/>
+                    <Route path='/Detectors/:number/edit' component={DetectorEditContainer}/>
+                    <Route path='/Detectors/:number/efficiency' component={DetectorEfficiencyContainer}/>
                 </Switch>
             </div>
         );

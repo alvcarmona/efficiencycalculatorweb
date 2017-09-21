@@ -13,14 +13,14 @@ class NavbarContainer extends Component {
             <Navbar inverse collapseOnSelect className="brand-primary">
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <Link to={`/frontend/homepage/`}>DECal</Link>
+                        <Link to={`/`}>DECal</Link>
                     </Navbar.Brand>
                     <Navbar.Toggle/>
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
                         <NavItem className="NavbarItem">
-                            <Link className="NavbarLink" to="/frontend/detectors/">Detectors</Link>
+                            <Link className="NavbarLink" to="/detectors/">Detectors</Link>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>

@@ -14,12 +14,12 @@ class DetectorEditComponent extends Component {
         if (!this.props.detector || Object.keys(this.props.detector).length === 0) {
             return (
                 <div className="DetectorEdit">
-                    <Link to={`/frontend/detectors/`}>atras</Link>
+                    <Link to={`/detectors/`}>atras</Link>
                 </div>)
         }
         return (
             <div className="DetectorEditComponent">
-                <Link to={`/frontend/detectors/` + this.props.detector.id}> To detector detail view </Link>
+                <Link to={`/detectors/` + this.props.detector.id}> To detector detail view </Link>
                 <Grid>
                     <Row>
                         <PageHeader> Detector configuration Information

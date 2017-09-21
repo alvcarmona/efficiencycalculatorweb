@@ -90,7 +90,8 @@ export function editCurrentDetector(data) {
                 dispatch(receiveEdit(response.detector));
             })
             .catch(function (response) {
-                dispatch(receiveError(response.data));
+                console.log("edit detector Error")
+                //dispatch(receiveError(response.data));
             })
     }
 };
@@ -110,7 +111,8 @@ export function createDetector(data) {
                 dispatch(receiveNew(response.data));
             })
             .catch(function (response) {
-                dispatch(receiveError(response.data));
+                console.log("CreateDetector Error")
+                //dispatch(receiveError(response.data));
             })
     }
 };
@@ -179,7 +181,7 @@ export function setMetadata(data) {
         dispatch(requestData());
         return axios({
             url: '/api/detectors/' + data.id + '/calculate_efficiency/',
-            timeout: 20000,
+            timeout: 90000,
             method: 'put',
             responseType: 'json',
             data: data
@@ -188,7 +190,8 @@ export function setMetadata(data) {
                 dispatch(receiveMeta(response.data));
             })
             .catch(function (response) {
-                dispatch(receiveError(response.data));
+                console.log("SetMetadata Error")
+                //dispatch(receiveError(response.data));
             })
     }
 };

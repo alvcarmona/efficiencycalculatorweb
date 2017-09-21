@@ -18,7 +18,7 @@ function mapDispatchToProps(dispatch) {
 class DetectorDetailContainer extends Component {
 
     redirect(){
-         this.props.history.push('/frontend/detectors')
+         this.props.history.push('/detectors')
     }
 
     componentWillMount(){

@@ -18,13 +18,13 @@ class DetectorComponent extends Component {
                         <p></p>
                         <p className="DetectorLinks">
                             <OverlayTrigger placement="bottom" overlay={vtooltip}>
-                                <Link to={`/frontend/detectors/${this.props.id}`}><Glyphicon glyph="eye-open"/></Link>
+                                <Link to={`/detectors/${this.props.id}`}><Glyphicon glyph="eye-open"/></Link>
                             </OverlayTrigger>
                             <OverlayTrigger placement="bottom" overlay={edtooltip}>
-                                <Link to={`/frontend/detectors/${this.props.id}/edit`}><Glyphicon glyph="edit"/></Link>
+                                <Link to={`/detectors/${this.props.id}/edit`}><Glyphicon glyph="edit"/></Link>
                             </OverlayTrigger>
                             <OverlayTrigger placement="bottom" overlay={eftooltip}>
-                                <Link to={`/frontend/detectors/${this.props.id}/efficiency`}><Glyphicon
+                                <Link to={`/detectors/${this.props.id}/efficiency`}><Glyphicon
                                     glyph="list-alt"/></Link>
                             </OverlayTrigger>
                         </p>

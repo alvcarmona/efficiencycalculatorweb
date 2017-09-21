@@ -24,20 +24,20 @@ class DetectorDetail extends Component {
         if (!this.props.detector) {
             return (
                 <div className="DetectorDetail">
-                    <Link to={`/frontend/detectors/`}>atras</Link>
+                    <Link to={`/detectors/`}>atras</Link>
                 </div>)
         }
         return (
             <div className="DetectorDetail">
-                <Link to={`/frontend/detectors/`}> To detector list </Link>
+                <Link to={`/detectors/`}> To detector list </Link>
                 <Grid>
                     <Row className="show-grid">
                         <Col xs={6} xsOffset={8}>
                             <DropdownButton id="1" bsStyle='warning' title='Options' className="optionbutton">
-                                <LinkContainer to={"/frontend/Detectors/" + this.props.detector.id + "/edit"}>
+                                <LinkContainer to={"/Detectors/" + this.props.detector.id + "/edit"}>
                                     <MenuItem eventKey="1">Edit detector</MenuItem>
                                 </LinkContainer>
-                                <LinkContainer to={"/frontend/Detectors/" + this.props.detector.id + "/efficiency"}>
+                                <LinkContainer to={"/Detectors/" + this.props.detector.id + "/efficiency"}>
                                     <MenuItem eventKey="2">Efficiency Information</MenuItem>
                                 </LinkContainer>
                                 <MenuItem onSelect={(e) => {

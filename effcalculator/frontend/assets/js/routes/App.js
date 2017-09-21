@@ -18,8 +18,8 @@ class App extends Component {
                 <div>
                     <NavBarContainer/>
                     <Switch>
-                        <Route path='/frontend/homepage' component={Homepage}/>
-                        <Route path='/frontend/detectors' component={detectors} />
+                       <Route exact path='/' component={Homepage}/>
+                        <Route path='/detectors/' component={detectors} />
                     </Switch>
                 </div>
             </div>

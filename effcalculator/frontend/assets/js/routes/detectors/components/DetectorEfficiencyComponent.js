@@ -197,18 +197,18 @@ class DetectorEfficiencyComponent extends Component {
         if (!this.props.detector) {
             return (
                 <div className="DetectorEfficiencyComponent">
-                    <Link to={`/frontend/detectors/`}>atras</Link>
+                    <Link to={`/detectors/`}>atras</Link>
                 </div>)
         }
         if (this.props.detector.wavelength.length === 0 || this.props.detector.blades.length === 0) {
             return (
                 <div className="DetectorEfficiencyComponent">
-                    <Link to={`/frontend/detectors/`}> To detector list </Link>
+                    <Link to={`/detectors/`}> To detector list </Link>
 
                     <Panel header={'Incomplete configuration'} bsStyle="danger" className={'danger-config'}> Configure
                         wavelenght and blades to
                         calculate efficiency.
-                    <Link to={`/frontend/detectors/`+this.props.detector.id+'/edit'}>Go to edit page</Link>
+                    <Link to={`/detectors/`+this.props.detector.id+'/edit'}>Go to edit page</Link>
                     </Panel>
 
                 </div>)
@@ -216,7 +216,7 @@ class DetectorEfficiencyComponent extends Component {
         }
         return (
             <div className="DetectorEfficiencyComponent">
-                <Link to={`/frontend/detectors/`}> To detector list </Link>
+                <Link to={`/detectors/`}> To detector list </Link>
                 <Grid>
                     <Row>
                          <PageHeader> Detector configuration Information <small> efficiency </small></PageHeader>
