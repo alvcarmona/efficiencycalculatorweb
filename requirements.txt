@@ -19,3 +19,4 @@ whitenoise==3.3.0
 numpy== 1.11.1
 scipy==0.18.0
 matplotlib==1.5.3
+blinker==1.4

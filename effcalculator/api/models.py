@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.db import models
 from mongoengine import Document, EmbeddedDocument, fields
-
+import thread
+from Models.Detector_meta import Detector as oldDetectorModel
 
 class Blade(EmbeddedDocument):
     backscatter = fields.FloatField(null=True)
@@ -35,3 +35,24 @@ class Detector(Document):
     blades = fields.ListField(fields.EmbeddedDocumentField(Blade))
     wavelength = fields.ListField(fields.EmbeddedDocumentField(Wavelength))
     metadata = fields.EmbeddedDocumentField(Metadata)
+
+    def clean(self, **kwargs):
+        if not self._created:
+            if 'wavelength' in self._changed_fields or 'angle'in self._changed_fields or 'threshold' in self._changed_fields or 'blades'in self._changed_fields  or 'converter' in self._changed_fields:
+                if self.converter:
+                    if len(self.blades) > 0:
+                        if len(self.wavelength) > 0:
+                            thread.start_new_thread(self.calculate_efficiency, ())
+
+    def calculate_efficiency(self):
+        print 'Thread'
+        d = oldDetectorModel.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, '10B4C 2.24g/cm3')
+        r = d.calculate_eff()
+        d.plot_eff_vs_wave_meta()
+        d.plot_thick_vs_eff_meta()
+        self.metadata.total_efficiency = r[1]*100
+        self.metadata.eff_vs_wavelength.x = d.metadata.get('effVsWave')[0].tolist()
+        self.metadata.eff_vs_wavelength.y = d.metadata.get('effVsWave')[1]
+        self.metadata.eff_vs_layer_thickness.x = d.metadata.get('thickVsEff')[0].tolist()
+        self.metadata.eff_vs_layer_thickness.y = d.metadata.get('thickVsEff')[1]
+        self.save()
