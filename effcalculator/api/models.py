@@ -42,6 +42,7 @@ class Detector(Document):
                 if self.converter:
                     if len(self.blades) > 0:
                         if len(self.wavelength) > 0:
+                            print 'Auto Calculate efficiency'
                             thread.start_new_thread(self.calculate_efficiency, ())
 
     def calculate_efficiency(self):
