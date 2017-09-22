@@ -37,6 +37,7 @@ class Detector(Document):
     metadata = fields.EmbeddedDocumentField(Metadata)
 
     def clean(self, **kwargs):
+        print 'clean'
         if not self._created:
             if 'wavelength' in self._changed_fields or 'angle'in self._changed_fields or 'threshold' in self._changed_fields or 'blades'in self._changed_fields  or 'converter' in self._changed_fields:
                 if self.converter:
