@@ -37,24 +37,47 @@ class Detector(Document):
     metadata = fields.EmbeddedDocumentField(Metadata)
 
     def clean(self, **kwargs):
-        print 'clean'
         if not self._created:
             if 'wavelength' in self._changed_fields or 'angle'in self._changed_fields or 'threshold' in self._changed_fields or 'blades'in self._changed_fields  or 'converter' in self._changed_fields:
                 if self.converter:
                     if len(self.blades) > 0:
                         if len(self.wavelength) > 0:
-                            print 'Auto Calculate efficiency'
                             thread.start_new_thread(self.calculate_efficiency, ())
 
     def calculate_efficiency(self):
-        print 'Thread'
-        d = oldDetectorModel.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, '10B4C 2.24g/cm3')
-        r = d.calculate_eff()
-        d.plot_eff_vs_wave_meta()
-        d.plot_thick_vs_eff_meta()
-        self.metadata.total_efficiency = r[1]*100
-        self.metadata.eff_vs_wavelength.x = d.metadata.get('effVsWave')[0].tolist()
-        self.metadata.eff_vs_wavelength.y = d.metadata.get('effVsWave')[1]
-        self.metadata.eff_vs_layer_thickness.x = d.metadata.get('thickVsEff')[0].tolist()
-        self.metadata.eff_vs_layer_thickness.y = d.metadata.get('thickVsEff')[1]
-        self.save()
+        try:
+            d = oldDetectorModel.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, '10B4C 2.24g/cm3')
+            r = d.calculate_eff()
+            self.metadata.total_efficiency = r[1]*100
+            self.save()
+            print 'efficiency calculated and saved'
+            self.calculate_metadata_eff_vs_wavelength(detector=d)
+            thread.exit()
+        except Exception:
+            import traceback
+            print traceback.format_exc()
+
+    def calculate_metadata_eff_vs_wavelength(self,detector):
+        try:
+            detector.plot_eff_vs_wave_meta()
+            self.metadata.eff_vs_wavelength.x = detector.metadata.get('effVsWave')[0].tolist()
+            self.metadata.eff_vs_wavelength.y = detector.metadata.get('effVsWave')[1]
+            self.save()
+            print 'metadata wave calculated and saved'
+            self.calculate_metadata_eff_vs_layer_thickness(detector=detector)
+            thread.exit()
+        except Exception:
+            import traceback
+            print traceback.format_exc()
+
+    def calculate_metadata_eff_vs_layer_thickness(self,detector):
+        try:
+            detector.plot_thick_vs_eff_meta()
+            self.metadata.eff_vs_layer_thickness.x = detector.metadata.get('thickVsEff')[0].tolist()
+            self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1]
+            self.save()
+            print 'metadata thick calculated and saved'
+            thread.exit()
+        except Exception:
+            import traceback
+            print traceback.format_exc()
