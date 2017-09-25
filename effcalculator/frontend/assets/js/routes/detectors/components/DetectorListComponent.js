@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import GalleryComponent from './GalleryComponent'
 import CreateDetectorButtonContainer from '../containers/CreateDetectorButtonContainer'
 import {Grid, Row} from 'react-bootstrap'
-
+import RefreshDetectorsContainer from '../containers/RefreshDetectorsContainer'
 
 
 class DetectorlistComponent extends Component {
@@ -23,8 +23,8 @@ class DetectorlistComponent extends Component {
                 <Grid>
                     <Row>
                         <CreateDetectorButtonContainer/>
+                        <RefreshDetectorsContainer/>
                     </Row>
-
                     <Row>
                         <GalleryComponent detectors={this.props.detectors}/>
                     </Row>

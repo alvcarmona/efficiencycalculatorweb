@@ -291,6 +291,19 @@ a.NavbarLink:hover {
     margin-top: 55px;
 }
 
+
+
+.refreshDetectorsButton{
+     margin-top: 1px;
+     margin-right: 2px;
+     position:absolute;
+     top:80px;
+     right:20px;
+ }
+
+
+
+
 /************************* Loading spinner *****************************************/
 
 .sk-fading-circle {

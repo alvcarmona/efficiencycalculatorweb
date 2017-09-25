@@ -5,6 +5,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import {Grid, Button, Row, Col, Panel, PageHeader, small} from 'react-bootstrap'
 import {Line, Doughnut} from 'react-chartjs-2';
+import RefreshDetectorsContainer from '../containers/RefreshDetectorsContainer'
+
 
 class TotalEfficiencyPlot extends Component {
     constructor(props) {
@@ -218,6 +220,7 @@ class DetectorEfficiencyComponent extends Component {
             <div className="DetectorEfficiencyComponent">
                 <Link to={`/detectors/`}> To detector list </Link>
                 <Grid>
+                    <RefreshDetectorsContainer/>
                     <Row>
                          <PageHeader> Detector configuration Information <small> efficiency </small></PageHeader>
                     </Row>
