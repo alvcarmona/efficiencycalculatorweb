@@ -8,7 +8,9 @@ import logo from '../../img/brightness.png';
 import logo2 from '../../img/ESS_Logo_Frugal_Blue_cmyk.png';
 
 class Homepage extends Component {
-
+       redirect(){
+         this.props.history.push('/detectors')
+    }
     render() {
         return (
             <div className="Homepage">
@@ -17,7 +19,7 @@ class Homepage extends Component {
                         <div className="header-content">
                             <h2 className="homepageHeader">Calculate | Optimize | Visualize</h2>
                             <h2 className="homepageHeader">Neutron detector configurations</h2>
-                            <Button id="header-button">Start Here.</Button>
+                            <Button id="header-button" onClick={this.redirect.bind(this)}> Start Here.</Button>
                         </div>
                     </Row>
                     <Row className="spacerHome-alt">
