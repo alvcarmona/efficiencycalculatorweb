@@ -6,14 +6,14 @@ import React, {Component} from 'react';
 import Spinner from '../components/Spinner';
 import FetchDetectorsButtonContainer from './FetchDetectorsButtonContainer'
 import DetectorEfficiencyComponent from '../components/DetectorEfficiencyComponent'
-import {setCurrentDetector, deleteDetector, setMetadata} from '../../../modules/actions/index';
+import {setCurrentDetector, deleteDetector, setMetadata, fetchData} from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
 function mapStateToProps(state) {
     return {data: state.example.data, isLoading: state.example.isLoading, current: state.example.currentDetector}
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({setCurrentDetector, deleteDetector, setMetadata}, dispatch)
+    return bindActionCreators({setCurrentDetector, deleteDetector, setMetadata, fetchData}, dispatch)
 }
 
 class DetectorEfficiencyContainer extends Component {
@@ -35,6 +35,12 @@ class DetectorEfficiencyContainer extends Component {
                 }
             }
             this.props.setCurrentDetector(current)
+
+            if (current.wavelength.length > 0 && current.blades.length > 0 && !current.detector.metadata){
+                console.log("No metadata, re-fetch")
+                this.props.fetchData()
+            }
+
         }
     }
     renderDetectorDetail() {
