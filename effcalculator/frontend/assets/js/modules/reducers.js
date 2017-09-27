@@ -14,7 +14,7 @@ function exampleReducer(state = {
                             currentDetector: undefined,
                             showModal: false,
                             error: false,
-                            converters:[]
+                            converters: []
                         },
                         action = null) {
     switch (action.type) {
@@ -31,7 +31,12 @@ function exampleReducer(state = {
                 id: action.data.id,
                 blades: action.data.blades,
                 converter: action.data.converter,
-                wavelength: action.data.wavelength
+                wavelength: action.data.wavelength,
+                metadata: {
+                    eff_vs_layer_thickness: {},
+                    eff_vs_wavelength: {},
+                    total_efficiency: 0
+                }
             }
             let newdata1 = []
             for (let i = 0; i < state.data.length; i++) {
@@ -57,12 +62,12 @@ function exampleReducer(state = {
                 if (state.data[i].id === action.data._id.$oid) {
                     action.data.id = action.data._id.$oid
                     newdata2.push(action.data)
-                }else {
+                } else {
                     newdata2.push(state.data[i])
                 }
             }
             console.log('recvEdit')
-            return Object.assign({}, state, {isLoading: false,data:newdata2 , error: false});
+            return Object.assign({}, state, {isLoading: false, data: newdata2, error: false});
         case types.DELETE_SUCCESS:
             let newdata = []
             for (let i = 0; i < state.data.length; i++) {

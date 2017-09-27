@@ -36,7 +36,7 @@ class DetectorEfficiencyContainer extends Component {
             }
             this.props.setCurrentDetector(current)
 
-            if (current.wavelength.length > 0 && current.blades.length > 0 && !current.detector.metadata){
+            if (current.wavelength.length > 0 && current.blades.length > 0 && !("metadata" in current)){
                 console.log("No metadata, re-fetch")
                 this.props.fetchData()
             }

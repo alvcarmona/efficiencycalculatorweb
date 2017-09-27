@@ -224,15 +224,6 @@ class DetectorEfficiencyComponent extends Component {
                     <Row>
                          <PageHeader> Detector configuration Information <small> efficiency </small></PageHeader>
                     </Row>
-                    {this.props.detector.metadata.total_efficiency == 0 &&
-                        <Row>
-                        <Button onClick={(e) => {
-                            this.props.setMetadata(this.props.detector);
-                        }}>
-                            Calculate Efficiency
-                        </Button>
-                    </Row>
-                    }
 
                     <Row>
                         <Col xs={6} xsOffset={3}>
