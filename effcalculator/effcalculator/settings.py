@@ -29,7 +29,7 @@ SECRET_KEY = 'ng#memm1zb#n&7uj#g5(w-o8h-@tq(p_iumhy@2r8%@1^w$xtf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['murmuring-island-53761.herokuapp.com','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['detectorefficiencycalculator.herokuapp.com','localhost', '127.0.0.1']
 
 
 # Application definition
