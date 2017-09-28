@@ -26,7 +26,9 @@ class DetectorEditContainer extends Component {
     constructor(props) {
         super(props)
     }
-
+    redirect(){
+         this.props.history.push('/detectors')
+    }
     componentWillMount() {
         if (this.props.converters.length === 0){
             this.props.requestConverters()
@@ -86,6 +88,9 @@ class DetectorEditContainer extends Component {
 
 
     renderDetectorEdit() {
+        if (!this.props.current){
+           this.redirect()
+        }
         return (
             <DetectorEditComponent detector={this.props.current} submit={this.submit.bind(this)}
                                    addBlades={this.addBlades.bind(this)} addWavelength={this.addWavelength.bind(this)} converters={this.props.converters}/>

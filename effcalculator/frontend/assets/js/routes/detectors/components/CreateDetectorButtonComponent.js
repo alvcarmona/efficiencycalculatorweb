@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import {Modal, OverlayTrigger, Tooltip, MenuItem, Button, Row, Popover, Col} from 'react-bootstrap'
+import {Modal, OverlayTrigger, Tooltip, MenuItem, Button, Row, Popover, Col, Grid} from 'react-bootstrap'
 import DetectorForm from '../containers/DetectorForm'
 import {bindActionCreators} from 'redux';
 
@@ -41,7 +41,9 @@ class CreateDetectorButton extends Component {
                         <Modal.Title>Create Detector</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        <Grid>
                         <DetectorForm onSubmit={this.props.submit} initialValues={initialValues}/>
+                            </Grid>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.props.close.bind(this)}>Close</Button>
