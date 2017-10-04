@@ -75,6 +75,7 @@ function deleteError(data) {
     }
 };
 
+
 export function editCurrentDetector(data) {
 
     return function (dispatch) {

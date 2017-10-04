@@ -210,7 +210,7 @@ class DetectorEfficiencyComponent extends Component {
                     <Panel header={'Incomplete configuration'} bsStyle="danger" className={'danger-config'}> Configure
                         wavelenght and blades to
                         calculate efficiency.
-                    <Link to={`/detectors/`+this.props.detector.id+'/edit'}>Go to edit page</Link>
+                        <Link to={`/detectors/` + this.props.detector.id + '/edit'}>Go to edit page</Link>
                     </Panel>
 
                 </div>)
@@ -222,7 +222,9 @@ class DetectorEfficiencyComponent extends Component {
                 <Grid>
                     <RefreshDetectorsContainer/>
                     <Row>
-                         <PageHeader> Detector configuration Information <small> efficiency </small></PageHeader>
+                        <PageHeader> Detector configuration Information
+                            <small> efficiency</small>
+                        </PageHeader>
                     </Row>
 
                     <Row>
@@ -237,6 +239,9 @@ class DetectorEfficiencyComponent extends Component {
                             </Row>
                             <Row className="plotRow">
                                 <EffVsThicknessPlot data={this.props.detector.metadata.eff_vs_layer_thickness}/>
+                            </Row>
+                            <Row>
+                                <Button bsStyle="primary" onClick={this.props.optimizeDetectorThickness}> Optimize converter thickness</Button>
                             </Row>
                         </Col>
                         <Col xs={6}>
