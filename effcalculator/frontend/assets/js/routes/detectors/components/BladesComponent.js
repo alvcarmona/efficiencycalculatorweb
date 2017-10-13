@@ -6,13 +6,16 @@ import {Table, Row, Col} from 'react-bootstrap'
 import {Scatter} from 'react-chartjs-2'
 
 class BladeThicknessDepthPlot extends Component {
+    componentDidMount(){
+            console.log(this.refs.chart.chart_instance); // returns a Chart.js instance reference
+    }
     constructor(props) {
         super(props);
         let dataList = [];
         let labels = [];
         let ymax = 0;
         this.props.blades.map(function (data, index) {
-            dataList.push({x: index + 1, y: data.backscatter});
+            dataList.push({x: index + 1, y: Math.round(data.backscatter*1000)/1000});
             if (data.backscatter > ymax) {
                 ymax = data.backscatter + 1;
             }
@@ -78,7 +81,7 @@ class BladeThicknessDepthPlot extends Component {
     }
 
     render() {
-        return <Scatter data={this.state.data} options={this.state.options} width={400} height={250}/>
+        return <Scatter ref='chart' data={this.state.data} options={this.state.options} width={400} height={250}/>
     }
 }
 
@@ -91,7 +94,7 @@ class BladeTable extends Component {
                 row = this.props.blades.map((data, index) =>
                     <tr key={index}>
                         <td>{index + 1}</td>
-                        <td>{data.backscatter} µm</td>
+                        <td>{(Math.round(data.backscatter * 1000) / 1000)} µm</td>
                         <td>{data.substrate} µm</td>
                     </tr>
                 );
@@ -124,7 +127,7 @@ class Blades extends Component {
                 row = this.props.blades.map((data, index) =>
                     <tr key={index}>
                         <td>{index + 1}</td>
-                        <td>{data.backscatter} µm</td>
+                        <td>{(Math.round(data.backscatter * 100) / 100)} µm</td>
                         <td>{data.substrate} µm</td>
                     </tr>
                 );

@@ -65,33 +65,65 @@ class TotalEfficiencyPlot extends Component {
 }
 
 class EffVsThicknessPlot extends Component {
+
+    closest(array,num){
+        let i=0;
+        let minDiff=1000;
+        let ans;
+        for(i in array){
+             let m=Math.abs(num-array[i]);
+             if(m<minDiff){
+                    minDiff=m;
+                    ans=array[i];
+                }
+          }
+        return ans;
+    }
+
+
+    componentDidMount(){
+        if(this.refs.chart){
+             let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data,Number(this.props.detector.metadata.total_efficiency)/100)
+        let i = this.refs.chart.chart_instance.data.datasets[0].data.indexOf(closestValue)
+        this.refs.chart.chart_instance.data.datasets[0].backgroundColor[i] =  "red";
+        this.refs.chart.chart_instance.data.datasets[0].pointRadius[i] = 3
+
+        }
+       }
+
     constructor(props) {
         super(props);
-        console.log(this.props)
+        let colors=[]
+        let radius = []
+        for(let j=0; j<this.props.detector.metadata.eff_vs_layer_thickness.x.length;j++){
+            colors.push('#8cbbff')
+            radius.push(0.5)
+        }
         this.state = {
             data: {
-                labels: this.props.data.x,
+                labels: this.props.detector.metadata.eff_vs_layer_thickness.x,
                 datasets: [
                     {
                         label: 'EffVsThicknessPlot',
                         fill: false,
                         lineTension: 0.1,
-                        backgroundColor: 'rgba(75,192,192,0.4)',
-                        borderColor: 'rgba(75,192,192,1)',
+                        backgroundColor: colors,
+                        borderColor: '#8cbbff',
                         borderCapStyle: 'butt',
                         borderDash: [],
                         borderDashOffset: 0.0,
                         borderJoinStyle: 'miter',
-                        pointBorderColor: 'rgba(75,192,192,1)',
-                        pointBackgroundColor: '#fff',
+                        pointBorderColor: colors,
+                        pointBackgroundColor: '#ff0011',
                         pointBorderWidth: 1,
                         pointHoverRadius: 5,
-                        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                        pointHoverBorderColor: 'rgba(220,220,220,1)',
+                        pointHoverBackgroundColor: '#8cbbff',
+                        pointHoverBorderColor: '#8cbbff',
                         pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        data: this.props.data.y
+                        pointRadius: radius,
+                        radius: radius,
+                        pointHitRadius: 1,
+                        data: this.props.detector.metadata.eff_vs_layer_thickness.y
                     }
                 ]
             },
@@ -116,38 +148,70 @@ class EffVsThicknessPlot extends Component {
     }
 
     render() {
-        return <Line data={this.state.data} width={400} height={300}/>
+        return <Line ref='chart' data={this.state.data} width={400} height={300}/>
     }
 }
 
 class EffVsWavelengthPlot extends Component {
+
+    closest(array,num){
+        let i=0;
+        let minDiff=1000;
+        let ans;
+        for(i in array){
+             let m=Math.abs(num-array[i]);
+             if(m<minDiff){
+                    minDiff=m;
+                    ans=array[i];
+                }
+          }
+        return ans;
+    }
+
+
+    componentDidMount(){
+        if(this.refs.chart) {
+            let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data, Number(this.props.detector.metadata.total_efficiency) / 100)
+            let i = this.refs.chart.chart_instance.data.datasets[0].data.indexOf(closestValue)
+            this.refs.chart.chart_instance.data.datasets[0].backgroundColor[i] = "red";
+            this.refs.chart.chart_instance.data.datasets[0].pointRadius[i] = 3
+        }
+    }
+
     constructor(props) {
         super(props);
-        console.log(this.props)
+        let colors=[]
+        let radius = []
+        let tension = []
+        for(let j=0; j<this.props.detector.metadata.eff_vs_wavelength.x.length;j++){
+            colors.push('#8cbbff')
+            radius.push(0.5)
+        }
         this.state = {
             data: {
-                labels: this.props.data.x,
+                labels: this.props.detector.metadata.eff_vs_wavelength.x,
                 datasets: [
                     {
                         label: 'EffVsWavelengthPlot',
                         fill: false,
                         borderWidth: 1,
-                        backgroundColor: 'rgba(75,192,192,0.4)',
-                        borderColor: 'rgba(75,192,192,1)',
+                       backgroundColor: colors,
+                        borderColor: '#8cbbff',
                         borderCapStyle: 'butt',
                         borderDash: [],
                         borderDashOffset: 0.0,
                         borderJoinStyle: 'miter',
-                        pointBorderColor: 'rgba(75,192,192,1)',
-                        pointBackgroundColor: '#fff',
+                        pointBorderColor: colors,
+                        pointBackgroundColor: '#ff0011',
                         pointBorderWidth: 1,
                         pointHoverRadius: 5,
-                        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                        pointHoverBorderColor: 'rgba(220,220,220,1)',
+                        pointHoverBackgroundColor: '#8cbbff',
+                        pointHoverBorderColor: '#8cbbff',
                         pointHoverBorderWidth: 2,
-                        pointRadius: 0,
+                        pointRadius: radius,
+                        radius: radius,
                         pointHitRadius: 1,
-                        data: this.props.data.y
+                        data: this.props.detector.metadata.eff_vs_wavelength.y
                     }
                 ]
             },
@@ -183,7 +247,7 @@ class EffVsWavelengthPlot extends Component {
     }
 
     render() {
-        return <Line data={this.state.data} width={400} height={300}/>
+        return <Line ref='chart' data={this.state.data} width={400} height={300}/>
     }
 }
 
@@ -238,7 +302,7 @@ class DetectorEfficiencyComponent extends Component {
                                 <h3>Efficiency Vs. Blade Thickness Plot</h3>
                             </Row>
                             <Row className="plotRow">
-                                <EffVsThicknessPlot data={this.props.detector.metadata.eff_vs_layer_thickness}/>
+                                <EffVsThicknessPlot detector={this.props.detector}/>
                             </Row>
                             <Row>
                                 <Button bsStyle="primary" onClick={this.props.optimizeDetectorThickness}> Optimize converter thickness</Button>
@@ -249,7 +313,7 @@ class DetectorEfficiencyComponent extends Component {
                                 <h3>Efficiency Vs. Blade Wavelength Plot</h3>
                             </Row>
                             <Row className="plotRow">
-                                <EffVsWavelengthPlot data={this.props.detector.metadata.eff_vs_wavelength}/>
+                                <EffVsWavelengthPlot detector={this.props.detector}/>
                             </Row>
                         </Col>
                     </Row>
