@@ -18,7 +18,7 @@ import DetectorEditContainer from './containers/DetectorEditContainer';
 import DetectorEfficiencyContainer from './containers/DetectorEfficiencyContainer';
 import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux';
-import {fetchData, setCurrentDetector} from '../../modules/actions/index';
+import {fetchData,requestConverters, setCurrentDetector} from '../../modules/actions/index';
 import {bindActionCreators} from 'redux';
 
 function mapStateToProps(state) {
@@ -26,7 +26,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchData, setCurrentDetector}, dispatch)
+    return bindActionCreators({fetchData, setCurrentDetector,requestConverters}, dispatch)
 }
 
 class DetectorEfficiencyCalculator extends Component {
@@ -36,6 +36,7 @@ class DetectorEfficiencyCalculator extends Component {
 
     componentDidMount() {
         this.props.fetchData()
+        this.props.requestConverters()
     }
 
     render() {

@@ -26,11 +26,13 @@ class DetectorEditContainer extends Component {
     constructor(props) {
         super(props)
     }
-    redirect(){
-         this.props.history.push('/detectors')
+
+    redirect() {
+        this.props.history.push('/detectors')
     }
+
     componentWillMount() {
-        if (this.props.converters.length === 0){
+        if (this.props.converters.length === 0) {
             this.props.requestConverters()
         }
         if (this.props.current === undefined || this.props.current.id !== this.props.match.params.number) {
@@ -86,14 +88,14 @@ class DetectorEditContainer extends Component {
     }
 
 
-
     renderDetectorEdit() {
-        if (!this.props.current){
-           this.redirect()
+        if (!this.props.current) {
+            this.redirect()
         }
         return (
             <DetectorEditComponent detector={this.props.current} submit={this.submit.bind(this)}
-                                   addBlades={this.addBlades.bind(this)} addWavelength={this.addWavelength.bind(this)} converters={this.props.converters}/>
+                                   addBlades={this.addBlades.bind(this)} addWavelength={this.addWavelength.bind(this)}
+                                   converters={this.props.converters}/>
         )
     }
 

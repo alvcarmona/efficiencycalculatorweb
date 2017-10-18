@@ -22,6 +22,8 @@ function exampleReducer(state = {
             return Object.assign({}, state, {isLoading: false, data: action.data, error: true});
         case types.RECV_DATA:
             return Object.assign({}, state, {isLoading: false, data: action.data, error: false});
+        case types.REQUEST_CONVERTERS:
+            return Object.assign({}, state, {converters:action.data});
         case types.RECV_NEW:
             console.log('renew')
             let newdetector = {

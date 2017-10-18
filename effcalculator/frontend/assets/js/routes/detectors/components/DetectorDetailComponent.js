@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import {Blades} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
+import SketchContainer from './sketchComponent'
 import ConfirmModalContainer from './../containers/confirmModalContainer'
 import {Grid, DropdownButton, MenuItem, Row, Col, PageHeader, small, Panel, Modal} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
@@ -59,6 +60,10 @@ class DetectorDetail extends Component {
                         <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
                     </Row>
                     <Row>
+                        <h2> Detector sketch</h2>
+                    <SketchContainer angle={this.props.detector.angle} blades={this.props.detector.blades} detector={this.props.detector}/>
+                </Row>
+                    <Row>
                         <h3>Detector blade setup</h3>
                     </Row>
                     <Row>
@@ -95,6 +100,7 @@ class DetectorDetail extends Component {
                             </Row>
                         </Row>
                     </Row>
+
                 </Grid>
                 <ConfirmModalContainer submit={this.deleteDetector.bind(this)}/>
             </div>
