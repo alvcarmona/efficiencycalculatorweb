@@ -55,6 +55,7 @@ class DetectorEditContainer extends Component {
         this.props.current.name = values.name
         this.props.current.angle = values.angle
         this.props.current.threshold = values.threshold
+        this.props.current.converter = values.converter
         this.props.setCurrentDetector(this.props.current)
         this.props.history.push('/detectors/' + this.props.current.id.toString())
         this.props.editCurrentDetector(this.props.current)

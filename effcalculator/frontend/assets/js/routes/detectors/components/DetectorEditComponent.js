@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import DetectorForm from '../containers/DetectorForm'
 import BladesForm from '../containers/BladesForm'
 import WavelengthForm from '../containers/WavelengthForm'
+import ConverterForm from '../containers/ConverterForm'
 import {BladeTable} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
 import {Grid, Row, Col, Panel, small, PageHeader} from 'react-bootstrap'
@@ -30,6 +31,9 @@ class DetectorEditComponent extends Component {
                         <div className={'edit-form'}>
                             <DetectorForm onSubmit={this.props.submit}/>
                         </div>
+                    </Row>
+                    <Row>
+                        <ConverterForm onSubmit={this.props.submit}/>
                     </Row>
                     <Row>
                         <h3>Detector blade setup</h3>

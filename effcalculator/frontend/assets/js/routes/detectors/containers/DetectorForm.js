@@ -3,50 +3,61 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-const  { DOM: { input, select, textarea } } = React
+
+const {DOM: {input, select, textarea}} = React
 import {connect} from 'react-redux';
 import {Grid, Button, Row, Col, Panel, PageHeader, small} from 'react-bootstrap'
 
 const required = value => value ? undefined : 'Required'
 const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
+    value && value.length > max ? `Must be ${max} characters or less` : undefined
 const maxLength15 = maxLength(15)
 const minValue = min => value =>
-  value && value < min ? `Must be at least ${min}` : undefined
+    value && value < min ? `Must be at least ${min}` : undefined
 const minValue1 = minValue(1)
 const maxValue = max => value =>
-  value && value > max ? `Max value is ${max}` : undefined
+    value && value > max ? `Max value is ${max}` : undefined
 const maxValue800 = maxValue(800)
 const maxValue90 = maxValue(90)
 
-const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-  <div >
-    <label>{label}</label>
+const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
     <div>
-        <Row>
-        <Col>   <input {...input} placeholder={label} type={type}/> </Col>
-      <Col> {touched && ((error && <span className={"error-message"}>{error}</span>) || (warning && <span>{warning}</span>))}</Col>
+        <label>{label}</label>
+        <div>
+            <Row>
+                <Col> <input {...input} placeholder={label} type={type}/> </Col>
+                <Col> {touched && ((error && <span className={"error-message"}>{error}</span>) || (warning &&
+                    <span>{warning}</span>))}</Col>
             </Row>
+        </div>
     </div>
-  </div>
 )
 
 
 let DetectorForm = props => {
     const {handleSubmit} = props
     return (
-        <form onSubmit={ handleSubmit }>
+        <form onSubmit={handleSubmit}>
             <div className={"form-field"}>
                 <label htmlFor="Detector name">Detector Name</label>
-                <Field name="name"  component={renderField}  type="text" validate={[ required, maxLength15 ]}/>
+                <Field name="name" component={renderField} type="text" validate={[required, maxLength15]}/>
             </div>
             <div className={"form-field"}>
                 <label htmlFor="Angle">Angle</label>
-                <Field name="angle" component={renderField} type="number" validate={[ required, minValue1, maxValue90]}/>
+                <Field name="angle" component={renderField} type="number" validate={[required, minValue1, maxValue90]}/>
             </div>
             <div className={"form-field"}>
                 <label htmlFor="Threshold">Threshold</label>
-                <Field name="threshold" component={renderField} type="number" validate={[ required, minValue1, maxValue800 ]}/>
+                <Field name="threshold" component={renderField} type="number"
+                       validate={[required, minValue1, maxValue800]}/>
+            </div>
+            <div>
+                <label htmlFor="Converter configuration">Converter configuration</label>
+                <Field name="converter" component="select">
+                    <option></option>
+                    <option value="10B4C 2.24g/cm3">10B4C 2.24g/cm3</option>
+                    <option value="10B4C 2.20g/cm3">10B4C 2.20g/cm3</option>
+                </Field>
             </div>
             <button className="submitButton" type="submit">Submit</button>
         </form>
@@ -59,9 +70,9 @@ DetectorForm = reduxForm({
 })(DetectorForm)
 
 DetectorForm = connect(
-  state => ({
-    initialValues: state.example.currentDetector // pull initial values from account reducer
-  })// bind account loading action creator
+    state => ({
+        initialValues: state.example.currentDetector // pull initial values from account reducer
+    })// bind account loading action creator
 )(DetectorForm)
 
 export default DetectorForm;

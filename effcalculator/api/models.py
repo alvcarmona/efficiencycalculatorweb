@@ -46,7 +46,7 @@ class Detector(Document):
 
     def calculate_efficiency(self):
         try:
-            d = oldDetectorModel.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, '10B4C 2.24g/cm3')
+            d = oldDetectorModel.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, self.converter)
             r = d.calculate_eff()
             self.metadata.total_efficiency = r[1]*100
             self.save()

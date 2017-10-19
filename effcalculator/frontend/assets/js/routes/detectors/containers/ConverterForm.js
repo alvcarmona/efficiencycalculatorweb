@@ -23,13 +23,10 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 
 
 let ConverterForm = props => {
-    const {handleSubmit} = props
+    const {submit} = props
     return (
-        <form onSubmit={ handleSubmit }>
-            <div>
-                <label htmlFor="Detector name">Detector Name</label>
-                <Field name="name"  component={renderField}  type="SelectList" validate={[ required, maxLength15 ]}/>
-            </div>
+        <form onSubmit={ submit }>
+
         </form>
     )
 }
@@ -47,3 +44,4 @@ ConverterForm = connect(
 
 export default DetectorForm;
 */
+export default ConverterForm;
