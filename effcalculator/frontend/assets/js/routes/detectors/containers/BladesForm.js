@@ -35,11 +35,11 @@ let BladesForm = props => {
     return (
         <form onSubmit={ handleSubmit }>
              <div>
-                <label htmlFor="Threshold">Number of blades</label>
+                <label htmlFor="Number of blades">Number of blades</label>
                 <Field name="nb" component={renderField} validate={[ required, minValue1, maxValue800 ]} type="number"/>
             </div>
             <div>
-                <label htmlFor="Angle">Converter thickness</label>
+                <label htmlFor="Converter thickness">Converter thickness (µm)</label>
                 <Field name="thickness" component={renderField} validate={[ required, minValue0, maxValue20 ]} type="number"/>
             </div>
             <button  className="submitButton" type="submit">Add blades</button>

@@ -16,7 +16,7 @@ class DetectorDetail extends Component {
         super(props);
     };
 
-    deleteDetector(){
+    deleteDetector() {
         this.props.delete(this.props.detector)
         this.props.redirect()
     }
@@ -33,7 +33,7 @@ class DetectorDetail extends Component {
                 <Link to={`/detectors/`}> To detector list </Link>
                 <Grid>
                     <Row className="show-grid">
-                        <Col xs={6} xsOffset={8}>
+                                <Col xs={6} xsOffset={8} >
                             <DropdownButton id="1" bsStyle='warning' title='Options' className="optionbutton">
                                 <LinkContainer to={"/Detectors/" + this.props.detector.id + "/edit"}>
                                     <MenuItem eventKey="1">Edit detector</MenuItem>
@@ -55,14 +55,21 @@ class DetectorDetail extends Component {
                         </PageHeader>
                     </Row>
                     <Row>
-                        <p><b>Detector name: </b>{this.props.detector.name}</p>
-                        <p>The converter material is <b>{this.props.detector.converter}</b></p>
-                        <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
+                        <Col xs={6} md={4} className={"parametercol"}><p><b>Detector name: </b>{this.props.detector.name}</p>
+                            <p>The converter material is <b>{this.props.detector.converter}</b></p>
+                            <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
+                        <p><b>Angle: </b>{this.props.detector.angle}° </p>
+                        </Col>
+
+                        <Col>
+
+                            <SketchContainer angle={this.props.detector.angle} blades={this.props.detector.blades}
+                                              detector={this.props.detector}/>
+                        </Col>
                     </Row>
                     <Row>
                         <h2> Detector sketch</h2>
-                    <SketchContainer angle={this.props.detector.angle} blades={this.props.detector.blades} detector={this.props.detector}/>
-                </Row>
+                    </Row>
                     <Row>
                         <h3>Detector blade setup</h3>
                     </Row>
@@ -81,7 +88,7 @@ class DetectorDetail extends Component {
                         <h3>Neutron beam configuration</h3>
                     </Row>
                     <Row>
-                        <p><b>Angle: </b>{this.props.detector.angle}° </p>
+
                         <Row>
                             <h4>Neutron Wavelength</h4>
                             <Row>
@@ -95,7 +102,7 @@ class DetectorDetail extends Component {
                                                     <span>Monochromatic wavelength</span>}
                                             </p>
                                         </Panel> </Col>
-                                        <Col sm={3} md={4} smOffset={1} ><h4>Wavelength list</h4> <Wavelength
+                                        <Col sm={3} md={4} smOffset={1}><h4>Wavelength list</h4> <Wavelength
                                             wave={this.props.detector.wavelength}/> </Col></div>}
                             </Row>
                         </Row>

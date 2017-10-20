@@ -43,21 +43,23 @@ let DetectorForm = props => {
                 <Field name="name" component={renderField} type="text" validate={[required, maxLength15]}/>
             </div>
             <div className={"form-field"}>
-                <label htmlFor="Angle">Angle</label>
+                <label htmlFor="Angle">Angle (°)</label>
                 <Field name="angle" component={renderField} type="number" validate={[required, minValue1, maxValue90]}/>
             </div>
             <div className={"form-field"}>
-                <label htmlFor="Threshold">Threshold</label>
+                <label htmlFor="Threshold">Threshold  (KeV)</label>
                 <Field name="threshold" component={renderField} type="number"
                        validate={[required, minValue1, maxValue800]}/>
             </div>
-            <div>
-                <label htmlFor="Converter configuration">Converter configuration</label>
-                <Field name="converter" component="select">
-                    <option></option>
-                    <option value="10B4C 2.24g/cm3">10B4C 2.24g/cm3</option>
-                    <option value="10B4C 2.20g/cm3">10B4C 2.20g/cm3</option>
-                </Field>
+            <div className={"form-field"}>
+                <label htmlFor="Converter">Converter configuration</label>
+                <Row>
+                    <Field name="converter" component="select">
+                        <option></option>
+                        <option value="10B4C 2.24g/cm3">10B4C 2.24g/cm3</option>
+                        <option value="10B4C 2.20g/cm3">10B4C 2.20g/cm3</option>
+                    </Field>
+                </Row>
             </div>
             <button className="submitButton" type="submit">Submit</button>
         </form>

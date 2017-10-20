@@ -35,7 +35,6 @@ class DetectorEfficiencyCalculator extends Component {
     }
 
     componentDidMount() {
-       // this.props.requestConverters()
         this.props.fetchData()
     }
 

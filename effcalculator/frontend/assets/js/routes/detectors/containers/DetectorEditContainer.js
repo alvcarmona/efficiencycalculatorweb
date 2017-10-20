@@ -13,7 +13,6 @@ function mapStateToProps(state) {
         data: state.example.data,
         isLoading: state.example.isLoading,
         current: state.example.currentDetector,
-        converters: state.example.converters
     }
 }
 
@@ -32,9 +31,9 @@ class DetectorEditContainer extends Component {
     }
 
     componentWillMount() {
-        if (this.props.converters.length === 0) {
+      /*  if (this.props.converters.length === 0) {
             this.props.requestConverters()
-        }
+        }*/
         if (this.props.current === undefined || this.props.current.id !== this.props.match.params.number) {
             console.log("Nuevo current")
             let i = 0;
@@ -90,18 +89,28 @@ class DetectorEditContainer extends Component {
 
 
     renderDetectorEdit() {
-        if (!this.props.current) {
+        let i = 0;
+        let current = {};
+        if (this.props.data) {
+            for (; i < this.props.data.length; i++) {
+                if (this.props.data[i].id === this.props.match.params.number) {
+                    current = this.props.data[i]
+                }
+            }
+        }
+        if (!current) {
             this.redirect()
         }
         return (
-            <DetectorEditComponent detector={this.props.current} submit={this.submit.bind(this)}
+            <DetectorEditComponent detector={current} submit={this.submit.bind(this)}
                                    addBlades={this.addBlades.bind(this)} addWavelength={this.addWavelength.bind(this)}
-                                   converters={this.props.converters}/>
+                                   />
         )
     }
 
 
     render() {
+
         return (
             <div className='DetectorDetailContainer'>
                 {this.props.isLoading ? <Spinner/> : this.renderDetectorEdit()}
