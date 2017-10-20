@@ -1,6 +1,11 @@
 
+
+
+
 Detector Efficiency Calculator
 ============
+
+Demo:  https://detectorefficiencycalculator.herokuapp.com/
 
 
 ## Synopsis
