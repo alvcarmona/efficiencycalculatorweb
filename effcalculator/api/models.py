@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from mongoengine import Document, EmbeddedDocument, fields
 import thread
 from Models.Detector_meta import Detector as oldDetectorModel
+from neutron_detector_eff_functions import Detector
 
 class Blade(EmbeddedDocument):
     backscatter = fields.FloatField(null=True)
@@ -22,7 +23,11 @@ class Plot(EmbeddedDocument):
 
 class Metadata(EmbeddedDocument):
     eff_vs_layer_thickness = fields.EmbeddedDocumentField(Plot)
+    eff_vs_bslayer_thickness = fields.EmbeddedDocumentField(Plot)
+    eff_vs_tslayer_thickness = fields.EmbeddedDocumentField(Plot)
     eff_vs_wavelength = fields.EmbeddedDocumentField(Plot)
+    eff_vs_wavelength_bs = fields.EmbeddedDocumentField(Plot)
+    eff_vs_wavelength_ts = fields.EmbeddedDocumentField(Plot)
     total_efficiency = fields.DecimalField(null=True, default=0)
     # blade_efficiency = fields.ListField(fields.FloatField)
 
