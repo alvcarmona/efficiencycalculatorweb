@@ -100,6 +100,8 @@ export function editCurrentDetector(data) {
 
 export function createDetector(data) {
     return function (dispatch) {
+        console.log(data)
+        console.log("nuevodetector")
         dispatch(requestData());
         return axios({
             url: '/api/detectors/',

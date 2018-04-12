@@ -5,7 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ENV" />
       <excludeFolder url="file://$MODULE_DIR$/effcalculator/node_modules" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 2.7.10 virtualenv at ~/workspace/efficiencycalculatorweb/ENV" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 2.7.14 (~/.pyenv/versions/2.7.14/bin/python)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

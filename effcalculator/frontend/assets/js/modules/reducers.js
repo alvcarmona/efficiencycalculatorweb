@@ -23,7 +23,7 @@ function exampleReducer(state = {
         case types.RECV_DATA:
             return Object.assign({}, state, {isLoading: false, data: action.data, error: false});
         case types.REQUEST_CONVERTERS:
-            return Object.assign({}, state, {converters:action.data});
+            return Object.assign({}, state, {converters: action.data});
         case types.RECV_NEW:
             console.log('renew')
             let newdetector = {
@@ -37,6 +37,14 @@ function exampleReducer(state = {
                 metadata: {
                     eff_vs_layer_thickness: {},
                     eff_vs_wavelength: {},
+                    eff_vs_bslayer_thickness: {},
+                    eff_vs_tslayer_thickness: {},
+                    eff_vs_wavelength_bs: {},
+                    eff_vs_wavelength_ts: {},
+                    phs_alpha_06: {},
+                    phs_alpha_94: {},
+                    phs_li_06: {},
+                    phs_li_94: {},
                     total_efficiency: 0
                 }
             }

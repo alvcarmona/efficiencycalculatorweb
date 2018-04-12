@@ -15,10 +15,40 @@ class DetectorSerializer(mongoserializers.DocumentSerializer):
                 "x": [],
                 "y": []
             },
-            "eff_vs_layer_thickness": {
+            "eff_vs_bslayer_thickness": {
                 "x": [],
                 "y": []
             },
+            "eff_vs_tslayer_thickness": {
+                "x": [],
+                "y": []
+            },
+            "eff_vs_wavelength": {
+                "x": [],
+                "y": []
+            },
+            "eff_vs_wavelength_bs": {
+                "x": [],
+                "y": []
+            },
+            "eff_vs_wavelength_ts": {
+                "x": [],
+                "y": []
+            },"phs_alpha_06": {
+                "x": [],
+                "y": []
+            },"phs_alpha_94": {
+                "x": [],
+                "y": []
+            },"phs_li_06": {
+                "x": [],
+                "y": []
+            },
+            "phs_li_94": {
+                "x": [],
+                "y": []
+            },
+
             "total_efficiency": 0
         }})
         return self
@@ -29,8 +59,9 @@ class DetectorSerializer(mongoserializers.DocumentSerializer):
        # d.plot_blade_meta(r)
         d.plot_eff_vs_wave_meta()
         d.plot_thick_vs_eff_meta()
+
         detector = Detector.objects(id=id).first()
-        detector.metadata.total_efficiency = r[1]*100
+        detector.metadata.total_efficiency = r[1]
         detector.metadata.eff_vs_wavelength.x = d.metadata.get('effVsWave')[0].tolist()
         detector.metadata.eff_vs_wavelength.y = d.metadata.get('effVsWave')[1]
         detector.metadata.eff_vs_layer_thickness.x = d.metadata.get('thickVsEff')[0].tolist()

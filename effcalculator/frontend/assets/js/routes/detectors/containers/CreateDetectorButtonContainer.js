@@ -23,6 +23,7 @@ class CreateDetectorButtonContainer extends Component {
     }
 
     submit = function (values) {
+        console.log("submmit")
         let newDetector = {
             name: values.name,
             angle: values.angle,
@@ -31,9 +32,17 @@ class CreateDetectorButtonContainer extends Component {
             converter: "10B4C 2.24g/cm3",
             wavelength: [],
             metadata:{
-                eff_vs_layer_thickness:{},
-            eff_vs_wavelength:{},
-            total_efficiency:0
+                eff_vs_layer_thickness: {},
+                eff_vs_wavelength: {},
+                eff_vs_bslayer_thickness: {},
+                eff_vs_tslayer_thickness: {},
+                eff_vs_wavelength_bs: {},
+                eff_vs_wavelength_ts: {},
+                phs_alpha_06: {},
+                phs_alpha_94: {},
+                phs_li_06: {},
+                phs_li_94: {},
+                total_efficiency: 0
             }
         }
         this.props.createDetector(newDetector)

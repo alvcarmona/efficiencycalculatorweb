@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 from mongoengine import Document, EmbeddedDocument, fields
 import thread
-from Models.Detector_meta import Detector as oldDetectorModel
-from neutron_detector_eff_functions import Detector
+#from Models.Detector_meta import Detector as oldDetectorModel
+from neutron_detector_eff_functions import Detector as oldDetectorModel
 
 class Blade(EmbeddedDocument):
     backscatter = fields.FloatField(null=True)
@@ -29,7 +29,10 @@ class Metadata(EmbeddedDocument):
     eff_vs_wavelength_bs = fields.EmbeddedDocumentField(Plot)
     eff_vs_wavelength_ts = fields.EmbeddedDocumentField(Plot)
     total_efficiency = fields.DecimalField(null=True, default=0)
-    # blade_efficiency = fields.ListField(fields.FloatField)
+    phs_alpha_06 = fields.EmbeddedDocumentField(Plot)
+    phs_alpha_94 = fields.EmbeddedDocumentField(Plot)
+    phs_li_06 = fields.EmbeddedDocumentField(Plot)
+    phs_li_94 = fields.EmbeddedDocumentField(Plot)
 
 
 class Detector(Document):
@@ -40,6 +43,7 @@ class Detector(Document):
     blades = fields.ListField(fields.EmbeddedDocumentField(Blade))
     wavelength = fields.ListField(fields.EmbeddedDocumentField(Wavelength))
     metadata = fields.EmbeddedDocumentField(Metadata)
+    single = fields.BooleanField()
 
     def clean(self, **kwargs):
         if not self._created:
@@ -51,8 +55,19 @@ class Detector(Document):
 
     def calculate_efficiency(self):
         try:
-            d = oldDetectorModel.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, self.converter)
+            d = oldDetectorModel.Detector.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, self.converter)
             r = d.calculate_eff()
+            d.calculate_phs()
+            phs = d.metadata.get('phs')
+            self.metadata.phs_alpha_06.x = phs[2].tolist()
+            self.metadata.phs_alpha_06.y = phs[4].tolist()
+            self.metadata.phs_alpha_94.x = phs[0].tolist()
+            self.metadata.phs_alpha_94.y = phs[4].tolist()
+            self.metadata.phs_li_06.x = phs[3].tolist()
+            self.metadata.phs_li_06.y = phs[4].tolist()
+            self.metadata.phs_li_94.x = phs[1].tolist()
+            self.metadata.phs_li_94.y = phs[4].tolist()
+
             self.metadata.total_efficiency = r[1]*100
             self.save()
             print 'efficiency calculated and saved'
