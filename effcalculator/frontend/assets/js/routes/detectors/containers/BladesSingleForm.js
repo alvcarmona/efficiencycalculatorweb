@@ -33,16 +33,10 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
 )
 
 
-let BladesForm = props => {
+let BladesSingleForm = props => {
     const {handleSubmit} = props
-    console.log(props)
     return (
-
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="Number of blades">Number of blades</label>
-                <Field name="nb" component={renderField} validate={[required, minValue1, maxValue800]} type="number"/>
-            </div>
             <div>
                 <label htmlFor="Converter thickness">Converter thickness (µm)</label>
                 <Field name="thickness" component={renderField} validate={[required, minValue0, maxValue20]}
@@ -58,17 +52,10 @@ let BladesForm = props => {
     )
 }
 
-BladesForm = reduxForm({
+BladesSingleForm = reduxForm({
     // a unique name for the form
-    form: 'blades'
-})(BladesForm)
+    form: 'bladeSingle'
+})(BladesSingleForm)
 
-/*
-BladesForm = connect(
-  state => ({
-    initialValues: state.example.currentDetector.blades // pull initial values from account reducer
-  })// bind account loading action creator
-)(BladesForm)
-/
- */
-export default BladesForm;
+
+export default BladesSingleForm;

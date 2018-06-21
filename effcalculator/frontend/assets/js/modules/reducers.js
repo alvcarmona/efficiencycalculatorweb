@@ -30,6 +30,7 @@ function exampleReducer(state = {
                 angle: action.data.angle,
                 threshold: action.data.threshold,
                 name: action.data.name,
+                single: action.data.single,
                 id: action.data.id,
                 blades: action.data.blades,
                 converter: action.data.converter,
@@ -59,7 +60,7 @@ function exampleReducer(state = {
         case types.REQ_DATA:
             return Object.assign({}, state, {isLoading: true, error: false});
         case types.SET_CURRENT:
-            return Object.assign({}, state, {currentDetector: action.currentDetector});
+            return Object.assign({}, state, {currentDetector: action.currentDetector,isLoading: false});
         case types.OPEN_MODAL:
             return Object.assign({}, state, {showModal: true});
         case types.CLOSE_MODAL:

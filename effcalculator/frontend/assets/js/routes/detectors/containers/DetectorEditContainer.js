@@ -65,9 +65,10 @@ class DetectorEditContainer extends Component {
         let blades = [];
         let i = 0;
         for (; i < values.nb; i++) {
-            blades.push({backscatter: parseFloat(values.thickness), substrate: 0, transmission: 0})
+            blades.push({backscatter: parseFloat(values.thickness), substrate: parseFloat(values.subThickness), transmission: 0})
         }
         this.props.current.blades = blades
+        this.props.current.single = values.single
         console.log(this.props.current)
         this.props.setCurrentDetector(this.props.current)
         this.props.editCurrentDetector(this.props.current)
@@ -86,7 +87,16 @@ class DetectorEditContainer extends Component {
         this.props.history.push('/detectors/' + this.props.match.params.number.toString())
 
     }
-
+    handleOptionChange= (changeEvent) =>{
+      this.setState({
+        selectedOption: changeEvent.target.value
+      });
+    }
+    handleOptionChange= function (changeEvent) {
+      this.setState({
+        selectedOption: changeEvent.target.value
+      });
+    }
 
     renderDetectorEdit() {
         let i = 0;

@@ -5,6 +5,7 @@ import BladesForm from '../containers/BladesForm'
 import WavelengthForm from '../containers/WavelengthForm'
 import {BladeTable} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
+import BladeHandler from'../containers/BladeHandler'
 import {Grid, Row, Col, Panel, small, PageHeader} from 'react-bootstrap'
 
 
@@ -40,34 +41,13 @@ class DetectorEditComponent extends Component {
                                 <Row>
                                 <Panel header='Blade information' bsStyle="info">
                                     <p>This detector configuration contains {this.props.detector.blades.length > 0 ?
-                                        <span> {this.props.detector.blades.length} B10 double coated blades whithout substrate</span> :
+                                        <span> {this.props.detector.blades.length} B10 double coated blades without substrate</span> :
                                         <span>no blades</span>}
                                     </p>
                                 </Panel>
                                     </Row>
                                 <Row>
-                                    <form>
-                                        <div className="radio">
-                                          <label>
-                                            <input type="radio" value="option1" checked={true} />
-                                            Option 1
-                                          </label>
-                                        </div>
-                                        <div className="radio">
-                                          <label>
-                                            <input type="radio" value="option2" />
-                                            Option 2
-                                          </label>
-                                        </div>
-                                        <div className="radio">
-                                          <label>
-                                            <input type="radio" value="option3" />
-                                            Option 3
-                                          </label>
-                                        </div>
-                                  </form>
-                                <BladesForm onSubmit={this.props.addBlades}/>
-
+                                    <BladeHandler onSubmit={this.props.addBlades}/>
                                 </Row>
                             </Col>
                         </div>

@@ -68,7 +68,7 @@ class Detector(Document):
             self.metadata.phs_li_94.x = phs[1].tolist()
             self.metadata.phs_li_94.y = phs[4].tolist()
 
-            self.metadata.total_efficiency = r[1]*100
+            self.metadata.total_efficiency = r[1]
             self.save()
             print 'efficiency calculated and saved'
             self.calculate_metadata_eff_vs_wavelength(detector=d)

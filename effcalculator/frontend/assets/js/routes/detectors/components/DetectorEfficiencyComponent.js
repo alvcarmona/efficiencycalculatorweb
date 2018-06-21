@@ -83,7 +83,7 @@ class EffVsThicknessPlot extends Component {
 
     componentDidMount(){
         if(this.refs.chart){
-             let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data,Number(this.props.detector.metadata.total_efficiency)/100)
+             let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data,Number(this.props.detector.metadata.total_efficiency))
         let i = this.refs.chart.chart_instance.data.datasets[0].data.indexOf(closestValue)
         this.refs.chart.chart_instance.data.datasets[0].backgroundColor[i] =  "red";
         this.refs.chart.chart_instance.data.datasets[0].pointRadius[i] = 3
@@ -92,6 +92,10 @@ class EffVsThicknessPlot extends Component {
        }
 
     constructor(props) {
+        let xlabels = []
+        props.detector.metadata.eff_vs_layer_thickness.x.forEach((element)=>{
+            xlabels.push(Math.round(element * 100) / 100)
+        })
         super(props);
         let colors=[]
         let radius = []
@@ -101,7 +105,7 @@ class EffVsThicknessPlot extends Component {
         }
         this.state = {
             data: {
-                labels: this.props.detector.metadata.eff_vs_layer_thickness.x,
+                labels: xlabels,
                 datasets: [
                     {
                         label: 'EffVsThicknessPlot',
@@ -171,7 +175,7 @@ class EffVsWavelengthPlot extends Component {
 
     componentDidMount(){
         if(this.refs.chart) {
-            let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data, Number(this.props.detector.metadata.total_efficiency) / 100)
+            let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data, Number(this.props.detector.metadata.total_efficiency))
             let i = this.refs.chart.chart_instance.data.datasets[0].data.indexOf(closestValue)
             this.refs.chart.chart_instance.data.datasets[0].backgroundColor[i] = "red";
             this.refs.chart.chart_instance.data.datasets[0].pointRadius[i] = 3
@@ -187,9 +191,13 @@ class EffVsWavelengthPlot extends Component {
             colors.push('#8cbbff')
             radius.push(0.5)
         }
+        let xlabels = []
+        props.detector.metadata.eff_vs_wavelength.x.forEach((element)=>{
+            xlabels.push(Math.round(element * 100) / 100)
+        })
         this.state = {
             data: {
-                labels: this.props.detector.metadata.eff_vs_wavelength.x,
+                labels: xlabels,
                 datasets: [
                     {
                         label: 'EffVsWavelengthPlot',
