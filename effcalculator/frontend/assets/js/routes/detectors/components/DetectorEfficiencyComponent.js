@@ -103,12 +103,8 @@ class EffVsThicknessPlot extends Component {
             colors.push('#8cbbff')
             radius.push(0.5)
         }
-        this.state = {
-            data: {
-                labels: xlabels,
-                datasets: [
-                    {
-                        label: 'EffVsThicknessPlot',
+        let dataset = [ {
+                        label: 'Total eff',
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: colors,
@@ -128,8 +124,58 @@ class EffVsThicknessPlot extends Component {
                         radius: radius,
                         pointHitRadius: 1,
                         data: this.props.detector.metadata.eff_vs_layer_thickness.y
-                    }
-                ]
+                    }]
+        if (props.detector.single){
+            console.log('single layer dataset')
+            dataset.push({
+                        label: 'Transmission eff',
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: '#ff3c79',
+                        borderColor: '#ff3c79',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: '#ff3c79',
+                        pointBackgroundColor: '#ff3c79',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#ff3c79',
+                        pointHoverBorderColor: '#ff3c79',
+                        pointHoverBorderWidth: 2,
+                        pointRadius: radius,
+                        radius: radius,
+                        pointHitRadius: 1,
+                        data: this.props.detector.metadata.eff_vs_tslayer_thickness.y
+                    },
+                    {
+                        label: 'Backscattering eff',
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: '#bc1aff',
+                        borderColor: '#bc1aff',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: '#bc1aff',
+                        pointBackgroundColor: '#bc1aff',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#bc1aff',
+                        pointHoverBorderColor: '#bc1aff',
+                        pointHoverBorderWidth: 2,
+                        pointRadius: radius,
+                        radius: radius,
+                        pointHitRadius: 1,
+                        data: this.props.detector.metadata.eff_vs_bslayer_thickness.y
+                    })
+        }
+        this.state = {
+            data: {
+                labels: xlabels,
+                datasets: dataset
             },
             options: {
                 showLines: true,

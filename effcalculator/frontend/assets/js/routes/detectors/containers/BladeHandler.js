@@ -38,7 +38,7 @@ class BladeHandler extends React.Component {
           <BladesForm onSubmit={this.state.onSubmit} initialValues={{'single':false}}/>
       );
     } else {
-      return  <div> <p>single not available right now</p></div>
+      return  <BladesForm onSubmit={this.state.onSubmit} initialValues={{'single':true, 'nb':1}}/>
     }
   }
 
@@ -55,14 +55,8 @@ class BladeHandler extends React.Component {
               </button>
           </div>
       );
-    } else if (this.state.mode ==='single'){
-      return (
-          <button onClick={this.handleSave}>
-            Save
-          </button>
-      );
     } else {
-        return (
+      return (
           <button onClick={this.handleSave}>
             Cancel
           </button>

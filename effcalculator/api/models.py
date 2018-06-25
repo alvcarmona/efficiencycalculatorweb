@@ -55,7 +55,8 @@ class Detector(Document):
 
     def calculate_efficiency(self):
         try:
-            d = oldDetectorModel.Detector.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,False, self.converter)
+            print ('C eff model')
+            d = oldDetectorModel.Detector.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,self.single, self.converter)
             r = d.calculate_eff()
             d.calculate_phs()
             phs = d.metadata.get('phs')
@@ -93,8 +94,13 @@ class Detector(Document):
     def calculate_metadata_eff_vs_layer_thickness(self,detector):
         try:
             detector.plot_thick_vs_eff_meta()
+            if detector.single:
+                self.metadata.eff_vs_bslayer_thickness.x = detector.metadata.get('thickVsEffBack')[0].tolist()
+                self.metadata.eff_vs_bslayer_thickness.y = detector.metadata.get('thickVsEffBack')[1].tolist()
+                self.metadata.eff_vs_tslayer_thickness.x = detector.metadata.get('thickVsEffTrans')[0].tolist()
+                self.metadata.eff_vs_tslayer_thickness.y = detector.metadata.get('thickVsEffTrans')[1].tolist()
             self.metadata.eff_vs_layer_thickness.x = detector.metadata.get('thickVsEff')[0].tolist()
-            self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1]
+            self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1].tolist()
             self.save()
             print 'metadata thick calculated and saved'
             thread.exit()

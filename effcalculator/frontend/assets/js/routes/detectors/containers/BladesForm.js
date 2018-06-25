@@ -39,10 +39,18 @@ let BladesForm = props => {
     return (
 
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="Number of blades">Number of blades</label>
-                <Field name="nb" component={renderField} validate={[required, minValue1, maxValue800]} type="number"/>
-            </div>
+            { props.initialValues.single
+                ?
+                <div>
+                    <p> Single layer configuration </p>
+                </div>
+            :   <div>
+                    <p> Multi-layer configuration</p>
+                    <label htmlFor="Number of blades">Number of blades</label>
+                    <Field name="nb" component={renderField} validate={[required, minValue1, maxValue800]} type="number"/>
+                </div>
+            }
+
             <div>
                 <label htmlFor="Converter thickness">Converter thickness (µm)</label>
                 <Field name="thickness" component={renderField} validate={[required, minValue0, maxValue20]}
