@@ -241,15 +241,12 @@ class EffVsWavelengthPlot extends Component {
         props.detector.metadata.eff_vs_wavelength.x.forEach((element)=>{
             xlabels.push(Math.round(element * 100) / 100)
         })
-        this.state = {
-            data: {
-                labels: xlabels,
-                datasets: [
-                    {
-                        label: 'EffVsWavelengthPlot',
+        console.log('plotwave')
+        let dataset = [ {
+                        label: 'Total eff',
                         fill: false,
-                        borderWidth: 1,
-                       backgroundColor: colors,
+                        lineTension: 0.1,
+                        backgroundColor: colors,
                         borderColor: '#8cbbff',
                         borderCapStyle: 'butt',
                         borderDash: [],
@@ -266,8 +263,58 @@ class EffVsWavelengthPlot extends Component {
                         radius: radius,
                         pointHitRadius: 1,
                         data: this.props.detector.metadata.eff_vs_wavelength.y
-                    }
-                ]
+                    }]
+        if (props.detector.single){
+            console.log('single layer dataset')
+            dataset.push({
+                        label: 'Transmission eff',
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: '#ff3c79',
+                        borderColor: '#ff3c79',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: '#ff3c79',
+                        pointBackgroundColor: '#ff3c79',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#ff3c79',
+                        pointHoverBorderColor: '#ff3c79',
+                        pointHoverBorderWidth: 2,
+                        pointRadius: radius,
+                        radius: radius,
+                        pointHitRadius: 1,
+                        data: this.props.detector.metadata.eff_vs_wavelength_ts.y
+                    },
+                    {
+                        label: 'Backscattering eff',
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: '#bc1aff',
+                        borderColor: '#bc1aff',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: '#bc1aff',
+                        pointBackgroundColor: '#bc1aff',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#bc1aff',
+                        pointHoverBorderColor: '#bc1aff',
+                        pointHoverBorderWidth: 2,
+                        pointRadius: radius,
+                        radius: radius,
+                        pointHitRadius: 1,
+                        data: this.props.detector.metadata.eff_vs_wavelength_bs.y
+                    })
+        }
+        this.state = {
+            data: {
+                labels: xlabels,
+                datasets: dataset
             },
             options: {
                 showLines: true,

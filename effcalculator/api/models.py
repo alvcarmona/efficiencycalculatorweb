@@ -83,6 +83,11 @@ class Detector(Document):
             detector.plot_eff_vs_wave_meta()
             self.metadata.eff_vs_wavelength.x = detector.metadata.get('effVsWave')[0].tolist()
             self.metadata.eff_vs_wavelength.y = detector.metadata.get('effVsWave')[1]
+            if detector.single:
+                self.metadata.eff_vs_wavelength_bs.x = detector.metadata.get('effVsWaveBs')[0].tolist()
+                self.metadata.eff_vs_wavelength_bs.y = detector.metadata.get('effVsWaveBs')[1]
+                self.metadata.eff_vs_wavelength_ts.x = detector.metadata.get('effVsWaveTs')[0].tolist()
+                self.metadata.eff_vs_wavelength_ts.y = detector.metadata.get('effVsWaveTs')[1]
             self.save()
             print 'metadata wave calculated and saved'
             self.calculate_metadata_eff_vs_layer_thickness(detector=detector)
@@ -99,8 +104,11 @@ class Detector(Document):
                 self.metadata.eff_vs_bslayer_thickness.y = detector.metadata.get('thickVsEffBack')[1].tolist()
                 self.metadata.eff_vs_tslayer_thickness.x = detector.metadata.get('thickVsEffTrans')[0].tolist()
                 self.metadata.eff_vs_tslayer_thickness.y = detector.metadata.get('thickVsEffTrans')[1].tolist()
-            self.metadata.eff_vs_layer_thickness.x = detector.metadata.get('thickVsEff')[0].tolist()
-            self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1].tolist()
+                self.metadata.eff_vs_layer_thickness.x = detector.metadata.get('thickVsEff')[0].tolist()
+                self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1].tolist()
+            else :
+                self.metadata.eff_vs_layer_thickness.x = detector.metadata.get('thickVsEff')[0].tolist()
+                self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1]
             self.save()
             print 'metadata thick calculated and saved'
             thread.exit()

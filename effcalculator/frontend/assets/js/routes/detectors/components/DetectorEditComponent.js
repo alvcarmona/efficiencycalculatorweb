@@ -41,7 +41,7 @@ class DetectorEditComponent extends Component {
                                 <Row>
                                 <Panel header='Blade information' bsStyle="info">
                                     <p>This detector configuration contains {this.props.detector.blades.length > 0 ?
-                                        <span> {this.props.detector.blades.length} B10 double coated blades without substrate</span> :
+                                        <span> {this.props.detector.blades.length} B10 {this.props.detector.single? 'single' : 'double'} coated blades without substrate</span> :
                                         <span>no blades</span>}
                                     </p>
                                 </Panel>
