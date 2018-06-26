@@ -43,6 +43,25 @@ class DetectorViewSet(viewsets.ModelViewSet, mixins.UpdateModelMixin, mixins.Des
         else:
             return Response(detector.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @detail_route(methods=['put'])
+    def calculate_efficiency(self, request, id):
+        detector = self.get_serializer(data=request.data)
+        if detector.is_valid():
+            detector = detector.calculate_efficiency(id)
+            return Response(detector.to_json(), status=status.HTTP_200_OK)
+        else:
+            return Response(detector.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @detail_route(methods=['put'])
+    def optimizeDiffThickness(self,request, *args, **kwargs):
+        self.get_serializer(data=request.data)
+        detector = self.get_object()
+        detector.optimizeWave()
+        return Response(detector.to_json(), status=status.HTTP_200_OK)
+
+    @detail_route(methods=['put'])
+    def optimizeWave(self,request, *args, **kwargs):
+        return Response(request, status=status.HTTP_200_OK)
 
 class converterView(APIView):
     def get(self, request, *args, **kw):

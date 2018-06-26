@@ -11,7 +11,9 @@ import {
     deleteDetector,
     setMetadata,
     fetchData,
-    editCurrentDetector
+    editCurrentDetector,
+    optimizeWave,
+    optimizeDiffThickness
 } from '../../../modules/actions/index';
 import {bindActionCreators} from 'redux';
 
@@ -25,7 +27,9 @@ function mapDispatchToProps(dispatch) {
         deleteDetector,
         setMetadata,
         fetchData,
-        editCurrentDetector
+        editCurrentDetector,
+        optimizeWave,
+        optimizeDiffThickness
     }, dispatch)
 }
 
@@ -68,7 +72,29 @@ class DetectorEfficiencyContainer extends Component {
         this.props.setCurrentDetector(this.props.current)
         this.props.editCurrentDetector(this.props.current)
         this.props.history.push('/detectors/' + this.props.match.params.number.toString())
+    }
 
+    optimizeDetectorWavelength = () => {
+        // print the form values to the console
+        console.log("optimize detector Wavelength")
+        this.props.optimizeWave(this.props.current)
+       /* let index = this.indexOfMax(this.props.current.metadata.eff_vs_layer_thickness.y);
+        let optival = this.props.current.metadata.eff_vs_layer_thickness.x[index]
+        let blades = [];
+        let i = 0;
+        for (; i < this.props.current.blades.length; i++) {
+            blades.push({backscatter: optival, substrate: 0, transmission: 0})
+        }
+        this.props.current.blades = blades
+        console.log(this.props.current)
+        this.props.setCurrentDetector(this.props.current)
+        this.props.editCurrentDetector(this.props.current)
+        this.props.history.push('/detectors/' + this.props.match.params.number.toString())*/
+    }
+    optimizeDetectorDiffThickness = () => {
+        // print the form values to the console
+        console.log("optimize detector Diff thickness")
+        this.props.optimizeDiffThickness(this.props.current)
     }
 
     componentWillMount() {
@@ -109,7 +135,9 @@ class DetectorEfficiencyContainer extends Component {
         if (Object.keys(current).length === 0) {
             this.redirect()
         } else {
-            return (<DetectorEfficiencyComponent optimizeDetectorThickness={this.optimizeDetectorThickness}
+            return (<DetectorEfficiencyComponent optimizeDetectorWavelength={this.optimizeDetectorWavelength}
+                                                 optimizeDetectorDiffThickness={this.optimizeDetectorDiffThickness}
+                                                 optimizeDetectorThickness={this.optimizeDetectorThickness}
                                                  delete={this.props.deleteDetector} detector={current}
                                                  redirect={this.redirect.bind(this)}
                                                  setMetadata={this.props.setMetadata}/>)

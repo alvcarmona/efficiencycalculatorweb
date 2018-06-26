@@ -408,6 +408,14 @@ class DetectorEfficiencyComponent extends Component {
                             <Row>
                                 <Button bsStyle="primary" onClick={this.props.optimizeDetectorThickness}> Optimize converter thickness</Button>
                             </Row>
+                            {this.props.detector.single?<div></div> :<Row>
+                                <Button bsStyle="primary" onClick={this.props.optimizeDetectorDiffThickness}> Optimize different thickness</Button>
+                            </Row>}
+                            {/*
+                            <Row>
+                                <Button bsStyle="primary" onClick={this.props.optimizeDetectorWavelength}> Optimize wavelength</Button>
+                            </Row>
+                            */}
                         </Col>
                         <Col xs={6}>
                             <Row>

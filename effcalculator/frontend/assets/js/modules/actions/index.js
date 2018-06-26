@@ -198,3 +198,43 @@ export function setMetadata(data) {
             })
     }
 };
+
+export function optimizeDiffThickness(data) {
+    return function (dispatch) {
+        dispatch(requestData());
+        return axios({
+            url: '/api/detectors/' + data.id + '/optimizeDiffThickness/',
+            timeout: 90000,
+            method: 'put',
+            responseType: 'json',
+            data: data
+        })
+            .then(function (response) {
+                dispatch(receiveMeta(response.data));
+            })
+            .catch(function (response) {
+                console.log("SetMetadata Error")
+                //dispatch(receiveError(response.data));
+            })
+    }
+};
+
+export function optimizeWave(data) {
+    return function (dispatch) {
+        dispatch(requestData());
+        return axios({
+            url: '/api/detectors/' + data.id + '/optimizeWave/',
+            timeout: 90000,
+            method: 'put',
+            responseType: 'json',
+            data: data
+        })
+            .then(function (response) {
+                dispatch(receiveMeta(response.data));
+            })
+            .catch(function (response) {
+                console.log("SetMetadata Error")
+                //dispatch(receiveError(response.data));
+            })
+    }
+};

@@ -67,6 +67,10 @@ function exampleReducer(state = {
             return Object.assign({}, state, {showModal: false});
         case types.DELETE_ERROR:
             return Object.assign({}, state, {isLoading: false, data: action.data, error: true});
+        case types.OPTIMIZE_WAVE:
+            return Object.assign({}, state, {isLoading: false, currentDetector: action.data, error: false});
+        case types.OPTIMIZE_DIFF:
+            return Object.assign({}, state, {isLoading: false, currentDetector: action.data, error: false});
         case types.RECV_META:
             let newdata2 = []
             for (let i = 0; i < state.data.length; i++) {

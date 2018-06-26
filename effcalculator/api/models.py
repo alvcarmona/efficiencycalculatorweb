@@ -96,6 +96,33 @@ class Detector(Document):
             import traceback
             print traceback.format_exc()
 
+    def optimizeWave(self):
+        try:
+            d = oldDetectorModel.Detector.build_detector(len(self.blades), self.blades[0]['backscatter'], 0,
+                                                         [[self.wavelength[0]['angstrom'], 100]], self.angle,
+                                                         self.threshold, self.single, self.converter)
+            d.optimize_thickness_diff()
+            for i in range(0,len(d.blades)):
+                self.blades[i].backscatter = d.blades[i].backscatter
+            self.save()
+        except Exception:
+            import traceback
+            print traceback.format_exc()
+
+
+    def oftimizeDiffThickness(self):
+        try:
+            print('optimizedifthick model')
+            d = oldDetectorModel.Detector.build_detector(len(self.blades), self.blades[0]['backscatter'], 0,
+                                                         [[self.wavelength[0]['angstrom'], 100]], self.angle,
+                                                         self.threshold, self.single, self.converter)
+            d.optimize_thickness_diff()
+            self.blades = d.blades
+            self.save()
+        except Exception:
+            import traceback
+            print traceback.format_exc()
+
     def calculate_metadata_eff_vs_layer_thickness(self,detector):
         try:
             detector.plot_thick_vs_eff_meta()
