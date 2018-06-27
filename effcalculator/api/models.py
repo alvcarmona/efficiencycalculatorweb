@@ -58,7 +58,7 @@ class Detector(Document):
             print ('C eff model')
             d = oldDetectorModel.Detector.build_detector(len(self.blades),self.blades[0]['backscatter'],0,[[self.wavelength[0]['angstrom'],100]], self.angle, self.threshold,self.single, self.converter)
             r = d.calculate_eff()
-            d.calculate_phs()
+            ''' d.calculate_phs()
             phs = d.metadata.get('phs')
             self.metadata.phs_alpha_06.x = phs[2].tolist()
             self.metadata.phs_alpha_06.y = phs[4].tolist()
@@ -67,7 +67,7 @@ class Detector(Document):
             self.metadata.phs_li_06.x = phs[3].tolist()
             self.metadata.phs_li_06.y = phs[4].tolist()
             self.metadata.phs_li_94.x = phs[1].tolist()
-            self.metadata.phs_li_94.y = phs[4].tolist()
+            self.metadata.phs_li_94.y = phs[4].tolist()'''
             self.metadata.total_efficiency = r[1]
             self.save()
             print 'efficiency calculated and saved'
