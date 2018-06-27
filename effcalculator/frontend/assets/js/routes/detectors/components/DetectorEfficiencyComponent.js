@@ -126,7 +126,6 @@ class EffVsThicknessPlot extends Component {
                         data: this.props.detector.metadata.eff_vs_layer_thickness.y
                     }]
         if (props.detector.single){
-            console.log('single layer dataset')
             dataset.push({
                         label: 'Transmission eff',
                         fill: false,
@@ -241,7 +240,6 @@ class EffVsWavelengthPlot extends Component {
         props.detector.metadata.eff_vs_wavelength.x.forEach((element)=>{
             xlabels.push(Math.round(element * 100) / 100)
         })
-        console.log('plotwave')
         let dataset = [ {
                         label: 'Total eff',
                         fill: false,
@@ -265,7 +263,6 @@ class EffVsWavelengthPlot extends Component {
                         data: this.props.detector.metadata.eff_vs_wavelength.y
                     }]
         if (props.detector.single){
-            console.log('single layer dataset')
             dataset.push({
                         label: 'Transmission eff',
                         fill: false,
@@ -352,6 +349,148 @@ class EffVsWavelengthPlot extends Component {
     }
 }
 
+class PhsPlot extends Component{
+
+    componentDidMount(){
+
+    }
+
+    constructor(props) {
+        super(props);
+        let xlabels = []
+        console.log('phs plot')
+        props.detector.metadata.phs_alpha_94.x.forEach((element)=>{
+            xlabels.push(Math.round(element * 100) / 100)
+        })
+        let dataset = [ ]
+            dataset.push({
+                        label: 'Li 06',
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: '#ff3c79',
+                        borderColor: '#ff3c79',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: '#ff3c79',
+                        pointBackgroundColor: '#ff3c79',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#ff3c79',
+                        pointHoverBorderColor: '#ff3c79',
+                        pointHoverBorderWidth: 2,
+                       // pointRadius: radius,
+                        //radius: radius,
+                        pointHitRadius: 1,
+                        data: props.detector.metadata.phs_li_06.y
+                    },
+                    {
+                        label: 'Li 94',
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: '#bc1aff',
+                        borderColor: '#bc1aff',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: '#bc1aff',
+                        pointBackgroundColor: '#bc1aff',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#bc1aff',
+                        pointHoverBorderColor: '#bc1aff',
+                        pointHoverBorderWidth: 2,
+                        //pointRadius: radius,
+                        //radius: radius,
+                        pointHitRadius: 1,
+                        data: props.detector.metadata.phs_li_94.y
+                    },
+                {
+                        label: 'alpha 06',
+                        fill: false,
+                        lineTension: 0.1,
+                        //backgroundColor: '#bc1aff',
+                        //borderColor: '#bc1aff',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                       // pointBorderColor: '#bc1aff',
+                       // pointBackgroundColor: '#bc1aff',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                       // pointHoverBackgroundColor: '#bc1aff',
+                       // pointHoverBorderColor: '#bc1aff',
+                        pointHoverBorderWidth: 2,
+                        //pointRadius: radius,
+                        //radius: radius,
+                        pointHitRadius: 1,
+                        //data: props.detector.metadata.phs_alpha_06.y
+                    },
+                {
+                        label: 'alpha 94',
+                        fill: false,
+                        lineTension: 0.1,
+                        //backgroundColor: '#bc1aff',
+                        //borderColor: '#bc1aff',
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        //pointBorderColor: '#bc1aff',
+                        //pointBackgroundColor: '#bc1aff',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        //pointHoverBackgroundColor: '#bc1aff',
+                        //pointHoverBorderColor: '#bc1aff',
+                        pointHoverBorderWidth: 2,
+                       // pointRadius: radius,
+                       // radius: radius,
+                        pointHitRadius: 1,
+                        data: props.detector.metadata.phs_alpha_94.y
+                    })
+        this.state = {
+            data: {
+                labels: xlabels,
+                datasets: dataset
+            },
+            options: {
+                showLines: true,
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'X'
+                        },
+                        position: 'bottom',
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 1,
+                            max: 10
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Y'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            max: 1
+                        }
+                    }]
+                }
+            }
+        }
+    }
+
+    render() {
+        return <Line ref='chart' data={this.state.data} width={400} height={300}/>
+    }
+}
 
 class DetectorEfficiencyComponent extends Component {
 
@@ -424,6 +563,9 @@ class DetectorEfficiencyComponent extends Component {
                             <Row className="plotRow">
                                 <EffVsWavelengthPlot detector={this.props.detector}/>
                             </Row>
+                            {/* <Row>
+                                <PhsPlot detector={this.props.detector}/>
+                             </Row> */}
                         </Col>
                     </Row>
                 </Grid>

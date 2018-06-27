@@ -68,7 +68,6 @@ class Detector(Document):
             self.metadata.phs_li_06.y = phs[4].tolist()
             self.metadata.phs_li_94.x = phs[1].tolist()
             self.metadata.phs_li_94.y = phs[4].tolist()
-
             self.metadata.total_efficiency = r[1]
             self.save()
             print 'efficiency calculated and saved'
