@@ -21,6 +21,20 @@ class DetectorDetail extends Component {
         this.props.redirect()
     }
 
+
+    componentDidMount() {
+        const obj = {name:this.props.detector.name, angle:this.props.detector.angle,converter:this.props.detector.converter,single:this.props.detector.single,threshold:this.props.detector.threshold, blades:this.props.detector.blades,wavelength:this.props.detector.wavelength};
+        var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+        var a = document.createElement('a');
+        a.href = 'data:' + data;
+            a.download = 'detector.json';
+        a.innerHTML = 'Export';
+
+        var container = document.getElementById('download');
+        container.appendChild(a);
+    }
+
     render() {
         if (!this.props.detector) {
             return (
@@ -28,12 +42,13 @@ class DetectorDetail extends Component {
                     <Link to={`/detectors/`}>atras</Link>
                 </div>)
         }
+
         return (
             <div className="DetectorDetail">
                 <Link to={`/detectors/`}> To detector list </Link>
                 <Grid>
                     <Row className="show-grid">
-                                <Col xs={6} xsOffset={8} >
+                        <Col xs={6} xsOffset={8}>
                             <DropdownButton id="1" bsStyle='warning' title='Options' className="optionbutton">
                                 <LinkContainer to={"/Detectors/" + this.props.detector.id + "/edit"}>
                                     <MenuItem eventKey="1">Edit detector</MenuItem>
@@ -52,19 +67,21 @@ class DetectorDetail extends Component {
                     <Row>
                         <PageHeader> Detector configuration Information
                             <small> details</small>
+                            <div id="download"></div>
                         </PageHeader>
                     </Row>
                     <Row>
-                        <Col xs={6} md={4} className={"parametercol"}><p><b>Detector name: </b>{this.props.detector.name}</p>
+                        <Col xs={6} md={4} className={"parametercol"}><p><b>Detector
+                            name: </b>{this.props.detector.name}</p>
                             <p>The converter material is <b>{this.props.detector.converter}</b></p>
                             <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
-                        <p><b>Angle: </b>{this.props.detector.angle}° </p>
+                            <p><b>Angle: </b>{this.props.detector.angle}° </p>
                         </Col>
 
                         <Col>
 
                             <SketchContainer angle={this.props.detector.angle} blades={this.props.detector.blades}
-                                              detector={this.props.detector}/>
+                                             detector={this.props.detector}/>
                         </Col>
                     </Row>
                     <Row>

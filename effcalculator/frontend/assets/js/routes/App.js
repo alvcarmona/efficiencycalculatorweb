@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Homepage from  './homepage'
+import Explanation from './ExplanationComponent'
 import detectors from './detectors/index'
 import NavBarContainer from './NavbarContainer'
 import '../../styles/App.css';
@@ -20,6 +21,7 @@ class App extends Component {
                     <Switch>
                        <Route exact path='/' component={Homepage}/>
                         <Route path='/detectors/' component={detectors} />
+                         <Route path='/explanation/' component={Explanation} />
                     </Switch>
                 </div>
             </div>

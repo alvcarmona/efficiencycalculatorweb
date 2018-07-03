@@ -98,6 +98,7 @@ class Homepage extends Component {
                                 <div className="brightness">
                                     <a className="center-child" href="https://brightness.esss.se/">
                                         <Image src={logo} responsive className="brightnessImg"/>
+                                        <Image src="https://project.esss.dk/owncloud/index.php/s/PM9qD4T3XR7bOAr" className="brightnessImg"/>
                                     </a>
                                 </div>
                                  </Col>

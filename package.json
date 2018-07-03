@@ -33,7 +33,7 @@
     "d3-scale": "1.0.6",
     "d3-selection": "1.1.0",
     "d3-shape": "^0.7.1",
-    "react-bootstrap": "^0.31.0",
+    "react-bootstrap": "^0.32.1",
     "react-chartjs-2": "^2.5.1",
     "react-masonry-component": "^5.0.7",
     "react-redux": "^5.0.6",
