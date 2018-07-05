@@ -23,14 +23,14 @@ class CreateDetectorButtonContainer extends Component {
     }
 
     submit = function (values) {
-        console.log("submmit")
+        console.log("submit")
         let newDetector = {
             name: values.name,
             angle: values.angle,
             threshold: values.threshold,
-            blades: [],
+            blades: values.blades,
             converter: "10B4C 2.24g/cm3",
-            wavelength: [],
+            wavelength: values.wavelength,
             metadata:{
                 eff_vs_layer_thickness: {},
                 eff_vs_wavelength: {},

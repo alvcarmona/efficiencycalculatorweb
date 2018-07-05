@@ -3,10 +3,24 @@
  */
 
 import React, {Component} from 'react';
-import {Modal, OverlayTrigger, Tooltip, MenuItem, Button, Row, Popover, Col, Grid} from 'react-bootstrap'
+import ReactDOM from 'react';
+import {
+    Modal,
+    OverlayTrigger,
+    Tooltip,
+    MenuItem,
+    Button,
+    Row,
+    Popover,
+    Col,
+    Grid,
+    FormControl,
+    FormGroup,
+    HelpBlock,
+    ControlLabel
+} from 'react-bootstrap'
 import DetectorForm from '../containers/DetectorForm'
 import {bindActionCreators} from 'redux';
-
 
 
 class CreateDetectorButton extends Component {
@@ -19,6 +33,37 @@ class CreateDetectorButton extends Component {
     open() {
         this.props.open()
     }
+
+
+    handleFileSelect(submit) {
+        event.preventDefault();
+        var files = document.getElementById('formControlsFile').files; // FileList object
+
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        for (var i = 0, f; f = files[i]; i++) {
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            console.log('abre archivo')
+            let json
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    console.log('e readAsText = ', e);
+                    console.log('e readAsText target = ', e.target);
+                    try {
+                        json = JSON.parse(e.target.result);
+                        submit(json)
+                    } catch (ex) {
+                        alert('Unable to read as JSON' + ex);
+                    }
+                }
+            })(f);
+            reader.readAsText(f);
+        }
+
+    }
+
 
     render() {
         let initialValues = {
@@ -42,8 +87,21 @@ class CreateDetectorButton extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Grid>
-                        <DetectorForm onSubmit={this.props.submit} initialValues={initialValues}/>
-                            </Grid>
+                            <Col md={2}>
+                                <DetectorForm onSubmit={this.props.submit} initialValues={initialValues}/>
+                            </Col>
+                            <Col md={2} mdOffset={1}>
+                                <form onSubmit={this.handleFileSelect.bind(this,this.props.submit)}>
+                                    <FormGroup controlId={"formControlsFile"}>
+                                        <ControlLabel>{"Import"}</ControlLabel>
+                                        <FormControl type="file" accept="*.json"/>
+                                        <HelpBlock>{"path to detector json file"}</HelpBlock>
+                                        <Button type="submit">Submit</Button>
+                                    </FormGroup>
+
+                                </form>
+                            </Col>
+                        </Grid>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.props.close.bind(this)}>Close</Button>
