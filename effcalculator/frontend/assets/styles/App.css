@@ -97,8 +97,6 @@ p.DetectorLinks a {
     background-color: #60c3ed !important;
 }
 
-
-
 ul.my-Gallery-class {
     margin-top: 35px;
 }
@@ -144,10 +142,11 @@ body:after {
 /************************* homepage *****************************************/
 
 .center-parent {
-  position: relative;
+    position: relative;
 }
+
 .center-child {
-  align-self: center;
+    align-self: center;
 }
 
 .brightness {
@@ -178,9 +177,10 @@ body:after {
     padding: 10px;
 }
 
-.githubSection{
-        margin-top: -20px;
+.githubSection {
+    margin-top: -20px;
 }
+
 /*
 div.bg-image.row {
     height: 45%;
@@ -230,41 +230,41 @@ h2.homepageheader {
 }
 
 .spacerHome-alt {
-     padding: 35px 50px 0px 10%;
+    padding: 35px 50px 0px 10%;
     background-color: #f9f9f9;
 }
 
 .spacerHome {
-     padding: 35px 50px 0px 10%;
+    padding: 35px 50px 0px 10%;
 }
+
 /************************* Explanation *****************************************/
-.Explanation{
+.Explanation {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-
 
 /************************* Edit *****************************************/
 
 .edit-form {
     margin: 25px;
 }
-.error-message{
-    color:red;
+
+.error-message {
+    color: red;
 }
-.form-field{
+
+.form-field {
     margin-top: 15px;
 }
 
 .center-parent {
-  position: relative;
+    position: relative;
 }
+
 .modal-body {
-  padding-left: 50px !important;
+    padding-left: 50px !important;
 }
-
-
-
 
 /************************* Navbar *****************************************/
 nav.brand-primary {
@@ -313,34 +313,57 @@ a.NavbarLink:hover {
     margin-top: 55px;
 }
 
-.parametercol{
+.parametercol {
     margin-top: 65px;
     margin-left: 45px;
 }
 
-.refreshDetectorsButton{
-     margin-top: 1px;
-     margin-right: 2px;
-     position:absolute;
-     top:80px;
-     right:20px;
- }
-#download{
+.refreshDetectorsButton {
+    margin-top: 1px;
+    margin-right: 2px;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+}
+
+#download {
     font-size: 16px
 }
 
 /*********************Sketch*********************************/
 #plano {
     width: 50%;
-  margin: 0 auto;
-  display: block;
-  border: 1px solid #d9d9d9;
-}
-.sketch{
-    margin:50px;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #d9d9d9;
 }
 
+.sketch {
+    margin: 50px;
+}
 
+/************************* Detector list *****************************************/
+
+li.list-group-item.show {
+    opacity: 1;
+    transform: none;
+    transition: 0.8s cubic-bezier(.36, -0.64, .34, 1.76), background-color 1ms;
+}
+
+li.list-group-item {
+
+    cursor: hand;
+    opacity: 0;
+    transform: rotateX(-90deg);
+    transition: 0.8s cubic-bezier(.36, -0.64, .34, 1.76), background-color 1ms;
+}
+li.list-group-item:hover{
+    background-color: #d9d9d9;
+}
+
+#show {
+    perspective: 100px;
+}
 
 /************************* Loading spinner *****************************************/
 
