@@ -136,7 +136,7 @@ class Blades extends Component {
         return (
             <Row>
                 <Col md={12}>
-                    <Col md={7} className="BladeThicknessPlot">
+                    <Col sm={6} className="BladeThicknessPlot">
                         <BladeThicknessDepthPlot blades={this.props.blades}/>
                     </Col>
                     <Col md={4} className="BladeThicknessTable">

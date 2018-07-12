@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../../styles/App.css';
+import '../../styles/animate.css'
 import {Link} from 'react-router-dom'
 import {Navbar, NavItem, Nav} from 'react-bootstrap'
 

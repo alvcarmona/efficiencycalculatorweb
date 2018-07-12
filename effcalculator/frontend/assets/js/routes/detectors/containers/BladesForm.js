@@ -36,9 +36,7 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
 
 let BladesForm = props => {
     const {handleSubmit} = props
-    console.log(props)
     return (
-
         <form onSubmit={handleSubmit}>
             { props.initialValues.single
                 ?
@@ -72,12 +70,4 @@ BladesForm = reduxForm({
     form: 'blades'
 })(BladesForm)
 
-/*
-BladesForm = connect(
-  state => ({
-    initialValues: state.example.currentDetector.blades // pull initial values from account reducer
-  })// bind account loading action creator
-)(BladesForm)
-/
- */
 export default BladesForm;

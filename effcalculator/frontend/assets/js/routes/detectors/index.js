@@ -12,7 +12,7 @@
  * Created by alvarocbasanez on 12/07/17.
  */
 import React, {Component} from 'react';
-import DetectorListContainer from './containers/DetectorListContainer';
+import DetectorModuleContainer from './containers/DetectorModuleContainer';
 import DetectorDetailContainer from './containers/DetectorDetailContainer';
 import DetectorEditContainer from './containers/DetectorEditContainer';
 import DetectorEfficiencyContainer from './containers/DetectorEfficiencyContainer';
@@ -42,7 +42,7 @@ class DetectorEfficiencyCalculator extends Component {
         return (
             <div className="DetectorEfficiencyCalculator">
                 <Switch>
-                    <Route exact path='/Detectors' component={DetectorListContainer}/>
+                    <Route exact path='/Detectors' component={DetectorModuleContainer}/>
                     <Route exact path='/Detectors/:number' component={DetectorDetailContainer}/>
                     <Route path='/Detectors/:number/edit' component={DetectorEditContainer}/>
                     <Route path='/Detectors/:number/efficiency' component={DetectorEfficiencyContainer}/>

@@ -17,7 +17,8 @@ import {
     FormControl,
     FormGroup,
     HelpBlock,
-    ControlLabel
+    ControlLabel,
+    Glyphicon
 } from 'react-bootstrap'
 import DetectorForm from '../containers/DetectorForm'
 import {bindActionCreators} from 'redux';
@@ -73,12 +74,11 @@ class CreateDetectorButton extends Component {
         };
         return (
             <div className="createButton">
-                <Button
-                    bsStyle="primary"
-                    bsSize="large"
+                <Button className="createButtonIn"
+                    bsStyle="success"
                     onClick={this.open.bind(this)}
                 >
-                    Create Detector
+                <Glyphicon  glyph="plus"/>
                 </Button>
 
                 <Modal show={this.props.showModal} onHide={this.close.bind(this)}>

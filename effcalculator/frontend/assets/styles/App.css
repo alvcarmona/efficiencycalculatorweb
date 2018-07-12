@@ -8,6 +8,8 @@ li {
     text-align: center;
     width: 100%;
     height: 100%;
+    background-color: #f6f6f6;
+    margin: 0 auto;
 }
 
 .App-logo {
@@ -60,6 +62,36 @@ p.DetectorLinks a {
 
 }
 
+/************************ detector detail *********************************/
+.middleColumn{
+    margin-left: 2%;
+    height: 90%;
+    padding-right: 33px!important;
+    overflow: auto;
+}
+.page-header{
+    margin:0px!important;
+}
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: white;
+    text-align: left;
+    min-height: 100px;
+    padding: 30px 27px;
+}
+
+div.DetectorModuleComponent:first-child{
+    margin-left: 0px;
+    margin-left: 3%;
+    margin-top: 2%;
+
+}
+.DetectorModuleContent{
+    margin-right: 0px!important;
+}
+
 .DetectorDetail .Container {
     margin-top: 10px;
     padding-top: 10px;
@@ -102,9 +134,14 @@ ul.my-Gallery-class {
 }
 
 .createButton {
-    margin-top: 20px;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
-
+.createButtonIn{
+    padding-bottom: 7px!important;
+}
 div.plotRow.row {
     margin: 5px;
 }
@@ -344,20 +381,29 @@ a.NavbarLink:hover {
 
 /************************* Detector list *****************************************/
 
-li.list-group-item.show {
+.list-group-item.show {
     opacity: 1;
     transform: none;
     transition: 0.8s cubic-bezier(.36, -0.64, .34, 1.76), background-color 1ms;
 }
 
-li.list-group-item {
-
+.list-group-item {
     cursor: hand;
     opacity: 0;
     transform: rotateX(-90deg);
-    transition: 0.8s cubic-bezier(.36, -0.64, .34, 1.76), background-color 1ms;
+    transition: 0.8s cubic-bezier(.36, -0.64, .34, 1.76), background-color 1ms, outline-style 1ms;
+    margin-bottom: 2px!important;
 }
-li.list-group-item:hover{
+.list-group-item:focus {
+    transition: 0.1s!important;
+    outline-width: 1px;
+    }
+
+.list-group-item.selected {
+    background-color: red;
+}
+
+.list-group-item:hover{
     background-color: #d9d9d9;
 }
 

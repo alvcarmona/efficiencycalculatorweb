@@ -61,6 +61,14 @@ export function setCurrentDetector(currentDetector) {
     }
 };
 
+export function selectDetectors(detectorsSelected) {
+    return {
+        type: types.SELECT_DETECTORS,
+        detectorsSelected: detectorsSelected,
+        payload:{detectorsSelected}
+    }
+};
+
 function deleteSuccess(data) {
     return {
         type: types.DELETE_SUCCESS,

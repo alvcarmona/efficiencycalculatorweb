@@ -12,6 +12,7 @@ function exampleReducer(state = {
                             isLoading: false,
                             data: [],
                             currentDetector: undefined,
+                            detectorsSelected: {},
                             showModal: false,
                             error: false,
                             converters: []
@@ -60,7 +61,11 @@ function exampleReducer(state = {
         case types.REQ_DATA:
             return Object.assign({}, state, {isLoading: true, error: false});
         case types.SET_CURRENT:
-            return Object.assign({}, state, {currentDetector: action.currentDetector,isLoading: false});
+            return Object.assign({}, state, {currentDetector: action.currentDetector, isLoading: false});
+        case types.SELECT_DETECTORS:
+            console.log('reducer')
+            const selected = action.payload.detectorsSelected
+            return Object.assign({}, state, {detectorsSelected: {...selected}});
         case types.OPEN_MODAL:
             return Object.assign({}, state, {showModal: true});
         case types.CLOSE_MODAL:
