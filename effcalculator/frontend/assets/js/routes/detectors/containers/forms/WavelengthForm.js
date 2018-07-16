@@ -49,6 +49,34 @@ WavelengthForm = reduxForm({
     form: 'wavelength'
 })(WavelengthForm)
 
+import {editCurrentDetector} from '../../../../modules/actions/index';
+import {bindActionCreators} from 'redux';
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({editCurrentDetector}, dispatch)
+}
+function mapStateToProps(state) {
+    return {
+        detectorsSelected: state.example.detectorsSelected,
+    }
+}
 
-export default WavelengthForm;
+@connect(mapStateToProps, mapDispatchToProps)
+class WavelengthFormContainer extends React.Component {
+    constructor(props) {
+      super(props)
+    }
+
+    submit = (values) => {
+        // print the form values to the console
+        let wavelength = [];
+        wavelength.push({weight: 100, angstrom: parseFloat(values.Wavelength)})
+        this.props.detector.wavelength = wavelength
+        this.props.editCurrentDetector(this.props.detector)
+    }
+  render () {
+    return <WavelengthForm onSubmit={this.submit}/>
+  }
+}
+
+export default WavelengthFormContainer;

@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import BladesForm from '../containers/BladesForm'
+import BladesFormContainer from './forms/BladesForm'
 
 class BladeHandler extends React.Component {
   constructor(props) {
@@ -35,10 +35,10 @@ class BladeHandler extends React.Component {
       console.log('multi')
         let initialValues = {'single':false}
       return (
-          <BladesForm onSubmit={this.state.onSubmit} initialValues={{'single':false}}/>
+          <BladesFormContainer detector={this.props.detector}  initialValues={{'single':false}}/>
       );
     } else {
-      return  <BladesForm onSubmit={this.state.onSubmit} initialValues={{'single':true, 'nb':1}}/>
+      return  <BladesFormContainer detector={this.props.detector}  initialValues={{'single':true, 'nb':1}}/>
     }
   }
 

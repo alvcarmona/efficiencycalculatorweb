@@ -85,9 +85,8 @@ function deleteError(data) {
 
 
 export function editCurrentDetector(data) {
-
+ console.log('editCurrent')
     return function (dispatch) {
-        dispatch(requestData());
         return axios({
             url: '/api/detectors/' + data.id + '/',
             timeout: 20000,
@@ -96,7 +95,8 @@ export function editCurrentDetector(data) {
             data: data
         })
             .then(function (response) {
-                dispatch(receiveEdit(response.detector));
+                console.log('sucess')
+                dispatch(receiveEdit(response.data));
             })
             .catch(function (response) {
                 console.log("edit detector Error")

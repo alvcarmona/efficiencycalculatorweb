@@ -70,4 +70,40 @@ BladesForm = reduxForm({
     form: 'blades'
 })(BladesForm)
 
-export default BladesForm;
+import {editCurrentDetector} from '../../../../modules/actions/index';
+import {bindActionCreators} from 'redux';
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({editCurrentDetector}, dispatch)
+}
+function mapStateToProps(state) {
+    return {
+        detectorsSelected: state.example.detectorsSelected,
+    }
+}
+@connect(mapStateToProps, mapDispatchToProps)
+class BladeFormContainer extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {}
+    }
+
+    addBlades = (values) => {
+        // print the form values to the console
+        let blades = [];
+        let i = 0;
+        for (; i < values.nb; i++) {
+            blades.push({backscatter: parseFloat(values.thickness), substrate: parseFloat(values.subThickness), transmission: 0})
+        }
+        this.props.detector.blades = blades
+        this.props.detector.single = values.single
+        console.log('addblades')
+        this.props.editCurrentDetector(this.props.detector)
+    }
+
+  render () {
+    return <BladesForm onSubmit={this.addBlades} initialValues={this.props.initialValues}/>
+  }
+}
+
+export default BladeFormContainer;

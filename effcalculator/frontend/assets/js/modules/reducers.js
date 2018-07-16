@@ -57,13 +57,44 @@ function exampleReducer(state = {
             newdata1.push(newdetector);
             return Object.assign({}, state, {isLoading: false, data: newdata1, error: false});
         case types.RECV_EDIT:
-            return Object.assign({}, state, {isLoading: false, currentDetector: action.data, error: false});
+            console.log('rec edit')
+            let editDetector = {
+                angle: action.data.angle,
+                threshold: action.data.threshold,
+                name: action.data.name,
+                single: action.data.single,
+                id: action.data.id,
+                blades: action.data.blades,
+                converter: action.data.converter,
+                wavelength: action.data.wavelength,
+                metadata: {
+                    eff_vs_layer_thickness: {},
+                    eff_vs_wavelength: {},
+                    eff_vs_bslayer_thickness: {},
+                    eff_vs_tslayer_thickness: {},
+                    eff_vs_wavelength_bs: {},
+                    eff_vs_wavelength_ts: {},
+                    phs_alpha_06: {},
+                    phs_alpha_94: {},
+                    phs_li_06: {},
+                    phs_li_94: {},
+                    total_efficiency: 0
+                }
+            }
+            for (let i = 0; i < state.data.length; i++) {
+                if (state.data[i].id === action.data.id){
+                    state.data[i] = action.data
+                }
+            }
+            state.detectorsSelected[action.data.id]= editDetector
+            const data = state.data
+            const detectorsSelected = state.detectorsSelected
+            return Object.assign({}, state, {isLoading: false,detectorsSelected: {...detectorsSelected},data:[...data] ,currentDetector: action.data, error: false});
         case types.REQ_DATA:
             return Object.assign({}, state, {isLoading: true, error: false});
         case types.SET_CURRENT:
             return Object.assign({}, state, {currentDetector: action.currentDetector, isLoading: false});
         case types.SELECT_DETECTORS:
-            console.log('reducer')
             const selected = action.payload.detectorsSelected
             return Object.assign({}, state, {detectorsSelected: {...selected}});
         case types.OPEN_MODAL:

@@ -20,7 +20,7 @@ import {
     ControlLabel,
     Glyphicon
 } from 'react-bootstrap'
-import DetectorForm from '../containers/DetectorForm'
+import DetectorFormContainer from '../containers/forms/DetectorForm'
 import {bindActionCreators} from 'redux';
 
 
@@ -88,7 +88,7 @@ class CreateDetectorButton extends Component {
                     <Modal.Body>
                         <Grid>
                             <Col md={2}>
-                                <DetectorForm onSubmit={this.props.submit} initialValues={initialValues}/>
+                                <DetectorFormContainer detector={this.props.detector} initialValues={initialValues}/>
                             </Col>
                             <Col md={2} mdOffset={1}>
                                 <form onSubmit={this.handleFileSelect.bind(this,this.props.submit)}>

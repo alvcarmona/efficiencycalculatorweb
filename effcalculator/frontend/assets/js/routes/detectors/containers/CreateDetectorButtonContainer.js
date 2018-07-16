@@ -21,16 +21,15 @@ class CreateDetectorButtonContainer extends Component {
     open() {
         this.props.openModal();
     }
-
     submit = function (values) {
         console.log("submit")
         let newDetector = {
             name: values.name,
             angle: values.angle,
             threshold: values.threshold,
-            blades: values.blades,
+            blades: [],
             converter: "10B4C 2.24g/cm3",
-            wavelength: values.wavelength,
+            wavelength: [],
             metadata:{
                 eff_vs_layer_thickness: {},
                 eff_vs_wavelength: {},
@@ -48,10 +47,30 @@ class CreateDetectorButtonContainer extends Component {
         this.props.createDetector(newDetector)
         this.props.closeModal();
     };
-
-    render() {
+    render() {let newDetector = {
+            name: '',
+            angle: 90,
+            threshold: 100,
+            blades: [],
+            converter: "10B4C 2.24g/cm3",
+            wavelength: [],
+            single:false,
+            metadata:{
+                eff_vs_layer_thickness: {},
+                eff_vs_wavelength: {},
+                eff_vs_bslayer_thickness: {},
+                eff_vs_tslayer_thickness: {},
+                eff_vs_wavelength_bs: {},
+                eff_vs_wavelength_ts: {},
+                phs_alpha_06: {},
+                phs_alpha_94: {},
+                phs_li_06: {},
+                phs_li_94: {},
+                total_efficiency: 0
+            }
+        }
         return (<CreateDetectorButtonComponent showModal={this.props.showModal} submit={this.submit.bind(this)}
-                                               open={this.open.bind(this)} close={this.close.bind(this)}/>)
+                                             detector={newDetector}  open={this.open.bind(this)} close={this.close.bind(this)}/>)
     }
 }
 

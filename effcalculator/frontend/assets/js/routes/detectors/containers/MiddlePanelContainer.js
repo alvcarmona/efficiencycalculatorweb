@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import DetectorModuleDetailComponent from '../components/DetectorModuleDetailComponent'
+import DetectorModuleDetailContainer from '../containers/DetectorModuleDetailContainer'
 
 function mapStateToProps(state) {
     return {detectorsSelected: state.example.detectorsSelected }
@@ -30,9 +31,9 @@ class MiddlePanel extends Component {
     if (Object.keys(detectorsSelected).length >1) {
       middlepanel = <b>More than one selected, comparison coming soon</b>;
     } else if (Object.keys(detectorsSelected).length === 0){
-      middlepanel = <b>Select a detector</b>
+      middlepanel =<div> <b>Select a detector</b></div>
     }else if (Object.keys(detectorsSelected).length === 1){
-        middlepanel = <DetectorModuleDetailComponent detector={this.props.detectorsSelected[Object.keys(detectorsSelected)[0]]}/>
+        middlepanel = <DetectorModuleDetailContainer detector={this.props.detectorsSelected[Object.keys(detectorsSelected)[0]]}/>
     }
     return (
       <div id={'middlePanel'}>

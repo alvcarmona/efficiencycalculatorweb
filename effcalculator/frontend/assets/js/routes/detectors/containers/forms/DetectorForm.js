@@ -73,8 +73,43 @@ DetectorForm = reduxForm({
 
 DetectorForm = connect(
     state => ({
-        initialValues: state.example.currentDetector // pull initial values from account reducer
+        initialValues: state.example.detectorsSelected[Object.keys(state.example.detectorsSelected)[0]] // pull initial values from account reducer
     })// bind account loading action creator
 )(DetectorForm)
 
-export default DetectorForm;
+
+
+import {editCurrentDetector,createDetector} from '../../../../modules/actions/index';
+import {bindActionCreators} from 'redux';
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({editCurrentDetector,createDetector}, dispatch)
+}
+function mapStateToProps(state) {
+    return {
+        detectorsSelected: state.example.detectorsSelected,
+    }
+}
+@connect(mapStateToProps, mapDispatchToProps)
+class DetectorFormContainer extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {}
+    }
+
+    submit = (values) => {
+        // print the form values to the console
+        this.props.detector.name = values.name
+        this.props.detector.angle = values.angle
+        this.props.detector.threshold = values.threshold
+        this.props.detector.converter = values.converter
+        if (this.props.detector.id) this.props.editCurrentDetector(this.props.detector)
+        else this.props.createDetector(this.props.detector)
+    }
+  render () {
+    return <DetectorForm onSubmit={this.submit}/>
+  }
+}
+
+
+export default DetectorFormContainer;

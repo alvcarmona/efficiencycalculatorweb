@@ -31,7 +31,7 @@ class DetectorModuleComponent extends Component {
                             <DetectorAnimatedListComponent detectors={this.props.detectors}/>
                         </Col>
                         <Col xs={8} md={8} lg={8} className={'middleColumn'}>
-                            <MiddlePanel/>
+                            <MiddlePanel detectors={this.props.detectors} />
                         </Col>
                         {/* <div>
                                             <DetectorModuleDetailComponent detector={this.props.detectorsSelected[Object.keys(this.props.detectorsSelected)[0]]}/>

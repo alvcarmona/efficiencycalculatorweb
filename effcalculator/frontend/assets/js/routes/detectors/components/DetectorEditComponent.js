@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import DetectorForm from '../containers/DetectorForm'
-import BladesForm from '../containers/BladesForm'
-import WavelengthForm from '../containers/WavelengthForm'
+import DetectorForm from '../containers/forms/DetectorForm'
+import BladesForm from '../containers/forms/BladesForm'
+import WavelengthForm from '../containers/forms/WavelengthForm'
 import {BladeTable} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
 import BladeHandler from'../containers/BladeHandler'

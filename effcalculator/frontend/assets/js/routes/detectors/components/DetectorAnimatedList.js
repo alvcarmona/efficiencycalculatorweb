@@ -72,8 +72,8 @@ class DetectorAnimatedlistComponent extends Component {
                 <ListGroupItem id={'list' + u.id} className='detectorlistElement' key={u.id} style={elementStyle}
                                onClick={() => this.onItemClick(u)}>
                     <Glyphicon glyph="tag"/> {u.name}
-                    <Link to={`/detectors/${u.id}`}>
-                        <Glyphicon glyph="list-alt"/></Link>
+                    {/* <Link to={`/detectors/${u.id}`}>
+                        <Glyphicon glyph="list-alt"/></Link>*/}
                 </ListGroupItem>
 
             );
