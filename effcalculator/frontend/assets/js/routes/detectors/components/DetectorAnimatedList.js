@@ -19,6 +19,7 @@ class DetectorAnimatedlistComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {multipleSelectMode: false, selected: {}}
+        ///adesfasdf
     }
 
     componentDidUpdate() {
