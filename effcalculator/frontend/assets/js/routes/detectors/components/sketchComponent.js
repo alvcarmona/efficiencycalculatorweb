@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 
 class Sketch extends Component {
-    constructor(props) {
-        super(props);
-    }
-    componentDidMount() {
+     dibujar() {
+        console.log('dibujar')
         let canvas = document.getElementById("plano");
+        document.getElementById("plano").width+=0;
         let X, Y;
         let blades= this.props.blades
         let angle = this.props.angle
@@ -102,6 +101,12 @@ class Sketch extends Component {
             }
         }
     }
+    componentDidMount(){
+        this.dibujar()
+    }
+    componentDidUpdate(){
+        this.dibujar()
+    }
 
     render() {
         return (
@@ -118,14 +123,14 @@ class Sketch extends Component {
 
 
 class SketchContainer extends Component {
-     constructor(props) {
-        super(props);
+   componentWillReceiveProps(){
+       console.log('props container')
+        this.forceUpdate()
     }
-
     render(){
-         if(this.props.blades){
+         if(this.props.detector.blades){
         return (
-                <Sketch angle={this.props.angle} blades={this.props.blades}></Sketch>
+                <Sketch angle={this.props.detector.angle} blades={this.props.detector.blades}></Sketch>
         )
     }else{
         return(<div>No blades</div>)

@@ -13,9 +13,6 @@
  */
 import React, {Component} from 'react';
 import DetectorModuleContainer from './containers/DetectorModuleContainer';
-import DetectorDetailContainer from './containers/DetectorDetailContainer';
-import DetectorEditContainer from './containers/DetectorEditContainer';
-import DetectorEfficiencyContainer from './containers/DetectorEfficiencyContainer';
 import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {fetchData,requestConverters, setCurrentDetector} from '../../modules/actions/index';
@@ -43,9 +40,9 @@ class DetectorEfficiencyCalculator extends Component {
             <div className="DetectorEfficiencyCalculator">
                 <Switch>
                     <Route exact path='/Detectors' component={DetectorModuleContainer}/>
-                    <Route exact path='/Detectors/:number' component={DetectorDetailContainer}/>
+                    {/* <Route exact path='/Detectors/:number' component={DetectorDetailContainer}/>
                     <Route path='/Detectors/:number/edit' component={DetectorEditContainer}/>
-                    <Route path='/Detectors/:number/efficiency' component={DetectorEfficiencyContainer}/>
+                    <Route path='/Detectors/:number/efficiency' component={DetectorEfficiencyContainer}/> */}
                 </Switch>
             </div>
         );

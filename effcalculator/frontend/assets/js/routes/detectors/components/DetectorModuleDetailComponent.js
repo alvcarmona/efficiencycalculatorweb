@@ -12,7 +12,7 @@ import {LinkContainer} from 'react-router-bootstrap'
 import DetectorFormContainer from '../containers/forms/DetectorForm'
 import WavelengthFormContainer from '../containers/forms/WavelengthForm'
 import BladeHandler from '../containers/BladeHandler'
-
+import DetectorEfficiencyComponent from './DetectorEfficiencyComponent'
 
 
 
@@ -34,7 +34,9 @@ class EditHandler extends Component {
         this.setState({mode: 'view'});
     }
 
-
+    componentWillReceiveProps(){
+        this.handleEdit()
+    }
     renderComponent() {
         if (this.state.mode === 'view') {
             const View = this.props.view
@@ -107,6 +109,9 @@ class BladeInfoComponent extends React.Component {
 
 class WavelengthInfoComponent extends React.Component {
   render () {
+
+
+
     return <Row>
                             {!this.props.detector.wavelength || this.props.detector.wavelength.length == 0 ?
                                 <p>There is no wavelength </p> :
@@ -127,6 +132,17 @@ class WavelengthInfoComponent extends React.Component {
                                         <Wavelength
                                             wave={this.props.detector.wavelength}/> </Col></div>}
                         </Row>
+  }
+}
+
+class SketchComponent extends React.Component {
+    componentWillReceiveProps(){
+        console.log('props component')
+        this.forceUpdate()
+    }
+
+  render () {
+    return <SketchContainer detector={this.props.detector}/>
   }
 }
 
@@ -183,8 +199,7 @@ class DetectorModuleDetailComponent extends Component {
                         </Col>
 
                         <Col>
-                            <SketchContainer angle={this.props.detector.angle} blades={this.props.detector.blades}
-                                             detector={this.props.detector}/>
+                            <SketchComponent detector={this.props.detector}/>
                         </Col>
                     </div>
                     <div className="card">
@@ -207,9 +222,14 @@ class DetectorModuleDetailComponent extends Component {
                 </Row>
                 <Row>
                     <div className="card">
-
                         <h4>Neutron Wavelength</h4>
                         <EditHandler detector={this.props.detector} form={WavelengthFormContainer} view={WavelengthInfoComponent}/>
+                    </div>
+                </Row>
+                <h4>Efficiency information</h4>
+                <Row>
+                    <div className="card">
+                       <DetectorEfficiencyComponent detector={this.props.detector} optimizeDetectorDiffThickness={this.props.optimizeDetectorDiffThickness} optimizeDetectorThickness={this.props.optimizeDetectorThickness}/>
                     </div>
                 </Row>
             </div>

@@ -67,19 +67,7 @@ function exampleReducer(state = {
                 blades: action.data.blades,
                 converter: action.data.converter,
                 wavelength: action.data.wavelength,
-                metadata: {
-                    eff_vs_layer_thickness: {},
-                    eff_vs_wavelength: {},
-                    eff_vs_bslayer_thickness: {},
-                    eff_vs_tslayer_thickness: {},
-                    eff_vs_wavelength_bs: {},
-                    eff_vs_wavelength_ts: {},
-                    phs_alpha_06: {},
-                    phs_alpha_94: {},
-                    phs_li_06: {},
-                    phs_li_94: {},
-                    total_efficiency: 0
-                }
+                metadata: action.data.metadata
             }
             for (let i = 0; i < state.data.length; i++) {
                 if (state.data[i].id === action.data.id){
@@ -87,9 +75,11 @@ function exampleReducer(state = {
                 }
             }
             state.detectorsSelected[action.data.id]= editDetector
+            let obj ={}
+            obj[action.data.id]=action.data
             const data = state.data
             const detectorsSelected = state.detectorsSelected
-            return Object.assign({}, state, {isLoading: false,detectorsSelected: {...detectorsSelected},data:[...data] ,currentDetector: action.data, error: false});
+            return Object.assign({}, state, {isLoading: false,detectorsSelected: {...obj},data:[...data] ,currentDetector: action.data, error: false});
         case types.REQ_DATA:
             return Object.assign({}, state, {isLoading: true, error: false});
         case types.SET_CURRENT:

@@ -95,12 +95,11 @@ export function editCurrentDetector(data) {
             data: data
         })
             .then(function (response) {
-                console.log('sucess')
+                console.log('edit sucess')
                 dispatch(receiveEdit(response.data));
             })
             .catch(function (response) {
                 console.log("edit detector Error")
-                //dispatch(receiveError(response.data));
             })
     }
 };

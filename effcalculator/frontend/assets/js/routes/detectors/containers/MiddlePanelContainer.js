@@ -1,8 +1,8 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
-import DetectorModuleDetailComponent from '../components/DetectorModuleDetailComponent'
 import DetectorModuleDetailContainer from '../containers/DetectorModuleDetailContainer'
+import ExplanationComponent from '../../ExplanationComponent'
 
 function mapStateToProps(state) {
     return {detectorsSelected: state.example.detectorsSelected }
@@ -15,23 +15,20 @@ class MiddlePanel extends Component {
 
   }
     componentWillUpdate(){
-      console.log('animate out')
       let panel = document.getElementById('middlePanel').firstElementChild
         panel.className = panel.className + "fadeOut"
     }
     componentDidUpdate(){
-      console.log('animate in')
       let panel = document.getElementById('middlePanel').firstElementChild
             panel.className = panel.className + "fadeIn animated"
     }
   render() {
-      console.log("render middle")
     const detectorsSelected = this.props.detectorsSelected;
     let middlepanel
     if (Object.keys(detectorsSelected).length >1) {
       middlepanel = <b>More than one selected, comparison coming soon</b>;
     } else if (Object.keys(detectorsSelected).length === 0){
-      middlepanel =<div> <b>Select a detector</b></div>
+      middlepanel =<div> <b>Select a detector</b><ExplanationComponent/></div>
     }else if (Object.keys(detectorsSelected).length === 1){
         middlepanel = <DetectorModuleDetailContainer detector={this.props.detectorsSelected[Object.keys(detectorsSelected)[0]]}/>
     }

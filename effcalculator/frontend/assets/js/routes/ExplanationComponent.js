@@ -5,17 +5,13 @@ import logo from '../../img/bladeSketch copy.svg';
 import configurationsketch from '../../img/configurationSketch.png'
 
 class Explanation extends Component {
-    redirect() {
-        this.props.history.push('/detectors')
-    }
 
     render() {
         return (
             <div className="Explanation">
-                <Grid>
-                    <Row className="show-grid">
+                    <Row >
                             <PanelGroup accordion id="accordion-example">
-                                 <Col xs={5} >
+
                                 <Panel eventKey="1" bsStyle="info">
                                     <Panel.Heading>
                                         <Panel.Title toggle>Introduction</Panel.Title>
@@ -30,8 +26,8 @@ class Explanation extends Component {
                                         GitHub repository.
                                     </Panel.Body>
                                 </Panel>
-                                </Col>
-                                <Col xs={6} >
+
+
                                 <Panel eventKey="2" bsStyle="info">
                                     <Panel.Heading>
                                         <Panel.Title toggle>Detector geometry and neutron beam
@@ -70,11 +66,10 @@ class Explanation extends Component {
                                        <div> <Image src={logo} responsive className="brightnessImg"/></div>
                                     </Panel.Body>
                                 </Panel>
-                                </Col>
+
                             </PanelGroup>
 
                     </Row>
-                </Grid>
             </div>
     );
     }

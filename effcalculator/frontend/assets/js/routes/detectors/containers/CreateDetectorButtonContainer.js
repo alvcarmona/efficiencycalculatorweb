@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 
 
 function mapStateToProps(state) {
-    return {showModal: state.example.showModal}
+    return {showModal: state.example.showModal, data:state.example.data}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -14,12 +14,23 @@ function mapDispatchToProps(dispatch) {
 }
 
 class CreateDetectorButtonContainer extends Component {
+    constructor(){
+        super()
+        this.state = {number: 0 }
+    }
     close() {
         this.props.closeModal();
     }
-
+    componentWillUpdate (newProps,oldProps){
+        console.log('modal update')
+        if (this.state.number!== newProps.data.length){
+            console.log('cierro')
+            this.close()
+        }
+    }
     open() {
         this.props.openModal();
+        this.state.number=this.props.data.length
     }
     submit = function (values) {
         console.log("submit")

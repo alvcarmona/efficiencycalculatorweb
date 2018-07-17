@@ -1,4 +1,3 @@
-
 import {connect} from 'react-redux';
 import {selectDetectors} from '../../../modules/actions/index';
 import React, {Component} from 'react'
@@ -8,9 +7,9 @@ import CreateDetectorButtonContainer from '../containers/CreateDetectorButtonCon
 
 
 const mapDispatchToProps = dispatch => {
-  return {
-    selectDetectors: detectors => dispatch(selectDetectors(detectors))
-  };
+    return {
+        selectDetectors: detectors => dispatch(selectDetectors(detectors))
+    };
 };
 
 class DetectorAnimatedlistComponent extends Component {
@@ -81,11 +80,7 @@ class DetectorAnimatedlistComponent extends Component {
 
         return (
             <div>
-
-
-                    <Row style={headerStyle}> <b>Dector list</b> <CreateDetectorButtonContainer/></Row>
-
-
+                <Row style={headerStyle}> <b>Dector list</b> <CreateDetectorButtonContainer/></Row>
                 <Row> <ListGroup id={"detectorList"}>
                     {childElements}
                 </ListGroup></Row>
@@ -95,4 +90,4 @@ class DetectorAnimatedlistComponent extends Component {
 
 }
 
-export default connect(null,mapDispatchToProps)(DetectorAnimatedlistComponent)
+export default connect(null, mapDispatchToProps)(DetectorAnimatedlistComponent)

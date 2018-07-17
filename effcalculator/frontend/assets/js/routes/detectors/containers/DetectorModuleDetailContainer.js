@@ -4,7 +4,6 @@ import {fetchData} from '../../../modules/actions/index';
 import {Button, Glyphicon} from 'react-bootstrap'
 import DetectorModuleDetailComponent from '../components/DetectorModuleDetailComponent'
 import Spinner from '../components/Spinner';
-import DetectorDetailComponent from '../components/DetectorDetailComponent'
 import {bindActionCreators} from 'redux';
 import {
     setCurrentDetector,
@@ -12,7 +11,9 @@ import {
     openModal,
     setMetadata,
     editCurrentDetector,
-    requestConverters
+    requestConverters,
+    optimizeWave,
+    optimizeDiffThickness
 } from '../../../modules/actions/index';
 
 
@@ -29,6 +30,8 @@ function mapDispatchToProps(dispatch) {
         setMetadata,
         openModal,
         editCurrentDetector,
+        optimizeWave,
+        optimizeDiffThickness
     }, dispatch)
 }
 
@@ -77,6 +80,44 @@ class DetectorModuleDetailContainer extends Component {
         this.props.setCurrentDetector(this.props.current)
         this.props.editCurrentDetector(this.props.detector)
     }
+     indexOfMax(arr) {
+        if (arr.length === 0) {
+            return -1;
+        }
+
+        var max = arr[0];
+        var maxIndex = 0;
+
+        for (var i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                maxIndex = i;
+                max = arr[i];
+            }
+        }
+
+        return maxIndex;
+    }
+
+     optimizeDetectorThickness = () => {
+        // print the form values to the console
+        console.log("optimize detector Thickness")
+        let index = this.indexOfMax(this.props.detector.metadata.eff_vs_layer_thickness.y);
+        let optival = this.props.detector.metadata.eff_vs_layer_thickness.x[index]
+        let blades = [];
+        let i = 0;
+        for (; i < this.props.detector.blades.length; i++) {
+            blades.push({backscatter: optival, substrate: 0, transmission: 0})
+        }
+        this.props.detector.blades = blades
+        console.log(this.props.detector)
+        this.props.editCurrentDetector(this.props.detector)
+    }
+
+    optimizeDetectorDiffThickness = () => {
+        // print the form values to the console
+        console.log("optimize detector Diff thickness")
+        this.props.optimizeDiffThickness(this.props.detector)
+    }
 
     render() {
         console.log("render module")
@@ -84,7 +125,8 @@ class DetectorModuleDetailContainer extends Component {
                                                openModal={this.props.openModal}
                                                setMetadata={this.props.setMetadata} submit={this.submit.bind(this)}
                                                addBlades={this.addBlades.bind(this)}
-                                               addWavelength={this.addWavelength.bind(this)}/>)
+                                               addWavelength={this.addWavelength.bind(this)} optimizeDetectorDiffThickness={this.optimizeDetectorDiffThickness}
+                                                 optimizeDetectorThickness={this.optimizeDetectorThickness}/>)
     }
 }
 
