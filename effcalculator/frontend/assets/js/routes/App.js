@@ -11,6 +11,7 @@ import {Route, Switch, Link} from 'react-router-dom'
 class App extends Component {
     constructor(props) {
 		super(props);
+		console.log('hola pablo')
 	}
     render() {
         return (

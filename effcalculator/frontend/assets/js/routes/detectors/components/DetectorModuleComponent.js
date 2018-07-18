@@ -3,7 +3,6 @@
  */
 import React, {Component} from 'react'
 
-import DetectorAnimatedListComponent from './DetectorAnimatedlist'
 import {Grid, Row, Col} from 'react-bootstrap'
 import RefreshDetectorsContainer from '../containers/RefreshDetectorsContainer'
 import MiddlePanel from '../containers/MiddlePanelContainer'
@@ -47,5 +46,6 @@ class DetectorModuleComponent extends Component {
 
 }
 
+import DetectorAnimatedListComponent from './DetectorAnimatedlist'
 
 export default DetectorModuleComponent
