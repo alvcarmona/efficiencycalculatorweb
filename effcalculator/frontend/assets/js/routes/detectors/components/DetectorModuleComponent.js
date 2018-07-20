@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 
-import DetectorAnimatedListComponent from './DetectorAnimatedlist'
+import DetectorAnimatedListComponent from './DetectorAnimatedList'
 import {Grid, Row, Col} from 'react-bootstrap'
 import RefreshDetectorsContainer from '../containers/RefreshDetectorsContainer'
 import MiddlePanel from '../containers/MiddlePanelContainer'
