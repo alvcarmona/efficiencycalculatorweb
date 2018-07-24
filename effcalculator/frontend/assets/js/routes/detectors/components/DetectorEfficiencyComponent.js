@@ -82,7 +82,7 @@ class EffVsThicknessPlot extends Component {
 
 
     componentDidMount() {
-        if (this.refs.chart) {
+        if (this.refs.chart.chart_instance) {
             let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data, Number(this.props.detector.metadata.total_efficiency))
             let i = this.refs.chart.chart_instance.data.datasets[0].data.indexOf(closestValue)
             this.refs.chart.chart_instance.data.datasets[0].backgroundColor[i] = "red";
@@ -219,7 +219,7 @@ class EffVsWavelengthPlot extends Component {
 
 
     componentDidMount() {
-        if (this.refs.chart) {
+        if (this.refs.chart.chart_instance) {
             let closestValue = this.closest(this.refs.chart.chart_instance.data.datasets[0].data, Number(this.props.detector.metadata.total_efficiency))
             let i = this.refs.chart.chart_instance.data.datasets[0].data.indexOf(closestValue)
             this.refs.chart.chart_instance.data.datasets[0].backgroundColor[i] = "red";
@@ -509,51 +509,82 @@ class DetectorEfficiencyComponent extends Component {
         if (this.props.detector.wavelength.length === 0 || this.props.detector.blades.length === 0) {
             return (
                 <div className="DetectorEfficiencyComponent">
-                    <Link to={`/detectors/`}> To detector list </Link>
-
-                    <Panel header={'Incomplete configuration'} bsStyle="danger" className={'danger-config'}> Configure
-                        wavelenght and blades to
-                        calculate efficiency.
-                        <Link to={`/detectors/` + this.props.detector.id + '/edit'}>Go to edit page</Link>
-                    </Panel>
-
+                    <Col sm={4}>
+                    <Panel bsStyle="danger">
+                        <Panel.Heading>
+                          <Panel.Title componentClass="h3">Incomplete configuration</Panel.Title>
+                        </Panel.Heading>
+                        <Panel.Body>wavelenght and blades to
+                        calculate efficiency.</Panel.Body>
+                      </Panel>
+                        </Col>
                 </div>)
 
         }
         return (
             <div>
                 <Row>
-                    <Col md={6}>
-                        <TotalEfficiencyPlot data={this.props.detector.metadata.total_efficiency}/>
-                    </Col>
+                    <h5> Optimization options:</h5>
+                {this.props.detector.single && this.props.detector.metadata.eff_vs_layer_thickness.x.length>0 ?
+                        <div></div> :
+                            <Button bsStyle="primary" onClick={this.props.optimizeDetectorDiffThickness}>
+                                Optimize different thickness
+                            </Button>
+                    }
+                    {this.props.detector.metadata.eff_vs_layer_thickness.x.length > 0?
+
+                                    <Button bsStyle="primary" onClick={this.props.optimizeDetectorThickness}> Optimize
+                                        converter
+                                        thickness</Button>
+                            :
+                            <div></div>
+                        }
                 </Row>
-                <Row>
-                    <Col md={8}>
-                    <Row>
-                        <b>Efficiency Vs. Blade Thickness Plot</b>
-                    </Row>
-                    <Row className="plotRow">
-                        <EffVsThicknessPlot detector={this.props.detector}/>
-                    </Row>
-                    <Row>
-                        <Button bsStyle="primary" onClick={this.props.optimizeDetectorThickness}> Optimize converter
-                            thickness</Button>
-                    </Row>
-                    {this.props.detector.single ? <div></div> : <Row>
-                        <Button bsStyle="primary" onClick={this.props.optimizeDetectorDiffThickness}> Optimize different
-                            thickness</Button>
-                    </Row>}
+                <Row><h5>Efficiency plots</h5></Row>
+                <Row className='plot-row plot-row-total'>
+                    <Col md={6} smOffset={2} mdOffset={3}>
+                        {this.props.detector.metadata.total_efficiency !== undefined && this.props.detector.metadata.total_efficiency>0?
+                            <div className='plot-row-element'>
+                                <TotalEfficiencyPlot data={this.props.detector.metadata.total_efficiency}/>
+                            </div>:
+                            <div>
+                                Waiting for efficiency calculation
+                            </div>
+                        }
+                        </Col>
+                </Row>
+                <Row className='plot-row plot-row-meta'>
+                    <Col sm={8} smOffset={1} mdOffset={2}>
+                         {this.props.detector.metadata.eff_vs_bslayer_thickness.x.length > 0?
+                            <div>
+                                <Row>
+                                    <b>Efficiency Vs. Blade Thickness Plot</b>
+                                </Row>
+                                <Row className='plot-row-element'>
+                                    <EffVsThicknessPlot detector={this.props.detector}/>
+                                </Row>
+                            </div>:
+                            <div></div>
+                        }
+
+
                     {/*
                             <Row>
                                 <Button bsStyle="primary" onClick={this.props.optimizeDetectorWavelength}> Optimize wavelength</Button>
                             </Row>
                             */}
-                    <Row>
-                        <b>Efficiency Vs. Blade Wavelength Plot</b>
-                    </Row>
-                    <Row className="plotRow">
-                        <EffVsWavelengthPlot detector={this.props.detector}/>
-                    </Row>
+                        {this.props.detector.metadata.eff_vs_wavelength.x.length > 0?
+                            <div>
+                                        <Row>
+                                    <b>Efficiency Vs. Blade Wavelength Plot</b>
+                                </Row>
+                                <Row className='plot-row-element'>
+                                    <EffVsWavelengthPlot detector={this.props.detector}/>
+                                </Row>
+                            </div>:
+                            <div></div>
+                        }
+
                         </Col>
                     {/* <Row>
                                 <PhsPlot detector={this.props.detector}/>

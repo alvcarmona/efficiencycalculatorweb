@@ -107,7 +107,7 @@ class DetectorFormContainer extends React.Component {
         else this.props.createDetector(this.props.detector)
     }
   render () {
-    return <DetectorForm onSubmit={this.submit}/>
+    return <DetectorForm className='basicInfoForm' onSubmit={this.submit}/>
   }
 }
 

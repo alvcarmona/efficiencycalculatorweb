@@ -112,11 +112,15 @@ function exampleReducer(state = {
         case types.DELETE_SUCCESS:
             let newdata = []
             for (let i = 0; i < state.data.length; i++) {
-                if (state.data[i].id != action.data.id) {
+                if (state.data[i].id != action.data) {
                     newdata.push(state.data[i])
                 }
             }
-            return Object.assign({}, state, {isLoading: false, data: newdata, error: false});
+            delete state.detectorsSelected[action.data]
+            const select = delete state.detectorsSelected
+            const detectorlist = newdata
+            console.log('delete success')
+            return Object.assign({}, state, {isLoading: false, data: [...detectorlist],detectorsSelected:{...select}, error: false});
         default:
             return state;
     }

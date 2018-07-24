@@ -121,7 +121,7 @@ class DetectorModuleDetailContainer extends Component {
 
     render() {
         console.log("render module")
-        return (<DetectorModuleDetailComponent detector={this.props.detector} delete={this.props.deleteDetector}
+        return (<DetectorModuleDetailComponent detector={this.props.detector} deleteDetector={this.props.deleteDetector}
                                                openModal={this.props.openModal}
                                                setMetadata={this.props.setMetadata} submit={this.submit.bind(this)}
                                                addBlades={this.addBlades.bind(this)}

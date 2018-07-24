@@ -167,10 +167,11 @@ export function requestConverters() {
 
 
 export function deleteDetector(data) {
+    console.log('delete')
     return function (dispatch) {
         dispatch(requestData());
         return axios({
-            url: '/api/detectors/' + data.id + '/',
+            url: '/api/detectors/' + data + '/',
             timeout: 20000,
             method: 'delete',
             responseType: 'json',

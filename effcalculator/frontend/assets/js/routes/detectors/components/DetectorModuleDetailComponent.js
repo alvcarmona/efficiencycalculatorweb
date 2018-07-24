@@ -7,13 +7,12 @@ import {Blades} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
 import SketchContainer from './sketchComponent'
 import ConfirmModalContainer from './../containers/confirmModalContainer'
-import {Grid, DropdownButton, MenuItem, Row, Col, PageHeader, small, Panel, Modal} from 'react-bootstrap'
+import {Grid, DropdownButton, MenuItem, Row, Col, PageHeader, small, Panel, Button} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import DetectorFormContainer from '../containers/forms/DetectorForm'
 import WavelengthFormContainer from '../containers/forms/WavelengthForm'
 import BladeHandler from '../containers/BladeHandler'
 import DetectorEfficiencyComponent from './DetectorEfficiencyComponent'
-
 
 
 class EditHandler extends Component {
@@ -40,29 +39,28 @@ class EditHandler extends Component {
     renderComponent() {
         if (this.state.mode === 'view') {
             const View = this.props.view
-            return <View detector={this.props.detector}/>;
+            return <View className='handler-view' detector={this.props.detector}/>;
         } else if (this.state.mode === 'edit') {
             console.log('render edit')
             const Form = this.props.form
-            return <Form detector={this.props.detector}/>
+            return <Form className='handler-form' detector={this.props.detector}/>
         }
     }
 
     renderButton() {
         if (this.state.mode === 'view') {
             return (
-                <div>
-                    <button onClick={this.handleShow.bind(this)}>
+                <div className='handler-button'>
+                    <button className='handler-button-edit btn btn-warning' onClick={this.handleShow.bind(this)}>
                         edit
                     </button>
                 </div>
             );
         } else {
             return (
-                <div>
-
+                <div className='handler-button'>
                     <div>
-                        <button onClick={this.handleEdit.bind(this)}>
+                        <button  className='handler-button-cancel btn btn-danger' onClick={this.handleEdit.bind(this)}>
                             cancel
                         </button>
                     </div>
@@ -73,10 +71,10 @@ class EditHandler extends Component {
 
     render() {
         return (
-            <div>
+            <div className='handler'>
                 {this.renderButton()}
                 {this.renderComponent()}
-              </div>
+            </div>
 
         );
     }
@@ -84,11 +82,10 @@ class EditHandler extends Component {
 
 class BasicInfoComponent extends React.Component {
   render () {
-    return <div><p><b>Detector
-                            name: </b>{this.props.detector.name}</p>
-                            <p>The converter material is <b>{this.props.detector.converter}</b></p>
+    return <div><p><b>Detector name: </b>{this.props.detector.name}</p>
+                             <p><b>Angle: </b>{this.props.detector.angle}° </p>
                             <p><b>Threshold: </b>{this.props.detector.threshold} Kev</p>
-                            <p><b>Angle: </b>{this.props.detector.angle}° </p>
+                             <p>The converter material is <b>{this.props.detector.converter}</b></p>
                             </div>
   }
 }
@@ -115,22 +112,28 @@ class WavelengthInfoComponent extends React.Component {
     return <Row>
                             {!this.props.detector.wavelength || this.props.detector.wavelength.length == 0 ?
                                 <p>There is no wavelength </p> :
-                                <div><Col xs={3} sm={3} md={4}>
-                                    <Panel bsStyle="info">
-                                        <Panel.Heading>
-                                            <Panel.Title componentClass="h3">Wavelength information</Panel.Title>
-                                        </Panel.Heading>
-                                        <Panel.Body>
-                                            <p>This neutron beam configuration
-                                                contains {this.props.detector.wavelength.length > 1 ?
-                                                    <span> Polichromatic wavelength</span> :
-                                                    <span>Monochromatic wavelength</span>}
-                                            </p>
-                                        </Panel.Body>
-                                    </Panel> </Col>
-                                    <Col sm={3} md={4}><h4>Wavelength list</h4>
-                                        <Wavelength
-                                            wave={this.props.detector.wavelength}/> </Col></div>}
+                                <div className='wavelength-info'>
+                                    <Col sm={4}>
+                                        <Panel bsStyle="info">
+                                            <Panel.Heading>
+                                                <Panel.Title componentClass="h3">Wavelength information</Panel.Title>
+                                            </Panel.Heading>
+                                            <Panel.Body>
+                                                <p>This neutron beam configuration
+                                                    contains {this.props.detector.wavelength.length > 1 ?
+                                                        <span> Polichromatic wavelength</span> :
+                                                        <span>Monochromatic wavelength</span>}
+                                                </p>
+                                            </Panel.Body>
+                                        </Panel>
+                                    </Col>
+                                    <Col sm={5} smOffset={2}>
+                                        <div>
+                                            <h4>Wavelength list</h4>
+                                            <Wavelength wave={this.props.detector.wavelength}/>
+                                        </div>
+                                    </Col>
+                                </div>}
                         </Row>
   }
 }
@@ -174,9 +177,14 @@ class DetectorModuleDetailComponent extends Component {
         a.href = 'data:' + data;
         a.download = 'detector.json';
         a.innerHTML = 'Export';
+        a.class = 'btn'
 
         var container = document.getElementById('download');
         container.appendChild(a);
+    }
+    export(){
+        console.log('export button')
+        document.getElementById('download').firstElementChild.click();
     }
 
 
@@ -189,20 +197,31 @@ class DetectorModuleDetailComponent extends Component {
 
                     <PageHeader> Detector configuration Information
                         <small> details</small>
-                        <div id="download"></div>
                     </PageHeader>
                 </Row>
                 <Row>
                     <div className="card">
-                        <Col xs={4} md={4} lg={5}><EditHandler detector={this.props.detector} form={DetectorFormContainer} view={BasicInfoComponent}/>
-                            {/*<DetectorForm onSubmit={this.props.submit}/>*/}
+                        <Col className="delete-button">
+                            <Button className="delete-button" onClick={(e) => {
+                                         //this.props.openModal()
+                                         this.props.deleteDetector(this.props.detector.id)
+                                    }
+                                    }   bsStyle="danger"> Delete detector
+                            </Button>
+                            <Button bsStyle="info" className="exportButton">
+                               <div id="download"> </div>
+                            </Button>
                         </Col>
 
-                        <Col>
-                            <SketchComponent detector={this.props.detector}/>
+                        <Col xs={4} md={4} lg={5} className='detectorInfoColumn'>
+                            <EditHandler detector={this.props.detector} form={DetectorFormContainer} view={BasicInfoComponent}/>
+
                         </Col>
-                    </div>
-                    <div className="card">
+                        {this.props.detector.blades.length > 0?
+                            <Col>
+                                <SketchComponent detector={this.props.detector}/>
+                            </Col>: <div></div>
+                        }
 
                     </div>
                 </Row>
@@ -222,16 +241,31 @@ class DetectorModuleDetailComponent extends Component {
                 </Row>
                 <Row>
                     <div className="card">
-                        <h4>Neutron Wavelength</h4>
                         <EditHandler detector={this.props.detector} form={WavelengthFormContainer} view={WavelengthInfoComponent}/>
                     </div>
                 </Row>
                 <h4>Efficiency information</h4>
                 <Row>
                     <div className="card">
-                       <DetectorEfficiencyComponent detector={this.props.detector} optimizeDetectorDiffThickness={this.props.optimizeDetectorDiffThickness} optimizeDetectorThickness={this.props.optimizeDetectorThickness}/>
+                        { this.props.detector.blades.length >0 && this.props.detector.wavelength.length >0 ?
+                             <div>   { this.props.detector.metadata.total_efficiency !== undefined ?
+                                    <DetectorEfficiencyComponent
+                                        detector={this.props.detector}
+                                        optimizeDetectorDiffThickness={this.props.optimizeDetectorDiffThickness}
+                                        optimizeDetectorThickness={this.props.optimizeDetectorThickness}
+                                    />
+                                :
+                                  <div>  Calculate eff </div>
+                                }
+                                </div>
+                            :
+                            <div> add wavelength and blades </div>
+                        }
                     </div>
                 </Row>
+                {/*
+
+                 <ConfirmModalContainer submit={this.deleteDetector.bind(this)}/>*/}
             </div>
 
         );
