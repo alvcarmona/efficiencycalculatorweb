@@ -116,11 +116,10 @@ function exampleReducer(state = {
                     newdata.push(state.data[i])
                 }
             }
-            delete state.detectorsSelected[action.data]
-            const select = delete state.detectorsSelected
             const detectorlist = newdata
+            const sel = {}
             console.log('delete success')
-            return Object.assign({}, state, {isLoading: false, data: [...detectorlist],detectorsSelected:{...select}, error: false});
+            return Object.assign({}, state, {isLoading: false, data: [...detectorlist],detectorsSelected:sel, error: false});
         default:
             return state;
     }

@@ -41,13 +41,17 @@ class DetectorAnimatedlistComponent extends Component {
 
     onItemClick(d) {
         console.log("selected " + d)
-        let selected = this.state.selected
+        let selected = {}
         if (this.state.selected[d.id]) {
-            delete selected[d.id]
             document.getElementById('list' + d.id).style.backgroundColor = 'white';
             document.getElementById('list' + d.id).style.width = "100%"
-            this.props.selectDetectors(selected)
+            this.props.selectDetectors({})
         } else {
+            let c = document.getElementById('detectorList').children
+            for (let it of c){
+                it.style.backgroundColor = 'white';
+                it.style.width = "100%"
+            }
             selected[d.id] = d
             document.getElementById('list' + d.id).style.backgroundColor = '#ceeff5';
             document.getElementById('list' + d.id).style.width = "110%"

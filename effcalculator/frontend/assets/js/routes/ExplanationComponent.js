@@ -21,7 +21,7 @@ class Explanation extends Component {
                                         tools designed to analytically calculate, visualise and optimise the detection
                                         efficiency of thermal neutron detectors, which are based on thin-film
                                         converters.
-                                        The implementation presented in this article concerns 10B-based detectors in
+                                        The implementation presented in this software concerns 10B-based detectors in
                                         particular. The source code is openly available to interested users via a
                                         GitHub repository.
                                     </Panel.Body>
@@ -34,8 +34,9 @@ class Explanation extends Component {
                                             configuration</Panel.Title>
                                     </Panel.Heading>
                                     <Panel.Body>{/*collapsible*/}
-                                        A detector can be made of a single or multiple layers. A layer consists
-                                        of a substrate material, usually Aluminium, on which the 10B4C converter is
+                                    <p>
+                                        A detector can be made of a single or <b>multiple layers</b>. A layer consists
+                                        of a <b>substrate material</b>, usually Aluminium, on which the 10B4C  converter  is
                                         coated, either on one or both sides. A double-coated layer is referred to as
                                         blade.
                                         The number of converter layers, their thickness and their composition matter.
@@ -62,6 +63,7 @@ class Explanation extends Component {
                                         every blade is the sum of the back-scattering and transmission layer eciencies,
                                         as the substrate holds two converter layers, one in back-scattering mode and
                                         one in transmission mode.
+                                        </p>
                                         <Image src="https://project.esss.dk/owncloud/index.php/s/PM9qD4T3XR7bOAr"/>
                                        <div> <Image src={logo} responsive className="brightnessImg"/></div>
                                     </Panel.Body>
