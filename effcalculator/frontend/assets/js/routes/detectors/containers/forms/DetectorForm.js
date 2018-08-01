@@ -61,7 +61,7 @@ let DetectorForm = props => {
                     </Field>
                 </Row>
             </div>
-            <button className="submitButton" type="submit">Submit</button>
+            <button className="submitButton btn btn-success" type="submit">Submit</button>
         </form>
     )
 }

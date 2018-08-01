@@ -38,7 +38,7 @@ let LayerForm = props => {
                 <label htmlFor="Converter thickness">Converter thickness (µm)</label>
                 <Field name="Layer thickness" component={renderField} validate={[ required, minValue0, maxValue20 ]} type="number"/>
             </div>
-            <button  className="submitButton" type="submit">Add blades</button>
+            <button  className="submitButton btn btn-success" type="submit">Add blades</button>
         </form>
     )
 }

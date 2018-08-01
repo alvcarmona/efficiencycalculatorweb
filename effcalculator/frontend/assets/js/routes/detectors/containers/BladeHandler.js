@@ -47,17 +47,17 @@ class BladeHandler extends React.Component {
       return (
           <div>
               <p>Select a configuration:</p>
-              <button onClick={this.handleEditSingle}>
+              <button className="btn btn-primary" onClick={this.handleEditSingle}>
                 single
               </button>
-              <button onClick={this.handleEditMulti}>
+              <button className="btn btn-primary" onClick={this.handleEditMulti}>
                 multi
               </button>
           </div>
       );
     } else {
       return (
-          <button onClick={this.handleSave}>
+          <button className="btn btn-danger" onClick={this.handleSave}>
             Cancel
           </button>
       );

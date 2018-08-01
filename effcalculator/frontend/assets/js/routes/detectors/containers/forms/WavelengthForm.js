@@ -39,7 +39,7 @@ let WavelengthForm = props => {
                 <label htmlFor="Wavelength">Wavelength (Å)</label>
                 <Field name="Wavelength" validate={[ required, minValue0, maxValue20 ]} component={renderField} type="number"/>
             </div>
-            <button  className="submitButton" type="submit">Add wavelength</button>
+            <button  className="submitButton btn btn-success" type="submit">Add wavelength</button>
         </form>
     )
 }
