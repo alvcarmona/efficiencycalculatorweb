@@ -3,11 +3,12 @@
  */
 import React, {Component} from 'react'
 
-import DetectorAnimatedListComponent from './DetectorAnimatedList'
+import DetectorAnimatedListContainer from '../containers/DetectorAnimatedListContainer'
 import {Grid, Row, Col} from 'react-bootstrap'
 import RefreshDetectorsContainer from '../containers/RefreshDetectorsContainer'
 import MiddlePanel from '../containers/MiddlePanelContainer'
 import CreateDetectorButtonContainer from '../containers/CreateDetectorButtonContainer'
+
 class DetectorModuleComponent extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +17,7 @@ class DetectorModuleComponent extends Component {
     render() {
         if (!this.props.detectors || this.props.detectors.length == 0) {
             return (<Col sm={2} md={2}>
-                            <Row><DetectorAnimatedListComponent detectors={this.props.detectors}/></Row>
+                            <Row><CreateDetectorButtonContainer detectors={this.props.detectors}/></Row>
 
                         </Col>);
         }
@@ -28,7 +29,7 @@ class DetectorModuleComponent extends Component {
                     <Row className={'DetectorModuleContent'}>
 
                         <Col xs={2}>
-                            <DetectorAnimatedListComponent detectors={this.props.detectors}/>
+                            <DetectorAnimatedListContainer detectors={this.props.detectors}/>
                         </Col>
                         <Col xs={8} md={8} lg={8} className={'middleColumn'}>
                             <MiddlePanel detectors={this.props.detectors} />

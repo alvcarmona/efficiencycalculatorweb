@@ -1,18 +1,9 @@
-import {connect} from 'react-redux';
-import {selectDetectors} from '../../../modules/actions/index';
+
 import React, {Component} from 'react'
-import {ListGroup, ListGroupItem, Row, Glyphicon, Col} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
-import CreateDetectorButtonContainer from '../containers/CreateDetectorButtonContainer'
+import {ListGroup, ListGroupItem, Glyphicon} from 'react-bootstrap'
 
 
-const mapDispatchToProps = dispatch => {
-    return {
-        selectDetectors: detectors => dispatch(selectDetectors(detectors))
-    };
-};
-
-class DetectorAnimatedlistComponent extends Component {
+export default class DetectorAnimatedlistComponent extends Component {
 
     // Stiles in **** Detector list **** section App.css
 
@@ -60,11 +51,6 @@ class DetectorAnimatedlistComponent extends Component {
     }
 
     render() {
-        const headerStyle = {
-            fontSize: '20px',
-            textAlign: 'left',
-            display: 'inline-flex'
-        };
         const elementStyle = {
             fontSize: '15px',
             textAlign: 'left',
@@ -84,15 +70,10 @@ class DetectorAnimatedlistComponent extends Component {
         });
 
         return (
-            <div>
-                <Row style={headerStyle}> <b>Dector list</b> <CreateDetectorButtonContainer/></Row>
-                <Row> <ListGroup id={"detectorList"}>
+             <ListGroup id={"detectorList"}>
                     {childElements}
-                </ListGroup></Row>
-            </div>
+                </ListGroup>
         );
     }
 
 }
-
-export default connect(null, mapDispatchToProps)(DetectorAnimatedlistComponent)
