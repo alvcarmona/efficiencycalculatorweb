@@ -1,0 +1,16 @@
+sudo: false
+language: python
+python:
+  - "2.7"
+
+node_js: 6
+install:
+  - pip install -r requirements.txt
+  - npm install
+cache:
+  directories:
+    - node_modules
+    - $HOME/.cache/pip
+    - $HOME/virtualenv/python2.7.9/lib/python2.7/site-packages
+script:
+  - npm test
