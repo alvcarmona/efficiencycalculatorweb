@@ -15,15 +15,12 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-
-                <div>
                     <NavBarContainer/>
                     <Switch>
                        <Route exact path='/' component={Homepage}/>
                         <Route path='/detectors/' component={detectors} />
                          <Route path='/explanation/' component={Explanation} />
                     </Switch>
-                </div>
             </div>
         );
     }

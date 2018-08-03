@@ -36,7 +36,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-class DetectorModuleDetailContainer extends Component {
+export class DetectorModuleDetailContainer extends Component {
     constructor(props) {
         super(props)
     }
@@ -70,7 +70,9 @@ class DetectorModuleDetailContainer extends Component {
         this.props.history.push('/detectors/' + this.props.match.params.number.toString())
 
     }
-
+    dummyFunc = (values) => {
+        return values
+    }
     addWavelength = (values) => {
         // print the form values to the console
         let wavelength = [];

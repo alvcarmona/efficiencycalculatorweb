@@ -26,7 +26,7 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({fetchData, setCurrentDetector,requestConverters}, dispatch)
 }
 
-class DetectorEfficiencyCalculator extends Component {
+export class DetectorEfficiencyCalculator extends Component {
     constructor(props) {
         super(props);
     }

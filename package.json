@@ -4,13 +4,24 @@
   "description": "NEutron detector efficiency calculator",
   "main": "index.js",
   "repository": "https://github.com/alvcarmona/efficiencycalculatorweb",
+   "jest": {
+    "verbose": true,
+     "testURL": "http://localhost/",
+     "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
+     "testPathIgnorePatterns": ["<rootDir>/__tests__/setup/"],
+     "moduleNameMapper": {
+       "\\.(css|scss|less)$": "<rootDir>/__tests__/setup/__mocks__/styleMock.js",
+      "\\.(png|jpg|gif|ttf|eot|svg)$": "<rootDir>/__tests__/setup/__mocks__/fileMock.js"
+    }
+  },
   "scripts": {
     "postinstall": "node_modules/webpack/bin/webpack.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "webpack-watch": "./node_modules/.bin/webpack --config webpack.config.js --watch",
     "build": "webpack --config webpack.config.js --progress --colors",
     "build-production": "webpack --config webpack.prod.config.js --progress --colors",
     "watch": "node server.js",
+    "test:watch": "jest --watch",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "engines": {
@@ -18,7 +29,21 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-jest": "^23.4.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.6",
+    "jest": "^23.4.2",
+    "jest-enzyme": "^6.0.2",
+    "jsdom": "^11.12.0",
+    "mocha": "^5.2.0",
+    "react-test-renderer": "^15.5.0",
+    "redux-mock-store": "^1.5.3"
+  },
   "dependencies": {
     "animated": "0.2.0",
     "axios": "^0.16.2",
