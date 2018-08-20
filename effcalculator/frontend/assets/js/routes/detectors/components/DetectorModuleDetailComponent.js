@@ -2,18 +2,15 @@
  * Created by alvarocbasanez on 13/07/17.
  */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
 import {Blades} from './BladesComponent'
 import Wavelength from './WavelengthComponent'
 import SketchContainer from './sketchComponent'
-import ConfirmModalContainer from './../containers/confirmModalContainer'
-import {Grid, DropdownButton, MenuItem, Row, Col, PageHeader, small, Panel, Button} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
+import {Row, Col, PageHeader, small, Panel, Button} from 'react-bootstrap'
 import DetectorFormContainer from '../containers/forms/DetectorForm'
 import WavelengthFormContainer from '../containers/forms/WavelengthForm'
 import BladeHandler from '../containers/BladeHandler'
 import DetectorEfficiencyComponent from './DetectorEfficiencyComponent'
-
+import Spinner from './Spinner'
 
 class EditHandler extends Component {
     constructor(props) {
@@ -101,6 +98,15 @@ class BladeInfoComponent extends React.Component {
                                 <Blades blades={this.props.detector.blades}/>
                             </div>
                         }</Row>
+  }
+}
+
+class MetadataLoad extends React.Component {
+  render () {
+    return <div>
+            <h5>Generating metadata, this may take some seconds</h5>
+                <Spinner/>
+            </div>
   }
 }
 
@@ -231,9 +237,6 @@ class DetectorModuleDetailComponent extends Component {
                 <Row>
                     <div className="card">
                         <EditHandler detector={this.props.detector} form={BladeHandler} view={BladeInfoComponent}/>
-                        <Row>
-                            {/*<BladeHandler onSubmit={this.props.addBlades}/>*/}
-                        </Row>
                     </div>
                 </Row>
                 <Row>
@@ -248,14 +251,15 @@ class DetectorModuleDetailComponent extends Component {
                 <Row>
                     <div className="card">
                         { this.props.detector.blades.length >0 && this.props.detector.wavelength.length >0 ?
-                             <div>   { this.props.detector.metadata.total_efficiency !== undefined ?
+                             <div>   { this.props.detector.metadata.calculated ?
                                     <DetectorEfficiencyComponent
                                         detector={this.props.detector}
                                         optimizeDetectorDiffThickness={this.props.optimizeDetectorDiffThickness}
                                         optimizeDetectorThickness={this.props.optimizeDetectorThickness}
                                     />
                                 :
-                                  <div>  Calculate eff </div>
+                                 <MetadataLoad/>
+
                                 }
                                 </div>
                             :

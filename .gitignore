@@ -8,3 +8,6 @@ db.sqlite3
 effcalculator/webpack-stats.json
 /node_modules/
 effcalculator/npm-debug.log
+/coverage
+.storybook
+stories

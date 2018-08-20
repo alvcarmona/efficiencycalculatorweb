@@ -25,7 +25,7 @@ export class DetectorAnimatedlistContainer extends Component {
 
         return (
             <div>
-                <Row style={headerStyle}> <b>Dector list</b> <CreateDetectorButtonContainer/></Row>
+                <Row style={headerStyle}> <b>Detector list</b> <CreateDetectorButtonContainer/></Row>
                 <Row>
                     <DetectorAnimatedlistComponent detectors={this.props.detectors} selectDetectors={this.props.selectDetectors}/>
                 </Row>

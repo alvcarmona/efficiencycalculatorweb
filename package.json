@@ -4,15 +4,19 @@
   "description": "NEutron detector efficiency calculator",
   "main": "index.js",
   "repository": "https://github.com/alvcarmona/efficiencycalculatorweb",
-   "jest": {
+  "jest": {
     "verbose": true,
-     "testURL": "http://localhost/",
-     "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
-     "testPathIgnorePatterns": ["<rootDir>/__tests__/setup/"],
-     "moduleNameMapper": {
-       "\\.(css|scss|less)$": "<rootDir>/__tests__/setup/__mocks__/styleMock.js",
+    "testURL": "http://localhost/",
+    "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup/"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss|less)$": "<rootDir>/__tests__/setup/__mocks__/styleMock.js",
       "\\.(png|jpg|gif|ttf|eot|svg)$": "<rootDir>/__tests__/setup/__mocks__/fileMock.js"
-    }
+    },
+     "collectCoverage": true,
+     "coverageReporters": ["json", "html"]
   },
   "scripts": {
     "postinstall": "node_modules/webpack/bin/webpack.js",
@@ -22,7 +26,9 @@
     "build-production": "webpack --config webpack.prod.config.js --progress --colors",
     "watch": "node server.js",
     "test:watch": "jest --watch",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook"
   },
   "engines": {
     "node": "6.11.0"
@@ -30,14 +36,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
     "babel-jest": "^23.4.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "chai": "^4.1.2",
+    "babel-runtime": "^6.26.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15": "^1.0.6",
     "jest": "^23.4.2",
+    "jest-cli": "^23.4.2",
     "jest-enzyme": "^6.0.2",
     "jsdom": "^11.12.0",
     "mocha": "^5.2.0",

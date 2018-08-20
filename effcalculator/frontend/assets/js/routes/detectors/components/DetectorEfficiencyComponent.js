@@ -12,7 +12,11 @@ class TotalEfficiencyPlot extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
+
+    }
+
+    render() {
+        const config = {
             data: {
                 labels: [
                     'Total Efficiency: ' + this.props.data.toString() + ' %'
@@ -57,10 +61,7 @@ class TotalEfficiencyPlot extends Component {
                 }]
             }
         }
-    }
-
-    render() {
-        return <Doughnut data={this.state.data}/>
+        return <Doughnut data={config.data}/>
     }
 }
 
@@ -87,22 +88,27 @@ class EffVsThicknessPlot extends Component {
             let i = this.refs.chart.chart_instance.data.datasets[0].data.indexOf(closestValue)
             this.refs.chart.chart_instance.data.datasets[0].backgroundColor[i] = "red";
             this.refs.chart.chart_instance.data.datasets[0].pointRadius[i] = 3
-
         }
     }
 
     constructor(props) {
+        super(props);
+    }
+
+    render() {
+        console.log("render EffVSthick     .................")
         let xlabels = []
-        props.detector.metadata.eff_vs_layer_thickness.x.forEach((element) => {
+        this.props.detector.metadata.eff_vs_layer_thickness.x.forEach((element) => {
             xlabels.push(Math.round(element * 100) / 100)
         })
-        super(props);
+
         let colors = []
         let radius = []
         for (let j = 0; j < this.props.detector.metadata.eff_vs_layer_thickness.x.length; j++) {
             colors.push('#8cbbff')
             radius.push(0.5)
         }
+
         let dataset = [{
             label: 'Total eff',
             fill: false,
@@ -125,7 +131,7 @@ class EffVsThicknessPlot extends Component {
             pointHitRadius: 1,
             data: this.props.detector.metadata.eff_vs_layer_thickness.y
         }]
-        if (props.detector.single) {
+        if (this.props.detector.single) {
             dataset.push({
                     label: 'Transmission eff',
                     fill: false,
@@ -171,7 +177,7 @@ class EffVsThicknessPlot extends Component {
                     data: this.props.detector.metadata.eff_vs_bslayer_thickness.y
                 })
         }
-        this.state = {
+        const config = {
             data: {
                 labels: xlabels,
                 datasets: dataset
@@ -194,10 +200,7 @@ class EffVsThicknessPlot extends Component {
                 }
             }
         }
-    }
-
-    render() {
-        return <Line ref='chart' data={this.state.data} width={400} height={300}/>
+        return <Line ref='chart' data={config.data} width={400} height={300}/>
     }
 }
 
@@ -216,7 +219,7 @@ class EffVsWavelengthPlot extends Component {
         }
         return ans;
     }
-
+    
 
     componentDidMount() {
         if (this.refs.chart.chart_instance) {
@@ -229,15 +232,16 @@ class EffVsWavelengthPlot extends Component {
 
     constructor(props) {
         super(props);
-        let colors = []
+    }
+    generateConfig(){
+         let colors = []
         let radius = []
-        let tension = []
         for (let j = 0; j < this.props.detector.metadata.eff_vs_wavelength.x.length; j++) {
             colors.push('#8cbbff')
             radius.push(0.5)
         }
         let xlabels = []
-        props.detector.metadata.eff_vs_wavelength.x.forEach((element) => {
+        this.props.detector.metadata.eff_vs_wavelength.x.forEach((element) => {
             xlabels.push(Math.round(element * 100) / 100)
         })
         let dataset = [{
@@ -262,7 +266,7 @@ class EffVsWavelengthPlot extends Component {
             pointHitRadius: 1,
             data: this.props.detector.metadata.eff_vs_wavelength.y
         }]
-        if (props.detector.single) {
+        if (this.props.detector.single) {
             dataset.push({
                     label: 'Transmission eff',
                     fill: false,
@@ -308,7 +312,7 @@ class EffVsWavelengthPlot extends Component {
                     data: this.props.detector.metadata.eff_vs_wavelength_bs.y
                 })
         }
-        this.state = {
+        return {
             data: {
                 labels: xlabels,
                 datasets: dataset
@@ -343,9 +347,9 @@ class EffVsWavelengthPlot extends Component {
             }
         }
     }
-
     render() {
-        return <Line ref='chart' data={this.state.data} width={400} height={300}/>
+        let config = this.generateConfig()
+        return <Line ref='chart' data={config.data} width={400} height={300}/>
     }
 }
 
@@ -500,12 +504,6 @@ class DetectorEfficiencyComponent extends Component {
 
 
     render() {
-        if (!this.props.detector) {
-            return (
-                <div className="DetectorEfficiencyComponent">
-                    <Link to={`/detectors/`}>atras</Link>
-                </div>)
-        }
         if (this.props.detector.wavelength.length === 0 || this.props.detector.blades.length === 0) {
             return (
                 <div className="DetectorEfficiencyComponent">
@@ -543,19 +541,14 @@ class DetectorEfficiencyComponent extends Component {
                 <Row><h5>Efficiency plots</h5></Row>
                 <Row className='plot-row plot-row-total'>
                     <Col md={6} smOffset={2} mdOffset={3}>
-                        {this.props.detector.metadata.total_efficiency !== undefined && this.props.detector.metadata.total_efficiency>0?
                             <div className='plot-row-element'>
                                 <TotalEfficiencyPlot data={this.props.detector.metadata.total_efficiency}/>
-                            </div>:
-                            <div>
-                                Waiting for efficiency calculation
                             </div>
-                        }
                         </Col>
                 </Row>
                 <Row className='plot-row plot-row-meta'>
                     <Col sm={8} smOffset={1} mdOffset={2}>
-                         {this.props.detector.metadata.eff_vs_bslayer_thickness.x.length > 0?
+
                             <div>
                                 <Row>
                                     <b>Efficiency Vs. Blade Thickness Plot</b>
@@ -563,9 +556,7 @@ class DetectorEfficiencyComponent extends Component {
                                 <Row className='plot-row-element'>
                                     <EffVsThicknessPlot detector={this.props.detector}/>
                                 </Row>
-                            </div>:
-                            <div></div>
-                        }
+                            </div>
 
 
                     {/*
@@ -573,7 +564,6 @@ class DetectorEfficiencyComponent extends Component {
                                 <Button bsStyle="primary" onClick={this.props.optimizeDetectorWavelength}> Optimize wavelength</Button>
                             </Row>
                             */}
-                        {this.props.detector.metadata.eff_vs_wavelength.x.length > 0?
                             <div>
                                         <Row>
                                     <b>Efficiency Vs. Blade Wavelength Plot</b>
@@ -581,14 +571,13 @@ class DetectorEfficiencyComponent extends Component {
                                 <Row className='plot-row-element'>
                                     <EffVsWavelengthPlot detector={this.props.detector}/>
                                 </Row>
-                            </div>:
-                            <div></div>
-                        }
+                            </div>
+
 
                         </Col>
                     {/* <Row>
-                                <PhsPlot detector={this.props.detector}/>
-                             </Row> */}
+                         <PhsPlot detector={this.props.detector}/>
+                       </Row> */}
                 </Row>
             </div>
         );

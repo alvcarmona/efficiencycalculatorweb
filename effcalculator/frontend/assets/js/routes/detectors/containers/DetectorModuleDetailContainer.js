@@ -122,6 +122,9 @@ export class DetectorModuleDetailContainer extends Component {
     }
 
     render() {
+        if(this.props.detector.metadata){
+
+        }
         console.log("render module")
         return (<DetectorModuleDetailComponent detector={this.props.detector} deleteDetector={this.props.deleteDetector}
                                                openModal={this.props.openModal}
@@ -130,6 +133,7 @@ export class DetectorModuleDetailContainer extends Component {
                                                addWavelength={this.addWavelength.bind(this)} optimizeDetectorDiffThickness={this.optimizeDetectorDiffThickness}
                                                  optimizeDetectorThickness={this.optimizeDetectorThickness}/>)
     }
+
 }
 
 

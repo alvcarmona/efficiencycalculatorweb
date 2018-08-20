@@ -42,6 +42,7 @@ class CreateDetectorButtonContainer extends Component {
             converter: "10B4C 2.24g/cm3",
             wavelength: [],
             metadata:{
+                calculated: false,
                 eff_vs_layer_thickness: {},
                 eff_vs_wavelength: {},
                 eff_vs_bslayer_thickness: {},
@@ -67,6 +68,7 @@ class CreateDetectorButtonContainer extends Component {
             wavelength: [],
             single:false,
             metadata:{
+                calculated: false,
                 eff_vs_layer_thickness: {},
                 eff_vs_wavelength: {},
                 eff_vs_bslayer_thickness: {},

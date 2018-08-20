@@ -22,6 +22,7 @@ class Plot(EmbeddedDocument):
 
 
 class Metadata(EmbeddedDocument):
+    calculated = fields.BooleanField(default=False)
     eff_vs_layer_thickness = fields.EmbeddedDocumentField(Plot)
     eff_vs_bslayer_thickness = fields.EmbeddedDocumentField(Plot)
     eff_vs_tslayer_thickness = fields.EmbeddedDocumentField(Plot)
@@ -132,9 +133,10 @@ class Detector(Document):
                 self.metadata.eff_vs_tslayer_thickness.y = detector.metadata.get('thickVsEffTrans')[1].tolist()
                 self.metadata.eff_vs_layer_thickness.x = detector.metadata.get('thickVsEff')[0].tolist()
                 self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1].tolist()
-            else :
+            else:
                 self.metadata.eff_vs_layer_thickness.x = detector.metadata.get('thickVsEff')[0].tolist()
                 self.metadata.eff_vs_layer_thickness.y = detector.metadata.get('thickVsEff')[1]
+            self.metadata.calculated = True
             self.save()
             print 'metadata thick calculated and saved'
             thread.exit()

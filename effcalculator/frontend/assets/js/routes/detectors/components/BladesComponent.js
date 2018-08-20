@@ -6,11 +6,11 @@ import {Table, Row, Col} from 'react-bootstrap'
 import {Scatter} from 'react-chartjs-2'
 
 class BladeThicknessDepthPlot extends Component {
-    componentDidMount(){
-            console.log(this.refs.chart.chart_instance); // returns a Chart.js instance reference
-    }
     constructor(props) {
         super(props);
+    }
+
+    render() {
         let dataList = [];
         let labels = [];
         let ymax = 0;
@@ -21,9 +21,7 @@ class BladeThicknessDepthPlot extends Component {
             }
             labels.push(String(index + 1))
         });
-
-        this.state = {
-            data: {
+        const data =  {
                 labels: labels,
                 datasets: [{
                     label: 'Blade converter thickness in depth',
@@ -46,8 +44,8 @@ class BladeThicknessDepthPlot extends Component {
                     ],
                     borderWidth: 1
                 }]
-            },
-            options: {
+            }
+        const options = {
                 showLines: false,
                 scales: {
                     xAxes: [{
@@ -77,11 +75,7 @@ class BladeThicknessDepthPlot extends Component {
                     }]
                 }
             }
-        }
-    }
-
-    render() {
-        return <Scatter ref='chart' data={this.state.data} options={this.state.options} width={400} height={250}/>
+        return <Scatter ref='chart' data={data} options={options} width={400} height={250}/>
     }
 }
 
@@ -135,15 +129,13 @@ class Blades extends Component {
         }
         return (
             <Row>
-                <Col md={12}>
-                    <Col sm={6} className="BladeThicknessPlot">
+                    <Col xs={8}  md={6}  className="BladeThicknessPlot">
                         <BladeThicknessDepthPlot blades={this.props.blades}/>
                     </Col>
-                    <Col md={4} className="BladeThicknessTable">
+                    <Col sm={6} md={4} className="BladeThicknessTable">
                         <h4>Blade list</h4>
                         <BladeTable blades={this.props.blades}/>
                     </Col>
-                </Col>
             </Row>
         );
     }
