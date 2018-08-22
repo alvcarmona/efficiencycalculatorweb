@@ -56,7 +56,7 @@ let BladesForm = props => {
                        type="number"/>
             </div>
             <div>
-                <label htmlFor="Substrate thickness">Substrate thickness (µm)</label>
+                <label htmlFor="Substrate thickness">Substrate thickness (mm)</label>
                 <Field name="subThickness" component={renderField} validate={[required, minValue0, maxValue10]}
                        type="number"/>
             </div>

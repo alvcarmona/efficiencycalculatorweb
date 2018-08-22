@@ -147,7 +147,6 @@ class WavelengthInfoComponent extends React.Component {
 class SketchComponent extends React.Component {
     componentWillReceiveProps(){
         console.log('props component')
-        this.forceUpdate()
     }
 
   render () {
@@ -214,21 +213,20 @@ class DetectorModuleDetailComponent extends Component {
                                     }
                                     }   bsStyle="danger"> Delete detector
                             </Button>
-                            <Button bsStyle="info" className="exportButton">
+                            <div bsStyle="info" className="exportButton btn btn-primary">
                                <div id="download"> </div>
-                            </Button>
+                            </div>
                         </Col>
-
-                        <Col xs={4} md={4} lg={5} className='detectorInfoColumn'>
+                        <Row>
+                        <Col xs={6} md={4}  className='detectorInfoColumn'>
                             <EditHandler detector={this.props.detector} form={DetectorFormContainer} view={BasicInfoComponent}/>
-
                         </Col>
                         {this.props.detector.blades.length > 0?
-                            <Col>
-                                <SketchComponent detector={this.props.detector}/>
+                            <Col xs={12}  md={8}>
+                                <SketchContainer detector={this.props.detector}/>
                             </Col>: <div></div>
                         }
-
+                    </Row>
                     </div>
                 </Row>
                 <Row>

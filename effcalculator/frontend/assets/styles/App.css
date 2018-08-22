@@ -169,7 +169,7 @@ body:after {
     left: -20px;
     text-align: center;
     font-size: 13px;
-    font-family: sans-serif;
+    font-family: sans-serif, Helvetica, Arial;
     text-transform: uppercase;
     font-weight: bold;
     color: #fff;
@@ -367,19 +367,27 @@ a.NavbarLink:hover {
 }
 
 #download {
-    font-size: 16px
+    font-size: 16px;
+    padding-top: 3px;
+    margin-left: 8px;
+    margin-right: 7px;
 }
 
 /*********************Sketch*********************************/
 #plano {
-    width: 50%;
+    width: 95%;
     margin: 0 auto;
     display: block;
     border: 1px solid #d9d9d9;
 }
 
+a:hover {
+    text-decoration: none !important;
+}
+
 .sketch {
-    margin: 50px;
+    margin: 10px;
+    margin-top: 30px;
 }
 
 /************************* Detector list *****************************************/

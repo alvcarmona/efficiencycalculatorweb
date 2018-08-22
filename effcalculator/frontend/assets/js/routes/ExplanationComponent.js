@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid, Row, Col, Image, Panel, PanelGroup} from 'react-bootstrap'
-//import logo from '../../img/brightness.png';
+import logobright from '../../img/brightness.png';
 import logo from '../../img/bladeSketch copy.svg';
 import configurationsketch from '../../img/configurationSketch.png'
 
@@ -34,6 +34,7 @@ class Explanation extends Component {
                                             configuration</Panel.Title>
                                     </Panel.Heading>
                                     <Panel.Body>{/*collapsible*/}
+                                    <Row>
                                     <p>
                                         A detector can be made of a single or <b>multiple layers</b>. A layer consists
                                         of a <b>substrate material</b>, usually Aluminium, on which the 10B4C  converter  is
@@ -64,14 +65,18 @@ class Explanation extends Component {
                                         as the substrate holds two converter layers, one in back-scattering mode and
                                         one in transmission mode.
                                         </p>
-                                        <Image src="https://project.esss.dk/owncloud/index.php/s/PM9qD4T3XR7bOAr"/>
-                                       <div> <Image src={logo} responsive className="brightnessImg"/></div>
+                                        <Col  xs={9}  lg={6}><Image responsive src="https://project.esss.dk/owncloud/index.php/s/PM9qD4T3XR7bOAr/download"/> </Col>
+                                        </Row>
+
                                     </Panel.Body>
                                 </Panel>
 
                             </PanelGroup>
 
                     </Row>
+                <Row>
+                                       <Col  xs={4} md={3}> <div className="brightness"><Image src={logobright} responsive className="brightnessImg"/></div></Col>
+                                        </Row>
             </div>
     );
     }

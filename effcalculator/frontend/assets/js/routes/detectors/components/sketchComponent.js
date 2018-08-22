@@ -4,100 +4,106 @@ class Sketch extends Component {
      dibujar() {
         console.log('dibujar')
         let canvas = document.getElementById("plano");
-        document.getElementById("plano").width+=0;
-        let X, Y;
-        let blades= this.props.blades
-        let angle = this.props.angle
+        //document.getElementById("plano").width+=0;
+        const blades= this.props.blades
+        const angle = this.props.angle
+         Math.radians = function(degrees) {
+              return degrees * Math.PI / 180;
+            };
         if (canvas && canvas.getContext ) {
-            inicializarCanvas();
-
-            function inicializarCanvas() {
+            drawInCanvas();
+            function drawInCanvas() {
                 let ctx = canvas.getContext("2d");
                 let s = getComputedStyle(canvas);
                 let w = s.width;
                 let h = s.height;
                 canvas.width = w.split("px")[0];
                 canvas.height = h.split("px")[0];
-                X = canvas.width / 2;
-                Y = canvas.height / 2;
-
-                drawBeam(ctx, canvas.width, canvas.height)
-                drawBlades(ctx, canvas.width, canvas.height, blades, angle)
+                const toy=canvas.height/2
+                const tox = canvas.width/ 3
+                const fromy =calculateInitialYBeam(tox,toy,angle)
+                drawBeam(ctx,0,fromy, tox, toy);
+                drawBlades(ctx, canvas.width, canvas.height, blades.length, 90);
             }
 
-            function drawBeam(ctx, x, y) {
-                console.log("Linea")
-                //ctx.rotate(detector.angle*Math.PI/180)
-                ctx.moveTo(x / 3, y / 2);
-                ctx.lineTo(0, y / 2);
-                ctx.strokeStyle = "#f00";
+            function calculateInitialYBeam(tox,toy, angle){
+                return  toy - Math.tan(Math.radians(90-angle))*(tox);
+            }
+
+            function drawBeam(ctx, fromx, fromy, tox, toy) {
+                const headlen = 10;
+                const  angle = Math.atan2(toy-fromy,tox-fromx);
+                //starting path of the arrow from the start square to the end square and drawing the stroke
+                ctx.beginPath();
+                ctx.moveTo(fromx, fromy);
+                ctx.lineTo(tox, toy);
+                ctx.strokeStyle = "#cc0000";
+                ctx.lineWidth = 5;
                 ctx.stroke();
-                //ctx.restore()
-                ctx.save()
+                //starting a new path from the head of the arrow to one of the sides of the point
+                ctx.beginPath();
+                ctx.moveTo(tox, toy);
+                ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+                //path from the side point of the arrow, to the other side point
+                ctx.lineTo(tox-headlen*Math.cos(angle+Math.PI/7),toy-headlen*Math.sin(angle+Math.PI/7));
+                //path from the side point back to the tip of the arrow, and then again to the opposite side point
+                ctx.lineTo(tox, toy);
+                ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+                //draws the paths created above
+                ctx.strokeStyle = "#cc0000";
+                ctx.lineWidth = 5;
+                ctx.stroke();
+                ctx.fillStyle = "#cc0000";
+                ctx.fill();
+                ctx.lineWidth = 1;
+                ctx.save();
             }
 
-            function drawBlades(ctx, x, y, blades, angle) {
+            function getBladeProportions( x, y, angle, blades) {
+                const detectorSpace = (x/3)*2
+                let maxBladespace = detectorSpace/blades
+                if (maxBladespace>70) maxBladespace=70
+                const bDistance = (maxBladespace/3)*2
+                const bwidth = maxBladespace -bDistance
+                const initialX = x / 3
+                const initialY = y / 6
+                const height =  y*2 / 3
+                const rotation = 0
+                return {margin:bDistance, initialX:initialX,initialY:initialY,thick:bwidth,height:height,rotation:rotation}
+            }
 
-                let initialX = x / 3
-                let initialY = y / 4
-                let thick = 7
-                let height =  y / 2
-                let margin = 10
-                let rotation = (90 - angle) * Math.PI / 180
-                let i = 0
+            function drawBlade(ctx2,initialX,initialY,rotation,thick,height){
+                    console.log("debug me")
+                    //Blade converter proportions
+                    const converterThick = thick/4
+                    const substrateThick = thick-converterThick
 
-                if(angle <= 10){
-                    initialX = x / 3 +40
-                    initialY = y / 4 + 45
-                    thick = 4
-                    margin = 40
-                    height = y/5 *2
-                }else if(angle <= 25 && angle > 10){
-                    initialX = x / 3 +35
-                    initialY = y / 4 + 30
-                    thick = 4
-                    margin = 30
-                    height = y/3
-                }else if(angle <= 40 && angle > 25){
-                    initialX = x / 3 +45
-                    initialY = y / 4 + 25
-                    thick = 10
-                    margin = 35
-                    height = y/7 * 3
-                }else if(angle <= 60 && angle > 40){
-                    initialX = x / 3 +50
-                    initialY = y / 4 +15
-                }else if(angle <= 80 && angle > 60){
-                    initialX = x / 3 +40
-                    initialY = y / 4 +15
-                    thick = 9
-                    margin = 13
-                }
-
-                /*
-                for (; i < detector.blades.length; i++) {
-                     ctx.strokeStyle = "#000000";
-                     ctx.strokeRect(initialX, initialY, thick, y/2);
-                     initialX += margin+thick
-                 }
-                 */
-                ctx.save();
-                let canvas = document.getElementById("plano");
-                let ctx2 = canvas.getContext("2d");
-                ctx2.save();
-                console.log("blade draw")
-
-                for (; i < blades.length; i++) {
-                    ctx2.save();
                     ctx2.strokeStyle = "#000000";
                     ctx2.translate(initialX, initialY);
                     ctx2.rotate(rotation);
-                    ctx2.strokeRect(0, 0, thick,height);
+                    //BackScattering layer
+                    ctx2.fillStyle="black";
+                    ctx2.fillRect(0, 0, converterThick,height);
+                    //substrate layer
+                    ctx2.fillStyle="#abc5d1";
+                    ctx2.fillRect(converterThick, 0, substrateThick,height)
+                    //transmission layer
+                    ctx2.fillStyle="black";
+                    ctx2.fillRect(converterThick+substrateThick, 0, converterThick,height)
                     ctx2.restore()
+                    ctx2.save();
+                    }
 
-                    initialX = margin + thick + initialX
+            function drawBlades(ctx2, x, y, blades, angle) {
+                let i = 0
+                let proportions = getBladeProportions( x, y, angle, blades)
+                let canvas = document.getElementById("plano");
+                ctx2 = canvas.getContext("2d");
+                console.log("blade draw")
+                for (; i < blades; i++) {
+                    drawBlade(ctx2,proportions.initialX,proportions.initialY,proportions.rotation,proportions.thick,proportions.height)
+                    proportions.initialX = proportions.margin + proportions.thick + proportions.initialX
                 }
-                ctx2.save()
             }
         }
     }
@@ -111,7 +117,7 @@ class Sketch extends Component {
     render() {
         return (
             <div className='sketch'>
-                <canvas width="400" height="150" id="plano">
+                <canvas id="plano">
                     Este texto se muestra para los navegadores no compatibles con canvas.
                     Por favor, utiliza Firefox, Chrome, Safari u Opera.
                 </canvas>
@@ -130,7 +136,7 @@ class SketchContainer extends Component {
     render(){
          if(this.props.detector.blades){
         return (
-                <Sketch angle={this.props.detector.angle} blades={this.props.detector.blades}></Sketch>
+                <Sketch angle={this.props.detector.angle} blades={this.props.detector.blades}/>
         )
     }else{
         return(<div>No blades</div>)

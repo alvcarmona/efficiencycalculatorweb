@@ -89,7 +89,7 @@ class BladeTable extends Component {
                     <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{(Math.round(data.backscatter * 1000) / 1000)} µm</td>
-                        <td>{data.substrate} µm</td>
+                        <td>{data.substrate} mm</td>
                     </tr>
                 );
             }
@@ -122,7 +122,7 @@ class Blades extends Component {
                     <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{(Math.round(data.backscatter * 100) / 100)} µm</td>
-                        <td>{data.substrate} µm</td>
+                        <td>{data.substrate} mm</td>
                     </tr>
                 );
             }
