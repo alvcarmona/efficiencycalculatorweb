@@ -23,25 +23,17 @@ class DetectorModuleComponent extends Component {
         }
         return (
             <div className="DetectorModuleComponent">
-
                 <Col>
-
                     <Row className={'DetectorModuleContent'}>
 
                         <Col xs={2}>
                             <DetectorAnimatedListContainer detectors={this.props.detectors}/>
                         </Col>
-                        <Col xs={8} md={8} lg={8} className={'middleColumn'}>
+                        <Col xs={9} md={9} lg={9} className={'middleColumn'}>
                             <MiddlePanel detectors={this.props.detectors} />
                         </Col>
-                        {/* <div>
-                                            <DetectorModuleDetailComponent detector={this.props.detectorsSelected[Object.keys(this.props.detectorsSelected)[0]]}/>
-                                        </div>*/}
-
                     </Row>
-
                 </Col>
-
             </div>
         );
     }

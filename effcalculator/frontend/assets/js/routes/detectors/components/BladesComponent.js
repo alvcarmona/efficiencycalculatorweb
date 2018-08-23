@@ -130,6 +130,7 @@ class Blades extends Component {
         return (
             <Row>
                     <Col xs={8}  md={6}  className="BladeThicknessPlot">
+                        <h4>Blade position VS converter thickness Plot</h4>
                         <BladeThicknessDepthPlot blades={this.props.blades}/>
                     </Col>
                     <Col sm={6} md={4} className="BladeThicknessTable">

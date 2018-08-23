@@ -3,43 +3,58 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-const  { DOM: { input, select, textarea } } = React
+
+const {DOM: {input, select, textarea}} = React
 import {connect} from 'react-redux';
-import {Grid, Button, Row, Col, Panel, PageHeader, small} from 'react-bootstrap'
+import {
+    Grid,
+    Button,
+    Row,
+    Col,
+    Panel,
+    PageHeader,
+    small,
+    FormGroup,
+    FormControl,
+    HelpBlock,
+    Form,
+    ControlLabel
+} from 'react-bootstrap'
 
 const required = value => value ? undefined : 'Required'
 const minValue = min => value =>
-  value && value < min ? `Must be at least ${min}` : undefined
+    value && value < min ? `Must be at least ${min}` : undefined
 const minValue1 = minValue(1)
 const minValue0 = minValue(0.1)
 const maxValue = max => value =>
-  value && value > max ? `Max value is ${max}` : undefined
+    value && value > max ? `Max value is ${max}` : undefined
 const maxValue800 = maxValue(800)
 const maxValue20 = maxValue(20)
 
 
-
-const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-  <div >
-    <label>{label}</label>
+const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
     <div>
-        <Row>
-        <Col>   <input {...input} placeholder={label} type={type}/> </Col>
-      <Col> {touched && ((error && <span className={"error-message"}>{error}</span>) || (warning && <span>{warning}</span>))}</Col>
+        <label>{label}</label>
+        <div>
+            <Row>
+                <Col> <input {...input} placeholder={label} type={type}/> </Col>
+                <Col> {touched && ((error && <span className={"error-message"}>{error}</span>) || (warning &&
+                    <span>{warning}</span>))}</Col>
             </Row>
+        </div>
     </div>
-  </div>
 )
 
 let WavelengthForm = props => {
     const {handleSubmit} = props
     return (
-        <form onSubmit={ handleSubmit }>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="Wavelength">Wavelength (Å)</label>
-                <Field name="Wavelength" validate={[ required, minValue0, maxValue20 ]} component={renderField} type="number"/>
+                <Field name="Wavelength" validate={[required, minValue0, maxValue20]} component={renderField}
+                       type="number"/>
             </div>
-            <button  className="submitButton btn btn-success" type="submit">Add wavelength</button>
+            <button  className="submitButton btn btn-success" type="submit">Add monochromatic wavelength</button>
         </form>
     )
 }
@@ -55,6 +70,7 @@ import {bindActionCreators} from 'redux';
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({editCurrentDetector}, dispatch)
 }
+
 function mapStateToProps(state) {
     return {
         detectorsSelected: state.example.detectorsSelected,
@@ -64,7 +80,7 @@ function mapStateToProps(state) {
 @connect(mapStateToProps, mapDispatchToProps)
 class WavelengthFormContainer extends React.Component {
     constructor(props) {
-      super(props)
+        super(props)
     }
 
     submit = (values) => {
@@ -74,9 +90,53 @@ class WavelengthFormContainer extends React.Component {
         this.props.detector.wavelength = wavelength
         this.props.editCurrentDetector(this.props.detector)
     }
-  render () {
-    return <WavelengthForm onSubmit={this.submit}/>
-  }
+    handleFileSelect(submit) {
+        event.preventDefault();
+        var files = document.getElementById('formControlsFile').files; // FileList object
+        console.log("debug Me")
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        for (var i = 0, f; f = files[i]; i++) {
+            var reader = new FileReader();
+            // Closure to capture the file information.
+            console.log('abre archivo')
+            let step
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    try {
+                        step = e.target.result.split(/\n/).map(function (row) { return row.split(";"); });
+                         const wavelength=step.map(function (row) {
+                            return row[0].split(/[ ,]+/).filter(Boolean).map(Number) });
+                        console.log(wavelength)
+                    } catch (ex) {
+                        alert('Unable to read as JSON' + ex);
+                    }
+                }
+            })(f);
+            reader.readAsText(f);
+        }
+
+    }
+    render() {
+        return <div>
+            <Row>
+                <Col md={4} >
+            <WavelengthForm onSubmit={this.submit}/>
+                    </Col>
+                <Col md={4} mdOffset={2}>
+            <Form>
+                <FormGroup controlId={"formControlsFile"}>
+                    <ControlLabel>{"Import"}</ControlLabel>
+                    <FormControl type="file" accept="*.txt"/>
+                    <HelpBlock>{"path to two column file"}</HelpBlock>
+                     <Button onClick={this.handleFileSelect.bind(this,this.props.submit)} className="btn-success"> Import Polychromatic wavelength  </Button>
+                </FormGroup>
+
+            </Form>
+                </Col>
+            </Row>
+        </div>
+    }
 }
 
 export default WavelengthFormContainer;
