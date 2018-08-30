@@ -4,8 +4,7 @@
 import React, {Component} from 'react'
 
 import DetectorAnimatedListContainer from '../containers/DetectorAnimatedListContainer'
-import {Grid, Row, Col} from 'react-bootstrap'
-import RefreshDetectorsContainer from '../containers/RefreshDetectorsContainer'
+import {Row, Col} from 'react-bootstrap'
 import MiddlePanel from '../containers/MiddlePanelContainer'
 import CreateDetectorButtonContainer from '../containers/CreateDetectorButtonContainer'
 
@@ -25,7 +24,6 @@ class DetectorModuleComponent extends Component {
             <div className="DetectorModuleComponent">
                 <Col>
                     <Row className={'DetectorModuleContent'}>
-
                         <Col xs={2}>
                             <DetectorAnimatedListContainer detectors={this.props.detectors}/>
                         </Col>

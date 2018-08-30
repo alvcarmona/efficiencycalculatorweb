@@ -15,6 +15,7 @@ const maxLength15 = maxLength(15)
 const minValue = min => value =>
     value && value < min ? `Must be at least ${min}` : undefined
 const minValue1 = minValue(1)
+const minValue100 = minValue(100)
 const maxValue = max => value =>
     value && value > max ? `Max value is ${max}` : undefined
 const maxValue800 = maxValue(800)
@@ -64,7 +65,7 @@ let DetectorForm = props => {
             <div className={"form-field"}>
                 <label htmlFor="Threshold">Threshold (KeV)</label>
                 <Field name="threshold" component={renderField} type="number"
-                       validate={[required, minValue1, maxValue800]}/>
+                       validate={[required, minValue100, maxValue800]}/>
             </div>
             <div className={"form-field"}>
                 <label htmlFor="Converter">Converter configuration</label>
@@ -73,11 +74,9 @@ let DetectorForm = props => {
                 </OverlayTrigger>
                 <Row>
                     <Field name="converter" component="select">
-
                         <option></option>
                         <option value="10B4C 2.24g/cm3">10B4C 2.24g/cm3</option>
                         <option value="10B4C 2.20g/cm3">10B4C 2.20g/cm3</option>
-
                     </Field>
                     <p></p>
                 </Row>

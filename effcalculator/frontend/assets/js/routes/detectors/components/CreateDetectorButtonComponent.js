@@ -3,15 +3,9 @@
  */
 
 import React, {Component} from 'react';
-import ReactDOM from 'react';
 import {
     Modal,
-    OverlayTrigger,
-    Tooltip,
-    MenuItem,
     Button,
-    Row,
-    Popover,
     Col,
     Grid,
     FormControl,
@@ -21,11 +15,8 @@ import {
     Glyphicon
 } from 'react-bootstrap'
 import DetectorFormContainer from '../containers/forms/DetectorForm'
-import {bindActionCreators} from 'redux';
-
 
 class CreateDetectorButton extends Component {
-
 
     close() {
         this.props.close()
@@ -38,13 +29,10 @@ class CreateDetectorButton extends Component {
 
     handleFileSelect(submit) {
         event.preventDefault();
-        var files = document.getElementById('formControlsFile').files; // FileList object
-
+        let files = document.getElementById('formControlsFile').files; // FileList object
         // files is a FileList of File objects. List some properties.
-        var output = [];
-        for (var i = 0, f; f = files[i]; i++) {
-            var reader = new FileReader();
-
+        for (let i = 0, f; f = files[i]; i++) {
+            let reader = new FileReader();
             // Closure to capture the file information.
             console.log('abre archivo')
             let json
@@ -62,7 +50,6 @@ class CreateDetectorButton extends Component {
             })(f);
             reader.readAsText(f);
         }
-
     }
 
 
@@ -75,10 +62,10 @@ class CreateDetectorButton extends Component {
         return (
             <div className="createButton">
                 <Button className="createButtonIn"
-                    bsStyle="success"
-                    onClick={this.open.bind(this)}
+                        bsStyle="success"
+                        onClick={this.open.bind(this)}
                 >
-                <Glyphicon  glyph="plus"/>
+                    <Glyphicon glyph="plus"/>
                 </Button>
 
                 <Modal show={this.props.showModal} onHide={this.close.bind(this)}>
@@ -91,7 +78,7 @@ class CreateDetectorButton extends Component {
                                 <DetectorFormContainer detector={this.props.detector} initialValues={initialValues}/>
                             </Col>
                             <Col md={2} mdOffset={1}>
-                                <form onSubmit={this.handleFileSelect.bind(this,this.props.submit)}>
+                                <form onSubmit={this.handleFileSelect.bind(this, this.props.submit)}>
                                     <FormGroup controlId={"formControlsFile"}>
                                         <ControlLabel>{"Import"}</ControlLabel>
                                         <FormControl type="file" accept="*.json"/>

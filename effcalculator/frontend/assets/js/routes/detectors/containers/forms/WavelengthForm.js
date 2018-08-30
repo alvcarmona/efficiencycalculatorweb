@@ -54,7 +54,7 @@ let WavelengthForm = props => {
                 <Field name="Wavelength" validate={[required, minValue0, maxValue20]} component={renderField}
                        type="number"/>
             </div>
-            <button  className="submitButton btn btn-success" type="submit">Add monochromatic wavelength</button>
+            <button className="submitButton btn btn-success" type="submit">Add monochromatic wavelength</button>
         </form>
     )
 }
@@ -86,28 +86,38 @@ class WavelengthFormContainer extends React.Component {
     submit = (values) => {
         // print the form values to the console
         let wavelength = [];
-        wavelength.push({weight: 100, angstrom: parseFloat(values.Wavelength)})
-        this.props.detector.wavelength = wavelength
-        this.props.editCurrentDetector(this.props.detector)
+        wavelength.push({weight: 100, angstrom: parseFloat(values.Wavelength)});
+        this.props.detector.wavelength = wavelength;
+        this.props.editCurrentDetector(this.props.detector);
     }
+
+    submitImportedWavelength(wavelength){
+        let processedWave=[];
+        wavelength.map((elem)=>{
+          processedWave.push({angstrom: elem[0], weight: elem[1]})
+        });
+        this.props.detector.wavelength = processedWave
+        this.props.editCurrentDetector(this.props.detector);
+    }
+
     handleFileSelect(submit) {
         event.preventDefault();
-        var files = document.getElementById('formControlsFile').files; // FileList object
-        console.log("debug Me")
+        const files = document.getElementById('formControlsFile').files; // FileList object
         // files is a FileList of File objects. List some properties.
-        var output = [];
-        for (var i = 0, f; f = files[i]; i++) {
-            var reader = new FileReader();
+         let wavelength=[];
+        for (let i = 0, f; f = files[i]; i++) {
+            let reader = new FileReader();
             // Closure to capture the file information.
-            console.log('abre archivo')
-            let step
+            console.log('abre archivo');
+            let step;
+            var promise = Promise.resolve();
             reader.onload = (function (theFile) {
                 return function (e) {
                     try {
                         step = e.target.result.split(/\n/).map(function (row) { return row.split(";"); });
                          const wavelength=step.map(function (row) {
                             return row[0].split(/[ ,]+/).filter(Boolean).map(Number) });
-                        console.log(wavelength)
+                        submit(wavelength)
                     } catch (ex) {
                         alert('Unable to read as JSON' + ex);
                     }
@@ -117,22 +127,25 @@ class WavelengthFormContainer extends React.Component {
         }
 
     }
+
+
+
     render() {
         return <div>
             <Row>
-                <Col md={4} >
-            <WavelengthForm onSubmit={this.submit}/>
-                    </Col>
+                <Col md={4}>
+                    <WavelengthForm onSubmit={this.submit}/>
+                </Col>
                 <Col md={4} mdOffset={2}>
-            <Form>
-                <FormGroup controlId={"formControlsFile"}>
-                    <ControlLabel>{"Import"}</ControlLabel>
-                    <FormControl type="file" accept="*.txt"/>
-                    <HelpBlock>{"path to two column file"}</HelpBlock>
-                     <Button onClick={this.handleFileSelect.bind(this,this.props.submit)} className="btn-success"> Import Polychromatic wavelength  </Button>
-                </FormGroup>
-
-            </Form>
+                    <Form>
+                        <FormGroup controlId={"formControlsFile"}>
+                            <ControlLabel>{"Import"}</ControlLabel>
+                            <FormControl type="file" accept="*.txt"/>
+                            <HelpBlock>{"path to two column file"}</HelpBlock>
+                            <Button onClick={this.handleFileSelect.bind(this, this.submitImportedWavelength.bind(this))}
+                                    className="btn-success"> Import Polychromatic wavelength </Button>
+                        </FormGroup>
+                    </Form>
                 </Col>
             </Row>
         </div>

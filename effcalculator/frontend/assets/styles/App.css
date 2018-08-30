@@ -354,6 +354,12 @@ a.NavbarLink:hover {
     height:auto !important;
     overflow-y: scroll;
 }
+.WavelengthTable {
+    margin: 20px;
+    max-height:350px;
+    height:auto !important;
+    overflow-y: scroll;
+}
 
 .parametercol {
     margin-top: 65px;

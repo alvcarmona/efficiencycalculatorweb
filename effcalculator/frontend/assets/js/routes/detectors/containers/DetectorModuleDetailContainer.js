@@ -1,9 +1,6 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-import {fetchData} from '../../../modules/actions/index';
-import {Button, Glyphicon} from 'react-bootstrap'
 import DetectorModuleDetailComponent from '../components/DetectorModuleDetailComponent'
-import Spinner from '../components/Spinner';
 import {bindActionCreators} from 'redux';
 import {
     setCurrentDetector,
@@ -82,7 +79,8 @@ export class DetectorModuleDetailContainer extends Component {
         this.props.setCurrentDetector(this.props.current)
         this.props.editCurrentDetector(this.props.detector)
     }
-     indexOfMax(arr) {
+
+    indexOfMax(arr) {
         if (arr.length === 0) {
             return -1;
         }
@@ -100,7 +98,7 @@ export class DetectorModuleDetailContainer extends Component {
         return maxIndex;
     }
 
-     optimizeDetectorThickness = () => {
+    optimizeDetectorThickness = () => {
         // print the form values to the console
         console.log("optimize detector Thickness")
         let index = this.indexOfMax(this.props.detector.metadata.eff_vs_layer_thickness.y);
@@ -122,7 +120,7 @@ export class DetectorModuleDetailContainer extends Component {
     }
 
     render() {
-        if(this.props.detector.metadata){
+        if (this.props.detector.metadata) {
 
         }
         console.log("render module")
@@ -130,8 +128,9 @@ export class DetectorModuleDetailContainer extends Component {
                                                openModal={this.props.openModal}
                                                setMetadata={this.props.setMetadata} submit={this.submit.bind(this)}
                                                addBlades={this.addBlades.bind(this)}
-                                               addWavelength={this.addWavelength.bind(this)} optimizeDetectorDiffThickness={this.optimizeDetectorDiffThickness}
-                                                 optimizeDetectorThickness={this.optimizeDetectorThickness}/>)
+                                               addWavelength={this.addWavelength.bind(this)}
+                                               optimizeDetectorDiffThickness={this.optimizeDetectorDiffThickness}
+                                               optimizeDetectorThickness={this.optimizeDetectorThickness}/>)
     }
 
 }

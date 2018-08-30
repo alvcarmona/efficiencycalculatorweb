@@ -11,3 +11,4 @@ effcalculator/npm-debug.log
 /coverage
 .storybook
 stories
+/**/*.DS_Store
